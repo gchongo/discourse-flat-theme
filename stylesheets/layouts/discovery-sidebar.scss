@@ -17,25 +17,12 @@
     order: 0;
   }
 
-  .main-outlet-blocks,
-  .main-outlet-blocks__block,
-  .main-outlet-blocks__block-container {
-    margin-bottom: 0;
-  }
-
-  .block-hero {
-    margin-bottom: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    padding-bottom: 0;
-  }
-
   .discovery-layout__navigation {
     order: 1;
     margin: 0 0 var(--mf-space-5);
-    padding: var(--mf-space-6);
+    padding: var(--mf-space-3);
     background: var(--mf-surface);
-    border-radius: 0 0 var(--mf-radius-xl) var(--mf-radius-xl);
+    border-radius: var(--mf-radius-xl);
 
     .list-controls,
     .list-controls .container {
@@ -60,8 +47,8 @@
 @include viewport.until(md) {
   #main-outlet:has(.block-hero) {
     .discovery-layout__navigation {
-      padding: var(--mf-space-5);
-      border-radius: 0 0 var(--mf-radius-lg) var(--mf-radius-lg);
+      padding: var(--mf-space-2);
+      border-radius: var(--mf-radius-lg);
     }
   }
 }
@@ -70,7 +57,8 @@
   #main-outlet:has(.block-hero) {
     .discovery-layout__navigation {
       margin-bottom: var(--mf-space-3);
-      padding: var(--mf-space-3);
+      padding: var(--mf-space-2);
+      border-radius: var(--mf-radius-lg);
     }
   }
 }
