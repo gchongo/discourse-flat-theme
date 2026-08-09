@@ -1,36 +1,29 @@
 import Component from "@glimmer/component";
-import { service } from "@ember/service";
 import { themePrefix } from "virtual:theme";
 import { block } from "discourse/blocks";
 import dIcon from "discourse/ui-kit/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 
 @block("theme:flat-theme:hero", {
-  description: "Centered discovery hero with greeting and search",
+  description: "Centered discovery hero with branding image and search",
+  args: {
+    subtitle: { type: "string" },
+  },
 })
 export default class BlockHero extends Component {
-  @service currentUser;
-
-  get greetingName() {
-    if (this.currentUser) {
-      return this.currentUser.name || this.currentUser.username;
-    }
-    return i18n(themePrefix("hero.brand_name"));
-  }
-
-  get greeting() {
-    if (this.currentUser) {
-      return i18n(themePrefix("hero.welcome_back"), {
-        name: this.greetingName,
-      });
-    }
-    return i18n(themePrefix("hero.welcome"), { name: this.greetingName });
+  get subtitle() {
+    return this.args.subtitle || i18n(themePrefix("hero.default_subtitle"));
   }
 
   <template>
     <section class="block-hero">
       <div class="block-hero__inner">
-        <h1 class="block-hero__title">{{this.greeting}}</h1>
+        <div class="block-hero__copy">
+          <h1 class="block-hero__title">{{i18n
+              (themePrefix "hero.title")
+            }}</h1>
+          <p class="block-hero__subtitle">{{this.subtitle}}</p>
+        </div>
 
         <form
           class="block-hero__search"
@@ -48,14 +41,6 @@ export default class BlockHero extends Component {
             aria-label={{i18n (themePrefix "hero.search_label")}}
             autocomplete="off"
           />
-          <a
-            class="block-hero__search-advanced"
-            href="/search"
-            title={{i18n (themePrefix "hero.advanced_search")}}
-            aria-label={{i18n (themePrefix "hero.advanced_search")}}
-          >
-            {{dIcon "sliders"}}
-          </a>
         </form>
       </div>
     </section>

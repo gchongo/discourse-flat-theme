@@ -8,7 +8,9 @@
   "theme_version": "3.0.0",
   "minimum_discourse_version": "2026.6.0",
   "maximum_discourse_version": null,
-  "assets": {},
+  "assets": {
+    "hero-background": "assets/hero-background.png"
+  },
   "modifiers": {
     "serialize_topic_excerpts": true,
     "svg_icons": [

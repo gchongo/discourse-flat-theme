@@ -1,13 +1,14 @@
 ru:
   hero:
+    title: "Computer Aided Xeverything"
+    default_subtitle: "Hooray! Enjoy your stay! Feel free to ask questions or search existing posts."
+    search_placeholder: "Search"
+    search_label: "Search"
+    search_action: "Найти"
     brand_name: "Caxer"
     welcome_back: "С возвращением, %{name}!"
     welcome: "Добро пожаловать, %{name}!"
-    search_placeholder: "Поиск"
-    search_label: "Поиск"
     advanced_search: "Расширенный поиск"
-    default_subtitle: "CAXer can do everything"
-    search_action: "Найти"
   rail:
     events_title: "Ближайшие события"
     contributors_title: "Рейтинг за всё время"

@@ -30,7 +30,7 @@ rail_leaderboard_id:
 
 hero_subtitle:
   type: string
-  default: "CAXer can do everything"
+  default: "Hooray! Enjoy your stay! Feel free to ask questions or search existing posts."
 
 show_topic_excerpts:
   type: bool
