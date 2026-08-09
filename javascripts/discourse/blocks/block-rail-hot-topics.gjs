@@ -36,11 +36,15 @@ export default class BlockRailHotTopics extends Component {
         (c) => c.id === topic.category_id
       );
       const tag = topic.tags?.[0];
+      const tagName =
+        typeof tag === "string"
+          ? tag
+          : tag?.name || tag?.id || tag?.text || null;
 
       return {
         href: getURL(`/t/${topic.slug}/${topic.id}`),
         title: htmlSafe(topic.fancy_title || topic.title),
-        badge: tag || category?.name || null,
+        badge: tagName || category?.name || null,
         age: relativeAge(new Date(topic.bumped_at || topic.created_at), {
           format: "tiny",
         }),
