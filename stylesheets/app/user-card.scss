@@ -120,6 +120,23 @@
   border: none !important;
 }
 
+// Inactive hover cards must not participate in #main-outlet flex layout.
+#user-card:not(.show),
+.user-card:not(.show),
+#group-card:not(.show),
+.group-card:not(.show) {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+
+#main-outlet > .card-cloak:not(.--visible) {
+  display: none !important;
+}
+
 #user-card .card-content .first-row,
 .user-card .card-backdrop {
   border-radius: 0;

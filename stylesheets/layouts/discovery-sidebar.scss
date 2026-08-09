@@ -77,6 +77,14 @@
   .discovery-layout__content {
     order: 3;
   }
+
+  #user-card,
+  .user-card,
+  #group-card,
+  .group-card,
+  .card-cloak {
+    order: 4;
+  }
 }
 
 @include viewport.until(md) {
