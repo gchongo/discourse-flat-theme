@@ -6,7 +6,7 @@ ru:
     search_action: "Найти"
   rail:
     events_title: "Ближайшие события"
-    contributors_title: "Лучшие за неделю"
+    contributors_title: "Рейтинг за всё время"
     contributors_you: "Вы #%{position}"
     hot_topics_title: "Популярные темы"
     show_all: "Показать все"

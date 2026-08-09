@@ -27,20 +27,21 @@ export default class BlockRailTags extends Component {
 
   <template>
     {{#if this.topTags.length}}
-      <div class="block-rail-tags">
-        <h4 class="block-rail-tags__title">{{i18n
-            (themePrefix "rail.tags_title")
-          }}</h4>
+      <section class="block-rail-panel block-rail-tags">
+        <h4 class="block-rail-panel__title">
+          {{dIcon "tag"}}
+          <span>{{i18n (themePrefix "rail.tags_title")}}</span>
+        </h4>
         <div class="block-rail-tags__cloud">
           {{#each this.topTags as |tag|}}
             <a class="block-rail-tags__tag" href={{tag.href}}>{{tag.name}}</a>
           {{/each}}
         </div>
-        <a class="block-rail-tags__all" href="/tags">
+        <a class="block-rail-panel__more" href="/tags">
           <span>{{i18n (themePrefix "rail.all_tags")}}</span>
           {{dIcon "arrow-right"}}
         </a>
-      </div>
+      </section>
     {{/if}}
   </template>
 }

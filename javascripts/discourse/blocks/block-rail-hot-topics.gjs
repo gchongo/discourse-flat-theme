@@ -8,6 +8,7 @@ import { bind } from "discourse/lib/decorators";
 import { relativeAge } from "discourse/lib/formatter";
 import getURL from "discourse/lib/get-url";
 import DAsyncContent from "discourse/ui-kit/d-async-content";
+import dCategoryBadge from "discourse/ui-kit/helpers/d-category-badge";
 import dIcon from "discourse/ui-kit/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 
@@ -44,7 +45,8 @@ export default class BlockRailHotTopics extends Component {
       return {
         href: getURL(`/t/${topic.slug}/${topic.id}`),
         title: htmlSafe(topic.fancy_title || topic.title),
-        badge: tagName || category?.name || null,
+        category,
+        tag: tagName,
         age: relativeAge(new Date(topic.bumped_at || topic.created_at), {
           format: "tiny",
         }),
@@ -65,12 +67,23 @@ export default class BlockRailHotTopics extends Component {
               {{#each topics as |topic|}}
                 <li>
                   <a class="block-rail-hot-topics__item" href={{topic.href}}>
-                    <span class="block-rail-hot-topics__name">{{topic.title}}</span>
+                    <span
+                      class="block-rail-hot-topics__name"
+                    >{{topic.title}}</span>
                     <span class="block-rail-hot-topics__meta">
-                      {{#if topic.badge}}
-                        <span class="block-rail-hot-topics__badge">{{topic.badge}}</span>
-                      {{/if}}
-                      <span class="block-rail-hot-topics__age">{{topic.age}}</span>
+                      <span class="block-rail-hot-topics__badges">
+                        {{#if topic.category}}
+                          {{dCategoryBadge topic.category}}
+                        {{/if}}
+                        {{#if topic.tag}}
+                          <span
+                            class="block-rail-hot-topics__tag"
+                          >{{topic.tag}}</span>
+                        {{/if}}
+                      </span>
+                      <span
+                        class="block-rail-hot-topics__age"
+                      >{{topic.age}}</span>
                     </span>
                   </a>
                 </li>

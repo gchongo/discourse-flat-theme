@@ -43,10 +43,27 @@
     min-width: 0;
   }
 
-  &__badge {
+  &__badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .badge-category,
+  .badge-category__wrapper {
+    max-width: 100%;
+  }
+
+  .badge-category {
+    font-size: var(--mf-text-2xs) !important;
+  }
+
+  &__tag {
     display: inline-flex;
     align-items: center;
-    max-width: 70%;
+    max-width: 8em;
     min-height: 22px;
     padding: 2px 8px;
     overflow: hidden;

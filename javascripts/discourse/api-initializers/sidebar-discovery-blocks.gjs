@@ -3,9 +3,7 @@ import { apiInitializer } from "discourse/lib/api";
 import BlockRailContributors from "../blocks/block-rail-contributors";
 import BlockRailEvents from "../blocks/block-rail-events";
 import BlockRailHotTopics from "../blocks/block-rail-hot-topics";
-import BlockRailLinks from "../blocks/block-rail-links";
 import BlockRailOnline from "../blocks/block-rail-online";
-import BlockRailStats from "../blocks/block-rail-stats";
 import BlockRailTags from "../blocks/block-rail-tags";
 
 export default apiInitializer((api) => {
@@ -34,14 +32,7 @@ export default apiInitializer((api) => {
         },
         { block: BlockRailHotTopics },
         { block: BlockRailOnline },
-        { block: BlockRailStats },
         { block: BlockRailTags },
-        {
-          block: BlockRailLinks,
-          args: {
-            links: settings.rail_links,
-          },
-        },
       ],
     },
   ]);

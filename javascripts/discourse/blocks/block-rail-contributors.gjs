@@ -11,7 +11,7 @@ import dNumber from "discourse/ui-kit/helpers/d-number";
 import { i18n } from "discourse-i18n";
 
 @block("theme:flat-theme:rail-contributors", {
-  description: "Weekly best contributors from gamification leaderboard",
+  description: "All-time best contributors from gamification leaderboard",
   args: {
     leaderboardId: { type: "number", integer: true, default: 1 },
   },
@@ -23,7 +23,7 @@ export default class BlockRailContributors extends Component {
   }
 
   get leaderboardHref() {
-    return `/leaderboard/${this.leaderboardId}`;
+    return `/leaderboard/${this.leaderboardId}?period=all_time`;
   }
 
   @bind
@@ -33,7 +33,7 @@ export default class BlockRailContributors extends Component {
 
     try {
       data = await ajax(endpoint, {
-        data: { user_limit: 5, period: "weekly" },
+        data: { user_limit: 5, period: "all_time" },
       });
     } catch {
       try {
@@ -78,7 +78,9 @@ export default class BlockRailContributors extends Component {
                     data-user-card={{user.username}}
                   >
                     {{dBoundAvatarTemplate user.avatar_template "small"}}
-                    <span class="block-rail-contributors__name">{{user.username}}</span>
+                    <span
+                      class="block-rail-contributors__name"
+                    >{{user.username}}</span>
                     <span class="block-rail-contributors__score">
                       {{dNumber user.total_score}}
                       {{dIcon "award"}}
