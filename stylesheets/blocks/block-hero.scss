@@ -13,7 +13,7 @@ body.welcome-banner--visible .above-main-container-outlet {
   isolation: isolate;
   overflow: hidden;
   margin: 0 0 var(--mf-space-3);
-  padding: clamp(36px, 5vw, 64px) var(--mf-space-6);
+  padding: clamp(16px, 2.2vw, 28px) var(--mf-space-5);
   background:
     linear-gradient(
       180deg,
@@ -31,7 +31,7 @@ body.welcome-banner--visible .above-main-container-outlet {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--mf-space-5);
+    gap: var(--mf-space-3);
     max-width: 760px;
     margin: 0 auto;
     text-align: center;
@@ -120,7 +120,7 @@ body.welcome-banner--visible .above-main-container-outlet {
     max-width: 100%;
     margin-inline: 0;
     margin-bottom: var(--mf-space-3);
-    padding: var(--mf-space-6) var(--mf-space-3);
+    padding: var(--mf-space-4) var(--mf-space-3);
     border-radius: var(--mf-radius-lg);
     background-position: 60% center;
 
@@ -133,7 +133,7 @@ body.welcome-banner--visible .above-main-container-outlet {
     }
 
     &__inner {
-      gap: var(--mf-space-4);
+      gap: var(--mf-space-3);
     }
 
     &__search {
