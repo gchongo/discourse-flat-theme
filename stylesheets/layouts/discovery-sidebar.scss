@@ -1,6 +1,7 @@
 #main-outlet:has(.discovery-layout) {
   display: flex;
   flex-direction: column;
+  gap: 0;
 }
 
 .discovery-layout {
@@ -11,15 +12,21 @@
   order: -1;
 }
 
-.discovery-layout__category-header:empty,
-.discovery-layout__above-navigation:empty {
+.discovery-layout__category-header:not(:has(*)),
+.discovery-layout__above-navigation:not(:has(*)) {
   display: none;
 }
 
 // With the hero visible, place discovery filters under the search card.
 #main-outlet:has(.block-hero) {
-  .main-outlet-blocks {
+  gap: 0;
+
+  .main-outlet-blocks,
+  .main-outlet-blocks__block,
+  .main-outlet-blocks__block-container {
     order: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .discovery-layout__navigation {
@@ -30,7 +37,10 @@
   .discovery-layout__above-navigation,
   #main-container,
   .discourse-banner-wrapper,
-  .discourse-banner {
+  .discourse-banner,
+  .welcome-banner,
+  .admin-onboarding-banner,
+  .above-main-container-outlet {
     order: 2;
   }
 
@@ -39,7 +49,8 @@
   }
 
   .block-hero {
-    margin-bottom: var(--mf-space-3);
+    margin: 0 0 var(--mf-space-2);
+    border-radius: var(--mf-radius-xl);
   }
 
   .discovery-layout__navigation {
@@ -62,6 +73,11 @@
 
 @include viewport.until(md) {
   #main-outlet:has(.block-hero) {
+    .block-hero {
+      margin-bottom: var(--mf-space-2);
+      border-radius: var(--mf-radius-lg);
+    }
+
     .discovery-layout__navigation {
       padding: var(--mf-space-2);
       border-radius: var(--mf-radius-lg);
@@ -73,8 +89,6 @@
   #main-outlet:has(.block-hero) {
     .discovery-layout__navigation {
       margin-bottom: var(--mf-space-3);
-      padding: var(--mf-space-2);
-      border-radius: var(--mf-radius-lg);
     }
   }
 }
