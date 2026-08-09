@@ -803,27 +803,6 @@ tr.topic-list-item-separator,
   background: var(--mf-fill-hover) !important;
 }
 
-.block-hero__search {
-  min-height: 42px;
-  padding: 2px 2px 2px var(--mf-space-3);
-  background: var(--mf-panel);
-  border: 0 !important;
-  border-radius: var(--mf-radius-lg);
-  box-shadow: none !important;
-
-  input {
-    min-height: 38px;
-    padding: 6px 0;
-    background: transparent !important;
-    outline: 0 !important;
-  }
-
-  .btn-primary {
-    min-height: 36px;
-    padding: 7px 14px;
-  }
-}
-
 #user-card:not(:empty),
 .user-card:not(:empty) {
   .badge-section,
@@ -863,40 +842,10 @@ tr.topic-list-item-separator,
 }
 
 @include viewport.until(sm) {
-  .block-hero__search {
-    min-height: 42px;
-
-    .btn-primary {
-      min-height: 36px;
-      padding-inline: var(--mf-space-3);
-    }
-  }
-
   .embedded-posts,
   .embedded-posts.top,
   .embedded-posts.bottom {
     border-radius: var(--mf-radius-lg);
-  }
-}
-
-.block-hero__search {
-  min-height: 44px;
-  padding: 2px 2px 2px var(--mf-space-3);
-
-  input {
-    align-self: center;
-    height: 40px !important;
-    min-height: 40px !important;
-    margin: 0;
-    padding-block: 0 !important;
-    box-sizing: border-box;
-    line-height: 40px;
-  }
-
-  > .d-icon {
-    align-self: center;
-    width: 17px;
-    height: 17px;
   }
 }
 

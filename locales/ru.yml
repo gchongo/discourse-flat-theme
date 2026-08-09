@@ -1,8 +1,12 @@
 ru:
   hero:
+    brand_name: "Caxer"
+    welcome_back: "С возвращением, %{name}!"
+    welcome: "Добро пожаловать, %{name}!"
+    search_placeholder: "Поиск"
+    search_label: "Поиск"
+    advanced_search: "Расширенный поиск"
     default_subtitle: "CAXer can do everything"
-    search_placeholder: "Поиск по форуму"
-    search_label: "Поиск по форуму"
     search_action: "Найти"
   rail:
     events_title: "Ближайшие события"

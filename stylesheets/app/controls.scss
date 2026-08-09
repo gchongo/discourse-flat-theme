@@ -83,7 +83,6 @@
   .search-bar,
   .welcome-banner__search,
   .floating-search-input-wrapper,
-  .block-hero__search,
   [class*="search"][class*="input"]:has(> input)
 ) {
   display: flex;
@@ -153,7 +152,6 @@
   .search-bar,
   .welcome-banner__search,
   .floating-search-input-wrapper,
-  .block-hero__search,
   [class*="search"][class*="input"]:has(> input)
 ):focus-within {
   background: var(--mf-surface) !important;
@@ -167,7 +165,6 @@
     .search-bar,
     .welcome-banner__search,
     .floating-search-input-wrapper,
-    .block-hero__search,
     [class*="search"][class*="input"]:has(> input)
   )
   > :is(input, .admin-search__input-field, .sidebar-search__input):focus {

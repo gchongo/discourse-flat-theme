@@ -1,8 +1,12 @@
 en:
   hero:
+    brand_name: "Caxer"
+    welcome_back: "欢迎回来，%{name}！"
+    welcome: "欢迎，%{name}！"
+    search_placeholder: "搜索"
+    search_label: "搜索"
+    advanced_search: "高级搜索"
     default_subtitle: "CAXer can do everything"
-    search_placeholder: "Search the forum"
-    search_label: "Search the forum"
     search_action: "Search"
   rail:
     events_title: "最新活动"

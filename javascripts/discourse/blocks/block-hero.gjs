@@ -6,51 +6,57 @@ import dIcon from "discourse/ui-kit/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 
 @block("theme:flat-theme:hero", {
-  description: "Discovery hero with title and search",
-  args: {
-    subtitle: { type: "string" },
-  },
+  description: "Centered discovery hero with greeting and search",
 })
 export default class BlockHero extends Component {
-  @service site;
-  @service siteSettings;
+  @service currentUser;
 
-  get title() {
-    return this.siteSettings.title || this.site.title || "Community";
+  get greetingName() {
+    if (this.currentUser) {
+      return this.currentUser.name || this.currentUser.username;
+    }
+    return i18n(themePrefix("hero.brand_name"));
   }
 
-  get description() {
-    return this.args.subtitle || i18n(themePrefix("hero.default_subtitle"));
+  get greeting() {
+    if (this.currentUser) {
+      return i18n(themePrefix("hero.welcome_back"), {
+        name: this.greetingName,
+      });
+    }
+    return i18n(themePrefix("hero.welcome"), { name: this.greetingName });
   }
 
   <template>
     <section class="block-hero">
       <div class="block-hero__inner">
-        <div class="block-hero__copy">
-          <h1 class="block-hero__title">{{this.title}}</h1>
-          <p class="block-hero__subtitle">{{this.description}}</p>
-        </div>
+        <h1 class="block-hero__title">{{this.greeting}}</h1>
 
-        <div class="block-hero__discovery">
-          <form
-            class="block-hero__search"
-            action="/search"
-            method="get"
-            role="search"
-          >
+        <form
+          class="block-hero__search"
+          action="/search"
+          method="get"
+          role="search"
+        >
+          <span class="block-hero__search-icon" aria-hidden="true">
             {{dIcon "magnifying-glass"}}
-            <input
-              type="search"
-              name="q"
-              placeholder={{i18n (themePrefix "hero.search_placeholder")}}
-              aria-label={{i18n (themePrefix "hero.search_label")}}
-              autocomplete="off"
-            />
-            <button type="submit" class="btn btn-primary">{{i18n
-                (themePrefix "hero.search_action")
-              }}</button>
-          </form>
-        </div>
+          </span>
+          <input
+            type="search"
+            name="q"
+            placeholder={{i18n (themePrefix "hero.search_placeholder")}}
+            aria-label={{i18n (themePrefix "hero.search_label")}}
+            autocomplete="off"
+          />
+          <a
+            class="block-hero__search-advanced"
+            href="/search"
+            title={{i18n (themePrefix "hero.advanced_search")}}
+            aria-label={{i18n (themePrefix "hero.advanced_search")}}
+          >
+            {{dIcon "sliders"}}
+          </a>
+        </form>
       </div>
     </section>
   </template>
