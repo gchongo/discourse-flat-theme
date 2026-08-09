@@ -22,14 +22,14 @@ export default apiInitializer((api) => {
           name: "show_info_rail",
           enabled: true,
         },
-        { type: "viewport", min: "xl" },
+        { type: "viewport", min: "lg" },
       ],
       children: [
         { block: BlockRailEvents },
         {
           block: BlockRailContributors,
           args: {
-            leaderboardId: settings.rail_leaderboard_id,
+            leaderboardId: settings.rail_leaderboard_id ?? 1,
           },
         },
         { block: BlockRailHotTopics },

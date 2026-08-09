@@ -13,12 +13,13 @@ import { i18n } from "discourse-i18n";
 @block("theme:flat-theme:rail-contributors", {
   description: "Weekly best contributors from gamification leaderboard",
   args: {
-    leaderboardId: { type: "integer" },
+    leaderboardId: { type: "number", integer: true, default: 1 },
   },
 })
 export default class BlockRailContributors extends Component {
   get leaderboardId() {
-    return this.args.leaderboardId || 1;
+    const id = Number(this.args.leaderboardId);
+    return Number.isFinite(id) && id > 0 ? id : 1;
   }
 
   get leaderboardHref() {
