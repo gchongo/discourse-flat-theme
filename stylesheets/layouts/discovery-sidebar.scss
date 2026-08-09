@@ -12,25 +12,55 @@
   order: -1;
 }
 
-.discovery-layout__category-header:not(:has(*)),
+// Drop empty discovery chrome so it cannot create a flex gap.
+.discovery-layout__category-header:not(:has(.category-read-only-banner)),
 .discovery-layout__above-navigation:not(:has(*)) {
+  display: contents;
+}
+
+#main-container:not(:has(:not(:empty))) {
   display: none;
 }
 
 // With the hero visible, place discovery filters under the search card.
 #main-outlet:has(.block-hero) {
-  gap: 0;
+  gap: 0 !important;
 
-  .main-outlet-blocks,
-  .main-outlet-blocks__block,
-  .main-outlet-blocks__block-container {
+  .main-outlet-blocks {
     order: 0;
-    margin: 0;
-    padding: 0;
+    margin: 0 0 6px !important;
+    padding: 0 !important;
+  }
+
+  .main-outlet-blocks__container,
+  .main-outlet-blocks__layout,
+  .main-outlet-blocks__block,
+  .main-outlet-blocks__block--hero {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .block-hero {
+    margin: 0 !important;
+    border-radius: var(--mf-radius-xl) !important;
   }
 
   .discovery-layout__navigation {
     order: 1;
+    margin: 0 0 var(--mf-space-5) !important;
+    padding: var(--mf-space-3) !important;
+    background: var(--mf-surface);
+    border-radius: var(--mf-radius-xl) !important;
+
+    .list-controls,
+    .list-controls .container {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .list-controls .navigation-container {
+      margin: 0 !important;
+    }
   }
 
   .discovery-layout__category-header,
@@ -47,48 +77,29 @@
   .discovery-layout__content {
     order: 3;
   }
-
-  .block-hero {
-    margin: 0 0 var(--mf-space-2);
-    border-radius: var(--mf-radius-xl);
-  }
-
-  .discovery-layout__navigation {
-    margin: 0 0 var(--mf-space-5);
-    padding: var(--mf-space-3);
-    background: var(--mf-surface);
-    border-radius: var(--mf-radius-xl);
-
-    .list-controls,
-    .list-controls .container {
-      margin: 0;
-      padding: 0;
-    }
-
-    .list-controls .navigation-container {
-      margin: 0;
-    }
-  }
 }
 
 @include viewport.until(md) {
   #main-outlet:has(.block-hero) {
-    .block-hero {
-      margin-bottom: var(--mf-space-2);
-      border-radius: var(--mf-radius-lg);
+    .block-hero,
+    .discovery-layout__navigation {
+      border-radius: var(--mf-radius-lg) !important;
     }
 
     .discovery-layout__navigation {
-      padding: var(--mf-space-2);
-      border-radius: var(--mf-radius-lg);
+      padding: var(--mf-space-2) !important;
     }
   }
 }
 
 @include viewport.until(sm) {
   #main-outlet:has(.block-hero) {
+    .main-outlet-blocks {
+      margin-bottom: 6px !important;
+    }
+
     .discovery-layout__navigation {
-      margin-bottom: var(--mf-space-3);
+      margin-bottom: var(--mf-space-3) !important;
     }
   }
 }
