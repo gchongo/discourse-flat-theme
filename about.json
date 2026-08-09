@@ -11,7 +11,15 @@
   "assets": {},
   "modifiers": {
     "serialize_topic_excerpts": true,
-    "svg_icons": ["arrow-right", "fire", "magnifying-glass", "plus", "users"]
+    "svg_icons": [
+      "arrow-right",
+      "award",
+      "calendar",
+      "fire",
+      "magnifying-glass",
+      "plus",
+      "users"
+    ]
   },
   "color_schemes": {
     "Oniel's Flat Theme": {

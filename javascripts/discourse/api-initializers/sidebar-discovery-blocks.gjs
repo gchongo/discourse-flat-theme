@@ -1,6 +1,8 @@
 import BlockGroup from "discourse/blocks/builtin/block-group";
 import { apiInitializer } from "discourse/lib/api";
-import BlockRailCta from "../blocks/block-rail-cta";
+import BlockRailContributors from "../blocks/block-rail-contributors";
+import BlockRailEvents from "../blocks/block-rail-events";
+import BlockRailHotTopics from "../blocks/block-rail-hot-topics";
 import BlockRailLinks from "../blocks/block-rail-links";
 import BlockRailOnline from "../blocks/block-rail-online";
 import BlockRailStats from "../blocks/block-rail-stats";
@@ -23,7 +25,14 @@ export default apiInitializer((api) => {
         { type: "viewport", min: "xl" },
       ],
       children: [
-        { block: BlockRailCta },
+        { block: BlockRailEvents },
+        {
+          block: BlockRailContributors,
+          args: {
+            leaderboardId: settings.rail_leaderboard_id,
+          },
+        },
+        { block: BlockRailHotTopics },
         { block: BlockRailOnline },
         { block: BlockRailStats },
         { block: BlockRailTags },

@@ -23,6 +23,11 @@ rail_links:
         validations:
           max_length: 500
 
+rail_leaderboard_id:
+  type: integer
+  default: 1
+  min: 1
+
 hero_subtitle:
   type: string
   default: "CAXer can do everything"

@@ -1,0 +1,40 @@
+.block-rail-panel {
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding-bottom: var(--mf-space-3);
+    color: var(--mf-ink);
+    font-size: var(--mf-text-md);
+    font-weight: var(--mf-weight-semibold);
+    letter-spacing: var(--mf-tracking-snug);
+    border-bottom: 1px solid var(--mf-hairline);
+
+    .d-icon {
+      color: var(--mf-ink-3);
+      font-size: var(--mf-text-base);
+    }
+  }
+
+  &__more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: var(--mf-space-3);
+    padding-top: var(--mf-space-3);
+    color: var(--mf-accent);
+    font-size: var(--mf-text-sm);
+    font-weight: var(--mf-weight-medium);
+    border-top: 1px solid var(--mf-hairline);
+
+    .d-icon {
+      font-size: var(--mf-text-xs);
+    }
+
+    &:hover {
+      color: var(--mf-accent-hover);
+    }
+  }
+}
