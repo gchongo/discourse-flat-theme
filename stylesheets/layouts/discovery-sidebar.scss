@@ -48,9 +48,9 @@
   .discovery-layout__navigation {
     order: 1;
     margin: 0 0 var(--mf-space-5) !important;
-    padding: var(--mf-space-4) var(--mf-space-3) !important;
-    background: var(--mf-surface);
-    border-radius: var(--mf-radius-xl) !important;
+    padding: 0 !important;
+    background: transparent;
+    border-radius: 0 !important;
 
     .list-controls,
     .list-controls .container {
@@ -60,6 +60,7 @@
 
     .list-controls .navigation-container {
       margin: 0 !important;
+      border-radius: var(--mf-radius-xl);
     }
   }
 
@@ -89,13 +90,12 @@
 
 @include viewport.until(md) {
   #main-outlet:has(.block-hero) {
-    .block-hero,
-    .discovery-layout__navigation {
+    .block-hero {
       border-radius: var(--mf-radius-lg) !important;
     }
 
-    .discovery-layout__navigation {
-      padding: var(--mf-space-3) var(--mf-space-2) !important;
+    .discovery-layout__navigation .list-controls .navigation-container {
+      border-radius: var(--mf-radius-lg);
     }
   }
 }
@@ -108,7 +108,6 @@
 
     .discovery-layout__navigation {
       margin-bottom: var(--mf-space-3) !important;
-      padding: var(--mf-space-3) var(--mf-space-2) !important;
     }
   }
 }
