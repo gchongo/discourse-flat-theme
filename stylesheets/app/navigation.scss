@@ -96,12 +96,10 @@
 }
 
 .list-controls .navigation-container {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) max-content;
-  grid-template-areas:
-    "primary actions"
-    "filters actions";
-  gap: 6px var(--mf-space-3);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px;
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
@@ -113,14 +111,14 @@
   box-shadow: none;
 
   > #navigation-bar {
-    grid-area: primary;
+    order: 2;
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex: 1 1 auto;
     flex-wrap: nowrap;
     gap: 3px;
     min-width: 0;
-    width: 100%;
     margin: 0;
     overflow-x: auto;
     overflow-y: hidden;
@@ -174,19 +172,14 @@
   }
 
   > .category-breadcrumb {
-    grid-area: filters;
+    order: 1;
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
     flex-wrap: nowrap;
     gap: 6px;
     min-width: 0;
     margin: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
 
     > li {
       flex: 0 0 auto;
@@ -194,7 +187,7 @@
 
     .select-kit.combo-box .select-kit-header,
     li > .select-kit .select-kit-header {
-      min-height: 32px;
+      min-height: 36px;
       padding-block: 6px;
       background: var(--mf-surface-3);
       border: 0;
@@ -203,11 +196,11 @@
   }
 
   > .navigation-controls {
-    grid-area: actions;
+    order: 3;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    align-self: center;
+    flex: 0 0 auto;
     flex-wrap: nowrap;
     min-width: max-content;
     margin: 0;
@@ -277,45 +270,23 @@
 
 @include viewport.until(md) {
   .list-controls .navigation-container {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 6px;
+    gap: 4px;
     padding: 6px;
     border-radius: var(--mf-radius-lg);
+    overflow-x: auto;
+    scrollbar-width: none;
 
-    > #navigation-bar,
-    > .category-breadcrumb {
-      width: 100%;
+    &::-webkit-scrollbar {
+      display: none;
     }
 
     > #navigation-bar {
-      order: 1;
-    }
-
-    > .category-breadcrumb {
-      order: 2;
+      flex: 1 1 auto;
+      overflow-x: visible;
     }
 
     > .navigation-controls {
-      order: 3;
-      width: 100%;
-      min-width: 0;
-
-      .topic-create-button__combo {
-        display: flex;
-        width: 100%;
-      }
-
-      #create-topic {
-        flex: 1 1 auto;
-        width: auto;
-        min-width: 0;
-      }
-
-      .d-combo-button__menu-trigger {
-        flex: 0 0 auto;
-      }
+      margin-inline-start: auto;
     }
   }
 }
