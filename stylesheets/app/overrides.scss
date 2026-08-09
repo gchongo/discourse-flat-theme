@@ -544,14 +544,13 @@
 .category-boxes-with-topics .category-box {
   border: 0 !important;
   background: var(--mf-panel);
-  padding: 2px;
+  padding: 0;
   box-shadow: none !important;
 
   &:hover {
     background: var(--mf-panel-strong);
   }
 
-  .category-box-inner,
   .category-box-heading,
   .description,
   .category-description {

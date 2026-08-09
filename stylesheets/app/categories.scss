@@ -37,6 +37,7 @@
       text-align: left;
       display: flex;
       flex-direction: column;
+      gap: var(--mf-space-3);
     }
 
     .category-box-heading {
@@ -68,8 +69,7 @@
       }
     }
 
-    .category-box-heading .category-logo.aspect-image,
-    .category-logo {
+    .category-logo.aspect-image {
       border-radius: var(--mf-radius-sm);
     }
 
@@ -82,6 +82,7 @@
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      margin-bottom: 0;
     }
 
     .subcategories {
@@ -110,6 +111,96 @@
           color: var(--mf-ink);
         }
       }
+    }
+  }
+}
+
+// Categories page: logo left / text right, keep image aspect ratio
+.category-boxes .category-box {
+  .category-box-inner {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  // Discourse nests CategoryLogo as .category-logo > .category-logo.aspect-image > img
+  > .category-box-inner > .category-logo {
+    flex: 0 0 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: var(--mf-radius-sm);
+    background: transparent;
+
+    &:empty {
+      display: none;
+    }
+
+    .category-logo.aspect-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0;
+      border-radius: inherit;
+    }
+
+    img {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 !important;
+      object-fit: contain;
+      object-position: center;
+      border-radius: inherit;
+    }
+  }
+
+  .category-details {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .category-box-heading .category-logo.aspect-image,
+  .category-logo.aspect-image {
+    img {
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+}
+
+.category-boxes-with-topics .category-box {
+  .category-box-heading .category-logo.aspect-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    max-width: 56px;
+    max-height: 56px;
+    margin: 0 0 var(--mf-space-2);
+
+    img {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 !important;
+      object-fit: contain;
+      object-position: center;
     }
   }
 }
