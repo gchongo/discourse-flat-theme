@@ -24,15 +24,15 @@ export default apiInitializer((api) => {
       ],
       children: [
         { block: BlockRailEvents },
+        { block: BlockRailHotTopics },
         {
           block: BlockRailContributors,
           args: {
             leaderboardId: settings.rail_leaderboard_id ?? 1,
           },
         },
-        { block: BlockRailHotTopics },
-        { block: BlockRailOnline },
         { block: BlockRailTags },
+        { block: BlockRailOnline },
       ],
     },
   ]);

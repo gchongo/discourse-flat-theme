@@ -22,7 +22,7 @@ export default class BlockRailTags extends Component {
           : null;
       })
       .filter(Boolean)
-      .slice(0, 12);
+      .slice(0, 20);
   }
 
   <template>
