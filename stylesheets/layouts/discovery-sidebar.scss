@@ -11,6 +11,11 @@
   order: -1;
 }
 
+.discovery-layout__category-header:empty,
+.discovery-layout__above-navigation:empty {
+  display: none;
+}
+
 // With the hero visible, place discovery filters under the search card.
 #main-outlet:has(.block-hero) {
   .main-outlet-blocks {
@@ -19,10 +24,38 @@
 
   .discovery-layout__navigation {
     order: 1;
+  }
+
+  .discovery-layout__category-header,
+  .discovery-layout__above-navigation,
+  #main-container,
+  .discourse-banner-wrapper,
+  .discourse-banner {
+    order: 2;
+  }
+
+  .discovery-layout__content {
+    order: 3;
+  }
+
+  .main-outlet-blocks,
+  .main-outlet-blocks__block,
+  .main-outlet-blocks__block-container {
+    margin-bottom: 0;
+  }
+
+  .block-hero {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-bottom: 0;
+  }
+
+  .discovery-layout__navigation {
     margin: 0 0 var(--mf-space-5);
-    padding: var(--mf-space-3);
+    padding: var(--mf-space-3) var(--mf-space-6);
     background: var(--mf-surface);
-    border-radius: var(--mf-radius-xl);
+    border-radius: 0 0 var(--mf-radius-xl) var(--mf-radius-xl);
 
     .list-controls,
     .list-controls .container {
@@ -34,21 +67,13 @@
       margin: 0;
     }
   }
-
-  #main-container {
-    order: 2;
-  }
-
-  .discovery-layout__content {
-    order: 3;
-  }
 }
 
 @include viewport.until(md) {
   #main-outlet:has(.block-hero) {
     .discovery-layout__navigation {
-      padding: var(--mf-space-2);
-      border-radius: var(--mf-radius-lg);
+      padding: var(--mf-space-2) var(--mf-space-5);
+      border-radius: 0 0 var(--mf-radius-lg) var(--mf-radius-lg);
     }
   }
 }
@@ -57,8 +82,7 @@
   #main-outlet:has(.block-hero) {
     .discovery-layout__navigation {
       margin-bottom: var(--mf-space-3);
-      padding: var(--mf-space-2);
-      border-radius: var(--mf-radius-lg);
+      padding: var(--mf-space-2) var(--mf-space-3);
     }
   }
 }
