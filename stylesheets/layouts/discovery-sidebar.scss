@@ -11,6 +11,58 @@
   order: -1;
 }
 
+// With the hero visible, place discovery filters under the search card.
+#main-outlet:has(.block-hero) {
+  .main-outlet-blocks {
+    order: 0;
+  }
+
+  .block-hero {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-bottom: var(--mf-space-3);
+  }
+
+  .discovery-layout__navigation {
+    order: 1;
+    margin: 0 0 var(--mf-space-5);
+    padding: 0 var(--mf-space-6) var(--mf-space-6);
+    background: var(--mf-surface);
+    border-radius: 0 0 var(--mf-radius-xl) var(--mf-radius-xl);
+
+    .list-controls .navigation-container {
+      margin-bottom: 0;
+    }
+  }
+
+  #main-container {
+    order: 2;
+  }
+
+  .discovery-layout__content {
+    order: 3;
+  }
+}
+
+@include viewport.until(md) {
+  #main-outlet:has(.block-hero) {
+    .discovery-layout__navigation {
+      padding: 0 var(--mf-space-5) var(--mf-space-5);
+      border-radius: 0 0 var(--mf-radius-lg) var(--mf-radius-lg);
+    }
+  }
+}
+
+@include viewport.until(sm) {
+  #main-outlet:has(.block-hero) {
+    .discovery-layout__navigation {
+      margin-bottom: var(--mf-space-3);
+      padding: 0 var(--mf-space-3) var(--mf-space-3);
+    }
+  }
+}
+
 .discovery-layout__content:has(.sidebar-discovery) {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(220px, 276px);
