@@ -25,7 +25,7 @@ rail_links:
 
 hero_subtitle:
   type: string
-  default: ""
+  default: "CAXer can do everything"
 
 show_topic_excerpts:
   type: bool

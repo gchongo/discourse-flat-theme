@@ -1,7 +1,6 @@
 ru:
   hero:
-    eyebrow: "Сообщество"
-    default_subtitle: "Обсуждайте, делитесь и получайте помощь от сообщества"
+    default_subtitle: "CAXer can do everything"
     search_placeholder: "Поиск по форуму"
     search_label: "Поиск по форуму"
     search_action: "Найти"

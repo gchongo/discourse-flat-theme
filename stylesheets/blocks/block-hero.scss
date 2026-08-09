@@ -26,16 +26,6 @@ body.welcome-banner--visible .above-main-container-outlet {
     min-width: 0;
   }
 
-  &__eyebrow {
-    display: block;
-    margin-bottom: var(--mf-space-2);
-    color: var(--mf-accent);
-    font-size: var(--mf-text-xs);
-    font-weight: var(--mf-weight-semibold);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
   &__title {
     margin: 0;
     color: var(--mf-ink);
@@ -131,11 +121,6 @@ body.welcome-banner--visible .above-main-container-outlet {
     margin-bottom: var(--mf-space-2);
     padding: var(--mf-space-4) var(--mf-space-3);
     border-radius: var(--mf-radius-lg);
-
-    &__eyebrow {
-      margin-bottom: 6px;
-      font-size: var(--mf-text-2xs);
-    }
 
     &__title {
       font-size: 26px;

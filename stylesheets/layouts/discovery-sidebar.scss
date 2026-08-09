@@ -28,7 +28,7 @@
 
   .main-outlet-blocks {
     order: 0;
-    margin: 0 0 6px !important;
+    margin: 0 0 var(--mf-space-3) !important;
     padding: 0 !important;
   }
 
@@ -48,7 +48,7 @@
   .discovery-layout__navigation {
     order: 1;
     margin: 0 0 var(--mf-space-5) !important;
-    padding: var(--mf-space-3) !important;
+    padding: var(--mf-space-4) var(--mf-space-3) !important;
     background: var(--mf-surface);
     border-radius: var(--mf-radius-xl) !important;
 
@@ -95,7 +95,7 @@
     }
 
     .discovery-layout__navigation {
-      padding: var(--mf-space-2) !important;
+      padding: var(--mf-space-3) var(--mf-space-2) !important;
     }
   }
 }
@@ -103,11 +103,12 @@
 @include viewport.until(sm) {
   #main-outlet:has(.block-hero) {
     .main-outlet-blocks {
-      margin-bottom: 6px !important;
+      margin-bottom: var(--mf-space-3) !important;
     }
 
     .discovery-layout__navigation {
       margin-bottom: var(--mf-space-3) !important;
+      padding: var(--mf-space-3) var(--mf-space-2) !important;
     }
   }
 }

@@ -1,7 +1,6 @@
 en:
   hero:
-    eyebrow: "Community"
-    default_subtitle: "Discuss, share, and get help from the community"
+    default_subtitle: "CAXer can do everything"
     search_placeholder: "Search the forum"
     search_label: "Search the forum"
     search_action: "Search"

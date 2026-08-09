@@ -7,7 +7,7 @@ export default apiInitializer((api) => {
       block: BlockHero,
       id: "hero",
       args: {
-        subtitle: settings.hero_subtitle,
+        subtitle: settings.hero_subtitle || undefined,
       },
       conditions: [
         { type: "route", pages: ["HOMEPAGE", "TOP_MENU"] },

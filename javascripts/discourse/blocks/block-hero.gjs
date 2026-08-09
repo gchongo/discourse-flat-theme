@@ -27,9 +27,6 @@ export default class BlockHero extends Component {
     <section class="block-hero">
       <div class="block-hero__inner">
         <div class="block-hero__copy">
-          <span class="block-hero__eyebrow">{{i18n
-              (themePrefix "hero.eyebrow")
-            }}</span>
           <h1 class="block-hero__title">{{this.title}}</h1>
           <p class="block-hero__subtitle">{{this.description}}</p>
         </div>
