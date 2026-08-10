@@ -7,7 +7,8 @@ export default apiInitializer((api) => {
       value || (context.site.desktopView ? value : context.defaultKey)
   );
 
-  if (settings.show_topic_excerpts) {
-    api.registerValueTransformer("topic-list-item-expand-pinned", () => true);
-  }
+  api.registerValueTransformer(
+    "topic-list-item-expand-pinned",
+    () => settings.show_topic_excerpts
+  );
 });
