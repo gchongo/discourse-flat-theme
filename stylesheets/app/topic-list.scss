@@ -905,7 +905,10 @@ a.discourse-tag.box,
     grid-column: 1 / -1;
     grid-row: 2;
     display: block;
-    width: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     padding-right: 0 !important;
   }
 
@@ -921,8 +924,14 @@ a.discourse-tag.box,
 
   .topic-excerpt {
     display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     overflow: visible;
     font-size: var(--mf-text-sm);
+    overflow-wrap: anywhere;
+    word-break: break-word;
     -webkit-line-clamp: unset;
   }
 
