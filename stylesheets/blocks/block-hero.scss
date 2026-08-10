@@ -115,7 +115,10 @@ body.welcome-banner--visible .above-main-container-outlet {
     border-radius: var(--mf-radius-lg);
 
     &__title {
-      font-size: 28px;
+      max-width: 100%;
+      font-size: clamp(16px, 5.2vw, 22px);
+      letter-spacing: -0.035em;
+      white-space: nowrap;
     }
 
     &__subtitle {

@@ -1,17 +1,4 @@
 @include viewport.until(md) {
-  .list-controls .navigation-controls #create-topic.no-text {
-    justify-content: center;
-    gap: var(--mf-space-2);
-
-    &::after {
-      content: "Создать тему";
-      font-size: var(--mf-text-sm);
-      font-weight: var(--mf-weight-semibold);
-      line-height: 1;
-      white-space: nowrap;
-    }
-  }
-
   .topic-list .topic-item-stats > .num.activity.last > .age.activity::before {
     content: none !important;
     display: none !important;
