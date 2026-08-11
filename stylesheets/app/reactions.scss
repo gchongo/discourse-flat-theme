@@ -14,9 +14,9 @@
 
 .discourse-reactions-counter {
   box-sizing: border-box;
-  gap: 6px;
-  min-height: 32px;
-  padding: 5px 9px;
+  gap: 4px;
+  min-height: 24px;
+  padding: 2px 7px;
   color: var(--mf-ink-2);
   background: var(--mf-surface-2);
   border: 1px solid transparent;
@@ -43,14 +43,14 @@
   .emoji {
     display: block;
     flex: 0 0 auto;
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 
   .reactions-counter {
     min-width: 1ch;
     color: inherit;
-    font-size: var(--mf-text-sm);
+    font-size: var(--mf-text-xs);
     font-weight: var(--mf-weight-medium);
     line-height: 1;
     text-align: center;
@@ -242,8 +242,8 @@
   }
 
   .discourse-reactions-counter {
-    min-height: 34px;
-    padding-inline: 10px;
+    min-height: 24px;
+    padding-inline: 7px;
   }
 
   :is(.post-users-popup__item, .users-popup__item) {
