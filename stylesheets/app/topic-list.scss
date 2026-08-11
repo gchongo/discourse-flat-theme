@@ -231,10 +231,11 @@
   }
 }
 
-.more-topics__list .topic-excerpt,
-.more-topics__container .topic-excerpt,
-#suggested-topics .topic-excerpt,
-.suggested-topics .topic-excerpt {
+// Hide suggested excerpts by default on mobile; desktop hover rules re-enable.
+.mobile-view .more-topics__list .topic-excerpt,
+.mobile-view .more-topics__container .topic-excerpt,
+.mobile-view #suggested-topics .topic-excerpt,
+.mobile-view .suggested-topics .topic-excerpt {
   display: none;
 }
 
@@ -697,7 +698,8 @@ a.discourse-tag.box,
     }
   }
 
-  &:hover .main-link .topic-excerpt,
+  .main-link:has(.link-top-line:hover) .topic-excerpt,
+  .main-link:has(a.title:focus-visible) .topic-excerpt,
   &.unread .main-link .topic-excerpt,
   &.unread-posts .main-link .topic-excerpt,
   &.unseen-topic .main-link .topic-excerpt,
