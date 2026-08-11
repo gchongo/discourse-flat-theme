@@ -400,6 +400,56 @@ aside.onebox {
   }
 }
 
+// Mobile: tighter footer action icons.
+@include viewport.until(md) {
+  #topic-footer-buttons,
+  .topic-footer-buttons {
+    padding-top: var(--mf-space-3);
+
+    .topic-footer-main-buttons,
+    .topic-footer-main-buttons__actions {
+      gap: 2px;
+    }
+
+    .btn,
+    .topic-footer-button,
+    .fk-d-menu__trigger,
+    .select-kit > .select-kit-header,
+    .topic-notifications-button .select-kit-header,
+    .pinned-button .select-kit-header,
+    .notifications-button .select-kit-header {
+      min-width: 28px;
+      min-height: 28px;
+      height: 28px;
+      padding: 0 6px !important;
+      font-size: var(--mf-text-xs) !important;
+      border-radius: var(--mf-radius-sm) !important;
+
+      .d-button-label,
+      .selected-name,
+      .name,
+      .btn-text {
+        font-size: var(--mf-text-xs) !important;
+      }
+
+      .d-icon {
+        width: 12px !important;
+        height: 12px !important;
+        font-size: 12px !important;
+      }
+    }
+
+    .btn.no-text,
+    .btn.btn-icon:not(.btn-icon-text),
+    .fk-d-menu__trigger:not(.btn-icon-text),
+    .select-kit.btn-icon > .select-kit-header,
+    .select-kit:not(.btn-icon-text) > .select-kit-header.btn-icon {
+      width: 28px;
+      padding: 0 !important;
+    }
+  }
+}
+
 .topic-footer-buttons .btn.create {
   font-weight: var(--mf-weight-semibold);
 }

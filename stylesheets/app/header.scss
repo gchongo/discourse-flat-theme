@@ -52,6 +52,34 @@
   }
 }
 
+// Topic sticky header: keep logo snug against the scrolled title.
+.d-header:has(.extra-info-wrapper) {
+  .home-logo-wrapper-outlet {
+    flex: 0 0 auto;
+    min-width: 0;
+    max-width: max-content;
+    overflow: hidden;
+  }
+
+  .title,
+  .title--minimized {
+    padding-right: var(--mf-space-1) !important;
+  }
+
+  img.logo-small,
+  .logo-small {
+    width: 28px !important;
+    max-width: 28px;
+    height: auto;
+    max-height: 28px;
+  }
+
+  .extra-info-wrapper {
+    padding-left: var(--mf-space-1) !important;
+    padding-right: var(--mf-space-2) !important;
+  }
+}
+
 .header-sidebar-toggle .btn,
 .d-header-icons .icon,
 .header-dropdown-toggle .icon,
@@ -152,6 +180,31 @@
     .badge-category__wrapper {
       display: inline-flex;
       align-items: center;
+    }
+  }
+}
+
+@include viewport.until(md) {
+  .d-header:has(.extra-info-wrapper) {
+    .title,
+    .title--minimized {
+      padding-right: 2px !important;
+    }
+
+    img.logo-small,
+    .logo-small {
+      width: 24px !important;
+      max-width: 24px;
+      max-height: 24px;
+    }
+
+    .extra-info-wrapper {
+      padding-left: 2px !important;
+      padding-right: var(--mf-space-1) !important;
+    }
+
+    .extra-info-wrapper .topic-link {
+      font-size: var(--mf-text-sm);
     }
   }
 }
