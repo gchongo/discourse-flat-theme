@@ -479,30 +479,6 @@ img.avatar {
     display: none;
   }
 
-  .more-topics__list .topic-list-item,
-  #suggested-topics .topic-list-item,
-  .suggested-topics .topic-list-item {
-    grid-template-columns: minmax(0, 1fr);
-
-    > .topic-list-data:only-child {
-      grid-column: 1;
-      width: 100%;
-      min-width: 0;
-    }
-
-    .topic-item-metadata.right {
-      width: 100%;
-      max-width: 100%;
-      margin-left: 0;
-    }
-
-    .topic-item-stats {
-      width: 100%;
-      max-width: 100%;
-      flex-wrap: wrap;
-    }
-  }
-
   .user-main .details {
     padding: var(--mf-space-4);
   }

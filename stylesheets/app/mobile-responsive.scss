@@ -9,19 +9,14 @@
 
   .more-topics__list .topic-item-stats .activity::before,
   #suggested-topics .topic-item-stats .activity::before {
-    content: none;
+    content: none !important;
+    display: none !important;
   }
 
   .more-topics__list .topic-item-stats > .num.activity.last::before,
   #suggested-topics .topic-item-stats > .num.activity.last::before {
-    content: "";
-    display: block;
-    flex: 0 0 14px;
-    width: 14px;
-    height: 14px;
-    margin: 0;
-    background: currentcolor;
-    mask: var(--mf-ic) center / 14px 14px no-repeat;
+    content: none !important;
+    display: none !important;
   }
 
   .categories-list {
@@ -209,7 +204,7 @@
     .more-topics__list .topic-item-stats > .num.activity.last,
     #suggested-topics .topic-item-stats > .num.activity.last {
       min-width: 0;
-      margin-left: auto;
+      margin-left: 0;
     }
   }
 }

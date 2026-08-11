@@ -902,9 +902,8 @@ tr.topic-list-item-separator,
 #suggested-topics .topic-list-item,
 .more-topics__list .topic-list-item,
 .suggested-topics .topic-list-item {
-  margin-bottom: 2px;
+  margin-bottom: 0;
   background: transparent !important;
-  border-radius: var(--mf-radius-lg);
 }
 
 #suggested-topics .topic-list-item:hover,
