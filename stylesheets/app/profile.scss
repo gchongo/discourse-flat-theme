@@ -519,10 +519,23 @@
 
 .user-main > .about .user-profile-image {
   position: relative;
-  height: clamp(180px, 22vw, 240px) !important;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   border-radius: 0 !important;
+}
+
+.user-main > .about.no-background .user-profile-image {
+  display: none;
+}
+
+.user-main > .about.has-background .user-profile-image {
+  display: block;
+  height: clamp(160px, 22vw, 240px) !important;
 }
 
 .user-main > .about .details,
@@ -660,8 +673,8 @@
     border-radius: var(--mf-radius-lg);
   }
 
-  .user-main > .about .user-profile-image {
-    height: 144px !important;
+  .user-main > .about.has-background .user-profile-image {
+    height: 120px !important;
   }
 
   .user-main > .about .details,
@@ -670,7 +683,9 @@
   }
 
   .user-main > .about:not(.has-background) .details,
-  .user-main > .about:not(.has-background) .details:has(.primary) {
+  .user-main > .about:not(.has-background) .details:has(.primary),
+  .user-main > .about.no-background .details,
+  .user-main > .about.no-background .details:has(.primary) {
     padding-top: var(--mf-space-4);
   }
 
@@ -736,17 +751,15 @@
 
   .user-main > .about .details .controls ul {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: stretch;
-    justify-content: stretch;
     gap: var(--mf-space-2);
     width: 100%;
     margin: 0;
 
-    > li,
-    > span {
+    > * {
       display: flex;
-      flex: 1 1 calc(50% - var(--mf-space-2) / 2);
+      flex: 1 1 0;
       min-width: 0;
       margin: 0;
 
@@ -757,23 +770,44 @@
         width: 100%;
         min-width: 0;
         justify-content: center;
+        padding-inline: 8px;
+      }
+
+      .btn .d-button-label,
+      a.btn .d-button-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
 
   .user-main > .about .secondary dl {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--mf-space-3) var(--mf-space-4);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
   }
 
   .user-main > .about .secondary dl > div {
-    display: grid;
-    grid-template-rows: auto auto;
-    align-content: start;
-    gap: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--mf-space-3);
     min-width: 0;
     max-width: 100%;
+    padding: 8px 0;
+    border-top: 1px solid var(--mf-hairline);
+  }
+
+  .user-main > .about .secondary dl > div:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .user-main > .about .secondary dl > div:last-child {
+    padding-bottom: 0;
   }
 
   .user-main > .about .secondary dt,
@@ -782,26 +816,36 @@
     margin: 0;
     padding: 0;
     min-width: 0;
-    max-width: 100%;
+  }
+
+  .user-main > .about .secondary dt {
+    flex: 0 1 auto;
+    max-width: 42%;
+    text-transform: none;
+    letter-spacing: 0;
   }
 
   .user-main > .about .secondary dd {
+    flex: 1 1 auto;
+    max-width: 58%;
     overflow: hidden;
+    color: var(--mf-ink);
+    font-weight: var(--mf-weight-semibold);
+    text-align: right;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .user-main > .about .secondary dd.groups {
-    display: flex;
-    flex-wrap: wrap;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: unset;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .user-main > .about .secondary dl > div:has(> dt.groups),
   .user-main > .about .secondary dl > div:has(> dt.trust-level),
   .user-main > .about .secondary dl > div:nth-child(odd):last-child {
-    grid-column: 1 / -1;
+    grid-column: auto;
   }
 }
