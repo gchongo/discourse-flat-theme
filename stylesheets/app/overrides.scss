@@ -881,9 +881,9 @@ tr.topic-list-item-separator,
 .embedded-posts,
 .embedded-posts.top,
 .embedded-posts.bottom {
-  background: var(--mf-panel) !important;
+  background: transparent !important;
   border: 0 !important;
-  border-radius: var(--mf-radius-xl);
+  border-radius: 0;
   box-shadow: none !important;
 }
 
@@ -954,7 +954,7 @@ tr.topic-list-item-separator,
   .embedded-posts,
   .embedded-posts.top,
   .embedded-posts.bottom {
-    border-radius: var(--mf-radius-lg);
+    border-radius: 0;
   }
 }
 

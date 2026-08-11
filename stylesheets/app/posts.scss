@@ -3,7 +3,13 @@ body.archetype-regular {
   --mf-post-column-gap: 10px;
 
   .post-stream > .topic-post {
-    margin: 0 0 10px;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--mf-hairline);
+  }
+
+  .post-stream > .topic-post:last-child {
+    border-bottom: 0;
   }
 
   .post-stream > .topic-post > article.boxed,
@@ -267,6 +273,45 @@ body.archetype-regular {
     }
   }
 
+  .post-stream > .topic-post .show-replies,
+  .post-stream > .topic-post .post-action-menu__show-replies {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 3px;
+    min-width: 0;
+    min-height: 24px !important;
+    margin: 0 !important;
+    padding: 2px 7px !important;
+    color: var(--mf-ink-3) !important;
+    font-size: var(--mf-text-xs) !important;
+    font-weight: var(--mf-weight-medium);
+    line-height: 1 !important;
+    background: var(--mf-surface-2) !important;
+    border: 0 !important;
+    border-radius: var(--mf-radius-pill) !important;
+    box-shadow: none !important;
+
+    .d-button-label {
+      font-size: var(--mf-text-xs) !important;
+      font-weight: var(--mf-weight-medium);
+      line-height: 1;
+    }
+
+    .d-icon {
+      width: 10px !important;
+      height: 10px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-size: 10px !important;
+      color: inherit !important;
+    }
+
+    &[aria-expanded="true"] {
+      color: var(--mf-ink) !important;
+      background: var(--mf-fill-hover) !important;
+    }
+  }
+
   .post-stream > .topic-post .discourse-reactions-actions,
   .post-stream > .topic-post .discourse-reactions-counter {
     border: 0;
@@ -393,7 +438,8 @@ body.archetype-regular {
     --mf-post-avatar-size: 28px;
 
     .post-stream > .topic-post {
-      margin-bottom: 8px;
+      margin-bottom: 0;
+      padding: 8px 0;
     }
 
     .post-stream > .topic-post > article.boxed > .post__row {
@@ -408,7 +454,7 @@ body.archetype-regular {
       padding: 0;
     }
 
-    .post-stream > .topic-post .topic-meta-data {
+    .post-stream > .topic-post .topic-meta-data:not(.embedded-reply) {
       min-height: var(--mf-post-avatar-size);
       margin-left: calc(var(--mf-post-avatar-size) + 8px);
     }
@@ -423,7 +469,19 @@ body.archetype-regular {
       padding-left: 6px;
     }
 
-    .post-stream > .topic-post .cooked {
+    .post-stream
+      > .topic-post
+      > article
+      > .post__row
+      .topic-body
+      > .cooked,
+    .post-stream
+      > .topic-post
+      > article
+      > .row
+      .topic-body
+      > .regular
+      > .cooked {
       max-width: 100%;
       padding-top: 4px !important;
       line-height: 1.5;

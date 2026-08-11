@@ -1,13 +1,17 @@
-body.archetype-regular .post-stream .post__embedded-posts.embedded-posts {
+body.archetype-regular .post-stream .post__embedded-posts.embedded-posts,
+body.archetype-regular .post-stream .embedded-posts {
   width: 100%;
-  margin: 4px 0 var(--mf-space-2);
-  padding: 0;
+  max-width: 100% !important;
+  margin: 6px 0 4px !important;
+  padding: 0 !important;
   background: transparent !important;
   border: 0 !important;
   border-radius: 0;
   box-shadow: none !important;
 
-  .post__collapse-button.collapse-up {
+  .post__collapse-button.collapse-up,
+  .collapse-up,
+  .collapse-down {
     display: none !important;
   }
 
@@ -18,38 +22,44 @@ body.archetype-regular .post-stream .post__embedded-posts.embedded-posts {
     align-items: center;
     justify-content: center;
     width: max-content;
-    min-height: 30px;
-    margin: 6px 0 2px 52px;
-    padding: 5px 10px;
-    color: var(--mf-ink-muted, var(--mf-ink-faint));
+    min-height: 26px;
+    margin: 4px 0 2px 36px !important;
+    padding: 3px 8px;
+    color: var(--mf-ink-faint);
     font-size: var(--mf-text-xs);
     font-weight: var(--mf-weight-semibold);
-    line-height: 18px;
+    line-height: 16px;
     background: var(--mf-surface-2);
     border: 0;
     border-radius: var(--mf-radius-pill);
     transform: none !important;
   }
 
-  > .reply {
+  > .reply,
+  > .topic-post.reply,
+  > div.reply {
     width: 100%;
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     background: transparent !important;
     border: 0 !important;
+    border-top: 1px solid var(--mf-hairline) !important;
 
-    + .reply {
-      margin-top: 8px;
+    + .reply,
+    + .topic-post.reply,
+    + div.reply {
+      margin-top: 0 !important;
     }
 
     > .row {
       position: relative;
-      display: grid;
-      grid-template-columns: 40px minmax(0, 1fr);
-      column-gap: 12px;
+      display: grid !important;
+      grid-template-columns: 24px minmax(0, 1fr) !important;
+      column-gap: 8px !important;
       align-items: start;
       width: 100%;
-      padding: 8px 0 10px;
+      margin: 0 !important;
+      padding: 8px 0 !important;
       background: transparent !important;
       border: 0 !important;
 
@@ -62,50 +72,75 @@ body.archetype-regular .post-stream .post__embedded-posts.embedded-posts {
 
     .topic-avatar {
       grid-column: 1;
-      width: 40px;
-      height: 40px;
-      min-height: 40px;
-      padding: 0;
+      position: static !important;
+      width: 24px !important;
+      height: 24px !important;
+      min-width: 24px !important;
+      min-height: 24px !important;
+      margin: 0 !important;
+      padding: 0 !important;
       background: transparent !important;
       border: 0 !important;
 
       .post-avatar,
       .main-avatar {
         display: block;
-        width: 40px;
-        height: 40px;
+        width: 24px !important;
+        height: 24px !important;
+        margin: 0 !important;
       }
 
       .avatar {
-        width: 40px;
-        height: 40px;
+        width: 24px !important;
+        height: 24px !important;
       }
     }
 
     .topic-body {
       grid-column: 2;
-      width: auto;
-      min-width: 0;
-      padding: 0 0 2px;
+      display: block !important;
+      width: auto !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden;
       background: transparent !important;
       border: 0 !important;
     }
 
+    .topic-meta-data,
     .topic-meta-data.embedded-reply {
-      display: flex;
+      display: flex !important;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       width: 100%;
-      min-height: 28px;
-      margin: 0;
-      padding: 0;
+      min-height: 24px !important;
+      margin: 0 !important;
+      padding: 0 !important;
       box-sizing: border-box;
 
       .names {
         display: flex;
+        flex: 1 1 auto;
         align-items: baseline;
-        gap: 6px;
+        flex-wrap: wrap;
+        gap: 2px 6px;
         min-width: 0;
+        margin: 0 !important;
+
+        .user-title,
+        .second {
+          display: none;
+        }
+
+        .first a,
+        .username a {
+          color: var(--mf-ink);
+          font-size: var(--mf-text-sm);
+          font-weight: var(--mf-weight-semibold);
+          line-height: 1.25;
+        }
       }
 
       .post-link-arrow {
@@ -114,20 +149,26 @@ body.archetype-regular .post-stream .post__embedded-posts.embedded-posts {
         flex: 0 0 auto;
         width: auto;
         height: auto;
-        margin: 0 0 0 auto;
+        margin: 0 0 0 auto !important;
 
         .post-info.arrow {
           display: inline-flex;
           align-items: center;
-          gap: 5px;
-          min-height: 28px;
-          padding: 4px 8px;
+          justify-content: center;
+          width: 24px;
+          min-height: 24px;
+          padding: 2px;
           color: var(--mf-ink-faint);
-          font-size: var(--mf-text-xs);
-          font-weight: var(--mf-weight-medium);
-          line-height: 18px;
+          font-size: 0;
+          line-height: 1;
           background: transparent;
-          border-radius: var(--mf-radius-pill);
+          border-radius: var(--mf-radius-md);
+
+          .d-icon {
+            width: 12px;
+            height: 12px;
+            font-size: 12px;
+          }
 
           &:hover {
             color: var(--mf-ink);
@@ -138,14 +179,20 @@ body.archetype-regular .post-stream .post__embedded-posts.embedded-posts {
     }
 
     .cooked {
-      width: auto;
-      margin: 2px 0 0;
-      padding: 4px 0 0;
+      width: auto !important;
+      max-width: 100% !important;
+      margin: 2px 0 0 !important;
+      padding: 0 !important;
       color: var(--mf-ink-2);
-      line-height: 1.5;
+      font-size: var(--mf-text-sm);
+      line-height: 1.45;
 
       p {
-        margin-bottom: 7px;
+        margin: 0 0 6px;
+      }
+
+      > :first-child {
+        margin-top: 0;
       }
 
       > :last-child {
@@ -156,61 +203,20 @@ body.archetype-regular .post-stream .post__embedded-posts.embedded-posts {
 }
 
 @include viewport.until(md) {
-  body.archetype-regular .post-stream .post__embedded-posts.embedded-posts {
-    margin-block: 2px var(--mf-space-2);
+  body.archetype-regular .post-stream .post__embedded-posts.embedded-posts,
+  body.archetype-regular .post-stream .embedded-posts {
+    margin-block: 4px 2px !important;
 
     .load-more-replies {
-      margin-left: 43px;
+      margin-left: 32px !important;
     }
 
-    > .reply {
-      + .reply {
-        margin-top: 6px;
-      }
-
-      > .row {
-        grid-template-columns: 34px minmax(0, 1fr);
-        column-gap: 9px;
-        padding-block: 7px 9px;
-      }
-
-      .topic-avatar,
-      .topic-avatar .post-avatar,
-      .topic-avatar .main-avatar,
-      .topic-avatar .avatar {
-        width: 34px;
-        height: 34px;
-        min-height: 34px;
-      }
-
-      .topic-meta-data.embedded-reply {
-        flex-wrap: wrap;
-        gap: 3px 6px;
-
-        .names {
-          flex: 1 1 auto;
-        }
-
-        .post-link-arrow .post-info.arrow {
-          width: 28px;
-          min-height: 28px;
-          padding: 5px;
-          justify-content: center;
-          overflow: hidden;
-          color: var(--mf-ink-faint);
-          font-size: 0;
-
-          .d-icon {
-            width: 14px;
-            height: 14px;
-          }
-        }
-      }
-
-      .cooked {
-        padding-top: 3px;
-        font-size: var(--mf-text-sm);
-      }
+    > .reply > .row,
+    > .topic-post.reply > .row,
+    > div.reply > .row {
+      grid-template-columns: 24px minmax(0, 1fr) !important;
+      column-gap: 8px !important;
+      padding-block: 8px !important;
     }
   }
 }

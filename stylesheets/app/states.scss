@@ -124,20 +124,16 @@ aside.quote {
 
 .embedded-posts {
   border: 0;
-  border-radius: var(--mf-radius-md);
-  background: var(--mf-surface-2);
+  border-radius: 0;
+  background: transparent;
   box-shadow: none;
 
   &.top {
     border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
   &.bottom {
     border-top: none;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
   }
 
   .reply,

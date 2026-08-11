@@ -208,8 +208,10 @@ aside.onebox {
     color: var(--mf-ink-3);
   }
 
-  .show-replies {
-    color: var(--mf-accent);
+  .show-replies,
+  .post-action-menu__show-replies {
+    color: var(--mf-ink-3);
+    font-size: var(--mf-text-xs);
   }
 }
 
@@ -385,7 +387,13 @@ aside.onebox {
 
 body.archetype-regular {
   .post-stream > .topic-post {
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--mf-hairline);
+  }
+
+  .post-stream > .topic-post:last-child {
+    border-bottom: 0;
   }
 
   .post-stream > .topic-post > article.boxed > .post__row {
@@ -426,18 +434,19 @@ body.archetype-regular {
   }
 
   .post-stream .embedded-posts {
-    margin-bottom: 8px;
+    margin-bottom: 0;
 
     .reply .topic-body {
-      padding-bottom: 6px;
+      padding-bottom: 0;
     }
 
     .reply .topic-meta-data {
-      padding: 6px 8px 2px;
+      padding: 0;
     }
 
     .reply .cooked {
-      padding: 4px 8px 2px;
+      padding: 0;
+      margin-top: 2px;
     }
   }
 
@@ -899,7 +908,8 @@ body.archetype-regular {
 @include viewport.until(md) {
   body.archetype-regular {
     .post-stream > .topic-post {
-      margin-bottom: 8px;
+      margin-bottom: 0;
+      padding: 8px 0;
     }
 
     .post-stream > .topic-post > article.boxed > .post__row {
