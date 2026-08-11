@@ -1032,36 +1032,31 @@ body.archetype-regular .post-stream > .topic-post:last-child {
   display: none !important;
 }
 
-// Custom Header Links sets: .home-logo-wrapper-outlet { display:flex; gap:1rem }
-// When topic title docks, the links nav is hidden but its ember-view sibling remains
-// a flex item — flex gap still reserves 16px between logo and title. Kill that gap.
+// Custom Header Links: .home-logo-wrapper-outlet { display:flex; gap:1rem }
+// Hidden nav sibling still consumes flex gap while topic title is docked.
 .home-logo-wrapper-outlet {
   gap: 0 !important;
+  column-gap: 0 !important;
 }
 
-.d-header .contents:has(.extra-info-wrapper) {
+.d-header .contents:has(.extra-info-wrapper),
+.d-header:has(.extra-info-wrapper) {
   gap: 0 !important;
   column-gap: 0 !important;
-  row-gap: 0 !important;
-  align-items: center !important;
 
   .home-logo-wrapper-outlet {
     display: flex !important;
     flex: 0 0 auto !important;
     align-items: center !important;
-    width: auto !important;
-    min-width: 0 !important;
+    width: max-content !important;
     max-width: max-content !important;
+    min-width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: visible !important;
     gap: 0 !important;
     column-gap: 0 !important;
-    row-gap: 0 !important;
   }
 
-  // Remove custom-header-links (and any other plugin siblings) from layout
-  // while the topic title is docked — leftover flex items still eat gap.
   .home-logo-wrapper-outlet > :not(.title):not(.title--minimized) {
     display: none !important;
     width: 0 !important;
@@ -1077,6 +1072,7 @@ body.archetype-regular .post-stream > .topic-post:last-child {
     align-items: center !important;
     width: auto !important;
     min-width: 0 !important;
+    max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1104,37 +1100,44 @@ body.archetype-regular .post-stream > .topic-post:last-child {
     object-fit: contain !important;
   }
 
-  .home-logo-wrapper-outlet + .extra-info-wrapper,
   .extra-info-wrapper {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
     margin: 0 !important;
-    padding: 0 12px 0 6px !important;
+    padding-left: 6px !important;
   }
 }
 
-// Mobile: title must sit flush against logo (PC already tight enough).
-@include viewport.until(md) {
-  .d-header .contents:has(.extra-info-wrapper),
-  .mobile-view .d-header .contents:has(.extra-info-wrapper) {
+// Mobile (<48rem): Custom Header Links rebuilds header as CSS grid.
+// Measured gap ≈ flex gap 16px + extra-info padding-left 8px.
+// Match their breakpoint exactly and override logo track + padding.
+@media (width < 48rem) {
+  .d-header:has(.extra-info-wrapper) {
+    grid-template-columns: max-content max-content repeat(5, 0px) minmax(0, 1fr) repeat(5, max-content) !important;
+    column-gap: 0 !important;
     gap: 0 !important;
 
     .home-logo-wrapper-outlet {
+      grid-area: logo !important;
+      justify-self: start !important;
+      width: max-content !important;
+      max-width: max-content !important;
       margin: 0 !important;
       padding: 0 !important;
       gap: 0 !important;
       column-gap: 0 !important;
     }
 
-    .home-logo-wrapper-outlet > :not(.title):not(.title--minimized) {
+    .home-logo-wrapper-outlet > :not(.title):not(.title--minimized),
+    .home-logo-wrapper-outlet .custom-header-links {
       display: none !important;
     }
 
     .title,
     .title--minimized {
+      grid-area: unset !important;
+      min-width: 0 !important;
+      max-width: none !important;
       margin: 0 !important;
       padding: 0 !important;
-      min-width: 0 !important;
     }
 
     #site-logo,
@@ -1145,18 +1148,20 @@ body.archetype-regular .post-stream > .topic-post:last-child {
       max-height: 32px !important;
     }
 
-    .home-logo-wrapper-outlet + .extra-info-wrapper,
     .extra-info-wrapper {
+      grid-area: extra-info !important;
+      width: auto !important;
+      min-width: 0 !important;
       margin: 0 !important;
-      // Core mobile still injects padding-left: 0.5em — force flush.
       padding: 0 8px 0 0 !important;
     }
 
     .extra-info,
     .title-wrapper,
     .header-title,
-    .topic-link {
-      margin-left: 0 !important;
+    .header-title .topic-link,
+    .topic-statuses:empty {
+      margin: 0 !important;
       padding-left: 0 !important;
     }
   }
