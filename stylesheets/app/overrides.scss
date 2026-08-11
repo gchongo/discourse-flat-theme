@@ -1032,13 +1032,15 @@ body.archetype-regular .post-stream > .topic-post:last-child {
   display: none !important;
 }
 
-// Docked topic header: keep logo intact, put title flush beside it.
-// Logo asset is square (780x780); previous clip/overflow hacks caused cropping.
-// Spacing came from .title padding-right + core .extra-info-wrapper padding-left.
+// Custom Header Links sets: .home-logo-wrapper-outlet { display:flex; gap:1rem }
+// When topic title docks, the links nav is hidden but its ember-view sibling remains
+// a flex item — flex gap still reserves 16px between logo and title. Kill that gap.
+.home-logo-wrapper-outlet {
+  gap: 0 !important;
+}
+
 .d-header .contents:has(.extra-info-wrapper) {
   gap: 0 !important;
-  column-gap: 0 !important;
-  row-gap: 0 !important;
   align-items: center !important;
 
   .home-logo-wrapper-outlet {
@@ -1047,19 +1049,18 @@ body.archetype-regular .post-stream > .topic-post:last-child {
     align-items: center !important;
     width: auto !important;
     min-width: 0 !important;
-    max-width: none !important;
-    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: visible !important;
+    gap: 0 !important;
   }
 
-  // Empty plugin outlet wrappers must not reserve space.
-  .home-logo-wrapper-outlet > .ember-view:empty,
-  .home-logo-wrapper-outlet > .ember-view:not(:has(*)) {
+  // Remove the custom-header-links wrapper from layout while title is docked.
+  .home-logo-wrapper-outlet > .ember-view:has(.custom-header-links),
+  .home-logo-wrapper-outlet .custom-header-links {
     display: none !important;
     width: 0 !important;
-    height: 0 !important;
+    min-width: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1071,11 +1072,8 @@ body.archetype-regular .post-stream > .topic-post:last-child {
     align-items: center !important;
     width: auto !important;
     min-width: 0 !important;
-    max-width: none !important;
-    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: visible !important;
   }
 
   .title a,
@@ -1084,33 +1082,30 @@ body.archetype-regular .post-stream > .topic-post:last-child {
   .title--minimized picture {
     display: flex !important;
     align-items: center !important;
-    width: auto !important;
-    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
     line-height: 0 !important;
   }
 
   #site-logo,
-  #site-logo.logo-small,
-  #site-logo.logo-big,
-  #site-logo.logo-mobile {
+  #site-logo.logo-small {
     display: block !important;
-    width: 32px !important;
-    height: 32px !important;
-    max-width: 32px !important;
-    max-height: 32px !important;
+    width: 36px !important;
+    height: 36px !important;
+    max-width: 36px !important;
+    max-height: 36px !important;
     margin: 0 !important;
     padding: 0 !important;
     object-fit: contain !important;
-    object-position: center !important;
   }
 
+  // Core uses padding-left: 0.5em on .extra-info-wrapper — keep a tight 6px.
+  .home-logo-wrapper-outlet + .extra-info-wrapper,
   .extra-info-wrapper {
     flex: 1 1 auto !important;
     min-width: 0 !important;
-    margin: 0 0 0 8px !important;
-    padding: 0 12px 0 0 !important;
+    margin: 0 !important;
+    padding: 0 12px 0 6px !important;
   }
 }
 
