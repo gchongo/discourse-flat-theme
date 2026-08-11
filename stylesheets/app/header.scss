@@ -52,6 +52,36 @@
   }
 }
 
+// Topic title docked in header: put extra-info flush against the logo outlet.
+// Do not resize/crop the logo — only remove spacing between the two siblings.
+.d-header .contents:has(> .extra-info-wrapper),
+.d-header .contents:has(.extra-info-wrapper) {
+  gap: 0 !important;
+
+  .home-logo-wrapper-outlet {
+    flex: 0 0 auto;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .title,
+  .title--minimized {
+    // Core/theme normally keep padding-right for nav breathing room;
+    // that becomes a fake gap once the topic title sits beside the logo.
+    padding-right: 0 !important;
+    margin: 0 !important;
+  }
+
+  > .extra-info-wrapper,
+  .extra-info-wrapper {
+    flex: 1 1 auto;
+    min-width: 0;
+    // Core default is padding-left: 0.5em — zero it so title hugs the logo.
+    margin: 0 !important;
+    padding: 0 12px 0 8px !important;
+  }
+}
+
 .header-sidebar-toggle .btn,
 .d-header-icons .icon,
 .header-dropdown-toggle .icon,
