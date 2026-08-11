@@ -52,77 +52,6 @@
   }
 }
 
-// Topic sticky header: keep logo snug against the scrolled title.
-// Core sizes #site-logo by height with width:auto, so a wide logo_small/logo
-// image creates a large empty gap before the topic title.
-.d-header:has(.extra-info-wrapper) {
-  --d-logo-height: 28px;
-
-  .home-logo-wrapper-outlet,
-  .title,
-  .title--minimized {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: max-content !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible;
-  }
-
-  .title a,
-  .title--minimized a {
-    display: flex;
-    align-items: center;
-    width: auto !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    line-height: 0;
-  }
-
-  .title picture,
-  .title--minimized picture {
-    display: block;
-    width: 28px;
-    height: 28px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  #site-logo,
-  #site-logo.logo-small,
-  #site-logo.logo-big,
-  #site-logo.logo-mobile,
-  img.logo-small,
-  img.logo-big,
-  img.logo-mobile {
-    display: block !important;
-    width: 28px !important;
-    max-width: 28px !important;
-    height: 28px !important;
-    max-height: 28px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    object-fit: contain !important;
-    object-position: left center !important;
-  }
-
-  .d-icon-house {
-    width: 22px !important;
-    height: 22px !important;
-    font-size: 22px !important;
-    margin: 0 !important;
-  }
-
-  .extra-info-wrapper {
-    margin-left: 0 !important;
-    padding-left: 8px !important;
-    padding-right: var(--mf-space-2) !important;
-  }
-}
-
 .header-sidebar-toggle .btn,
 .d-header-icons .icon,
 .header-dropdown-toggle .icon,
@@ -228,41 +157,7 @@
 }
 
 @include viewport.until(md) {
-  .d-header:has(.extra-info-wrapper) {
-    --d-logo-height: 24px;
-
-    .title picture,
-    .title--minimized picture {
-      width: 24px;
-      height: 24px;
-    }
-
-    #site-logo,
-    #site-logo.logo-small,
-    #site-logo.logo-big,
-    #site-logo.logo-mobile,
-    img.logo-small,
-    img.logo-big,
-    img.logo-mobile {
-      width: 24px !important;
-      max-width: 24px !important;
-      height: 24px !important;
-      max-height: 24px !important;
-    }
-
-    .d-icon-house {
-      width: 20px !important;
-      height: 20px !important;
-      font-size: 20px !important;
-    }
-
-    .extra-info-wrapper {
-      padding-left: 6px !important;
-      padding-right: var(--mf-space-1) !important;
-    }
-
-    .extra-info-wrapper .topic-link {
-      font-size: var(--mf-text-sm);
-    }
+  .d-header .extra-info-wrapper .topic-link {
+    font-size: var(--mf-text-sm);
   }
 }

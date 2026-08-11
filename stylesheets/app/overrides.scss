@@ -1031,3 +1031,83 @@ body.archetype-regular .post-stream > .topic-post:last-child {
 .whos-online-container {
   display: none !important;
 }
+
+// Docked topic header: hard-clip logo so wide logo PNGs cannot create a gap.
+.d-header .contents:has(.extra-info-wrapper),
+.d-header:has(.extra-info-wrapper) .contents {
+  --d-logo-height: 24px;
+  gap: 0 !important;
+
+  .home-logo-wrapper-outlet {
+    flex: 0 0 24px !important;
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+    flex-basis: 24px !important;
+    box-sizing: border-box !important;
+    width: 24px !important;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    margin: 0 6px 0 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .title,
+  .title--minimized,
+  .title a,
+  .title--minimized a,
+  .title picture,
+  .title--minimized picture {
+    display: block !important;
+    box-sizing: border-box !important;
+    width: 24px !important;
+    min-width: 0 !important;
+    max-width: 24px !important;
+    height: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    line-height: 0 !important;
+  }
+
+  .title,
+  .title--minimized {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  #site-logo,
+  #site-logo.logo-small,
+  #site-logo.logo-big,
+  #site-logo.logo-mobile,
+  img.logo-small,
+  img.logo-big,
+  img.logo-mobile {
+    display: block !important;
+    width: 24px !important;
+    min-width: 24px !important;
+    max-width: 24px !important;
+    height: 24px !important;
+    min-height: 24px !important;
+    max-height: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    object-fit: cover !important;
+    object-position: left center !important;
+  }
+
+  .d-icon-house {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+    margin: 0 !important;
+  }
+
+  .extra-info-wrapper {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 8px 0 0 !important;
+  }
+}
+
