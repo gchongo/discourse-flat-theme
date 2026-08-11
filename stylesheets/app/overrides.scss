@@ -615,108 +615,121 @@ table.category-list th,
     justify-content: flex-start !important;
   }
 
-  .user-main > .about.no-background .user-profile-image {
+  .user-main > .about.no-background .user-profile-image,
+  .user-main > .about:not(.has-background) .user-profile-image {
     display: none !important;
     height: 0 !important;
+    min-height: 0 !important;
   }
 
   .user-main > .about.has-background .user-profile-image {
-    display: block;
+    display: block !important;
     height: 120px !important;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
   }
 
-  .user-main > .about .details .controls ul {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: stretch;
-    gap: var(--mf-space-2);
-    width: 100%;
+  // Beat chat plugin's flex-direction: column
+  .user-main .details .controls ul,
+  .user-summary-page .details .controls ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: var(--mf-space-2) !important;
+    width: 100% !important;
+  }
 
-    > * {
-      display: flex;
-      flex: 1 1 0;
-      min-width: 0;
+  .user-main .details .controls ul > li,
+  .user-main .details .controls ul > span,
+  .user-summary-page .details .controls ul > li,
+  .user-summary-page .details .controls ul > span {
+    display: flex !important;
+    flex: 1 1 0 !important;
+    order: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
 
-      .btn,
-      a.btn,
-      .select-kit,
-      .select-kit .select-kit-header {
-        width: 100%;
-        min-width: 0;
-        justify-content: center;
-        padding-inline: 8px;
-      }
+  .user-main .details .controls ul .btn,
+  .user-main .details .controls ul a.btn,
+  .user-main .details .controls ul .select-kit,
+  .user-main .details .controls ul .select-kit .select-kit-header,
+  .user-summary-page .details .controls ul .btn,
+  .user-summary-page .details .controls ul a.btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    justify-content: center !important;
+    padding-inline: 8px !important;
+  }
 
-      .btn .d-button-label,
-      a.btn .d-button-label {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-    }
+  .user-main .details .controls ul .btn .d-button-label,
+  .user-main .details .controls ul a.btn .d-button-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .user-main > .about .secondary dl {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 6px !important;
+    border: 0 !important;
+    border-radius: var(--mf-radius-xl);
+    background: var(--mf-surface-2);
   }
 
-  .user-main > .about .secondary dl > div {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--mf-space-3);
-    min-width: 0;
-    max-width: 100%;
-    margin: 0;
-    padding: 8px 0;
-    border-top: 1px solid var(--mf-hairline);
-  }
-
-  .user-main > .about .secondary dl > div:first-child {
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  .user-main > .about .secondary dl > div:last-child {
-    padding-bottom: 0;
+  .user-main > .about .secondary dl > div,
+  .user-main > .about .secondary .follow-statistic {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 7px !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 12px 10px !important;
+    border: 0 !important;
   }
 
   .user-main > .about .secondary dt,
-  .user-main > .about .secondary dd {
-    display: block;
-    margin: 0;
-    padding: 0;
-    min-width: 0;
+  .user-main > .about .secondary .follow-statistic > span:first-child {
+    display: block !important;
+    margin: 0 !important;
+    color: var(--mf-ink-3) !important;
+    font-size: var(--mf-text-xs) !important;
+    font-weight: var(--mf-weight-medium) !important;
+    line-height: 1.35 !important;
+    letter-spacing: normal !important;
+    text-align: left !important;
+    text-transform: none !important;
   }
 
-  .user-main > .about .secondary dt {
-    flex: 0 1 auto;
-    max-width: 42%;
-    text-transform: none;
-    letter-spacing: 0;
-  }
-
-  .user-main > .about .secondary dd {
-    flex: 1 1 auto;
-    max-width: 58%;
+  .user-main > .about .secondary dd,
+  .user-main > .about .secondary .follow-statistic > span:last-child {
+    display: block !important;
+    margin: 0 !important;
     overflow: hidden;
-    font-weight: var(--mf-weight-semibold);
-    text-align: right;
+    color: var(--mf-ink) !important;
+    font-size: var(--mf-text-xl) !important;
+    font-weight: var(--mf-weight-bold) !important;
+    line-height: 1.1 !important;
+    text-align: left !important;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .user-main > .about .secondary dd.groups {
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    display: block !important;
+  }
+
+  .user-main > .about .secondary dl > div:has(> dt.groups) {
+    grid-column: 1 / -1;
   }
 }
 

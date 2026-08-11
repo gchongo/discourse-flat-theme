@@ -24,4 +24,109 @@ html.mobile-view {
       border-radius: var(--mf-radius-pill);
     }
   }
+
+  // Chat plugin sets flex-direction: column on profile controls.
+  // Keep 私信 / 聊天 / 关注 on one row on mobile.
+  .user-main .details .controls ul,
+  .user-summary-page .details .controls ul {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    gap: var(--mf-space-2) !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls ul > li,
+  .user-main .details .controls ul > span,
+  .user-summary-page .details .controls ul > li,
+  .user-summary-page .details .controls ul > span {
+    display: flex !important;
+    flex: 1 1 0 !important;
+    order: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+
+  .user-main .details .controls ul > li:empty,
+  .user-summary-page .details .controls ul > li:empty {
+    display: none !important;
+    flex: 0 0 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  .user-main .details .controls ul .btn,
+  .user-main .details .controls ul a.btn,
+  .user-main .details .controls ul .select-kit,
+  .user-main .details .controls ul .select-kit .select-kit-header,
+  .user-summary-page .details .controls ul .btn,
+  .user-summary-page .details .controls ul a.btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    justify-content: center !important;
+    padding-inline: 8px !important;
+  }
+
+  .user-main > .about.no-background .user-profile-image,
+  .user-main > .about:not(.has-background) .user-profile-image {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  .user-main > .about.has-background .user-profile-image {
+    display: block !important;
+    height: 120px !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .user-main > .about .secondary dl {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+    padding: 6px !important;
+    border: 0 !important;
+    border-radius: var(--mf-radius-xl);
+    background: var(--mf-surface-2);
+  }
+
+  .user-main > .about .secondary dl > div,
+  .user-main > .about .secondary .follow-statistic {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    align-items: flex-start !important;
+    gap: 7px !important;
+    margin: 0 !important;
+    padding: 12px 10px !important;
+    border: 0 !important;
+  }
+
+  .user-main > .about .secondary dt {
+    color: var(--mf-ink-3) !important;
+    font-size: var(--mf-text-xs) !important;
+    font-weight: var(--mf-weight-medium) !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+
+  .user-main > .about .secondary dd {
+    overflow: hidden;
+    color: var(--mf-ink) !important;
+    font-size: var(--mf-text-xl) !important;
+    font-weight: var(--mf-weight-bold) !important;
+    line-height: 1.1 !important;
+    text-align: left !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user-main > .about .secondary dl > div:has(> dt.groups) {
+    grid-column: 1 / -1;
+  }
 }
