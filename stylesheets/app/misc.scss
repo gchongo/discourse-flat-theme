@@ -374,6 +374,13 @@ img.avatar {
     margin-bottom: var(--mf-space-3);
   }
 
+  // Discovery homepage: keep nav flush with content (no reintroduced gap).
+  .discovery-layout__navigation .navigation-container,
+  .discovery-layout__navigation .list-controls .navigation-container {
+    margin-bottom: 0 !important;
+    padding-bottom: 8px;
+  }
+
   .list-controls .container {
     padding: 0;
   }

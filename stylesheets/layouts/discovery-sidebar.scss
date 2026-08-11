@@ -10,6 +10,40 @@
 
 .discovery-layout__navigation {
   order: -1;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent;
+  border-radius: 0 !important;
+
+  .list-controls,
+  .list-controls .container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  // Flush with content below: shared panel top + hairline divider (meta-style).
+  .list-controls .navigation-container {
+    margin: 0 !important;
+    padding: 8px 12px;
+    background: var(--mf-surface) !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--mf-hairline) !important;
+    border-radius: var(--mf-radius-xl) var(--mf-radius-xl) 0 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+// Topic list continues the same panel under navigation.
+.discovery-layout__content {
+  margin-top: 0 !important;
+
+  .list-container .topic-list,
+  .list-container .category-list,
+  .list-container .categories-list,
+  .contents .category-list,
+  .contents .categories-list {
+    border-radius: 0 0 var(--mf-radius-xl) var(--mf-radius-xl);
+  }
 }
 
 // Drop empty discovery chrome so it cannot create a flex gap.
@@ -47,21 +81,6 @@
 
   .discovery-layout__navigation {
     order: 1;
-    margin: 0 0 var(--mf-space-5) !important;
-    padding: 0 !important;
-    background: transparent;
-    border-radius: 0 !important;
-
-    .list-controls,
-    .list-controls .container {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    .list-controls .navigation-container {
-      margin: 0 !important;
-      border-radius: var(--mf-radius-xl);
-    }
   }
 
   .discovery-layout__category-header,
@@ -95,7 +114,17 @@
     }
 
     .discovery-layout__navigation .list-controls .navigation-container {
-      border-radius: var(--mf-radius-lg);
+      border-radius: var(--mf-radius-lg) var(--mf-radius-lg) 0 0;
+    }
+  }
+
+  .discovery-layout__content {
+    .list-container .topic-list,
+    .list-container .category-list,
+    .list-container .categories-list,
+    .contents .category-list,
+    .contents .categories-list {
+      border-radius: 0 0 var(--mf-radius-lg) var(--mf-radius-lg);
     }
   }
 }
@@ -103,10 +132,6 @@
 @include viewport.until(sm) {
   #main-outlet:has(.block-hero) {
     .main-outlet-blocks {
-      margin-bottom: var(--mf-space-3) !important;
-    }
-
-    .discovery-layout__navigation {
       margin-bottom: var(--mf-space-3) !important;
     }
   }
