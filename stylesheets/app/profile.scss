@@ -183,22 +183,20 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--mf-space-3);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2px 12px;
 
   li {
     margin: 0;
-    background: var(--mf-surface);
+    background: transparent;
     border: 0;
-    border-radius: var(--mf-radius-md);
-    padding: var(--mf-space-3) var(--mf-space-4);
-    transition:
-      background var(--mf-dur-fast) var(--mf-ease),
-      border-color var(--mf-dur-fast) var(--mf-ease);
+    border-radius: 0;
+    padding: 8px 4px;
+    transition: background var(--mf-dur-fast) var(--mf-ease);
 
     &:hover {
-      background: var(--mf-surface-2);
-      border-color: var(--mf-hairline-strong);
+      background: var(--mf-fill-hover);
+      border-color: transparent;
     }
 
     > a {
@@ -211,29 +209,34 @@
 
     .user-stat {
       display: flex;
-      flex-direction: column;
-      gap: 2px;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px;
     }
 
     .value,
     .number {
-      font-size: var(--mf-text-xl);
+      font-size: var(--mf-text-md);
       font-weight: var(--mf-weight-bold);
       color: var(--mf-ink);
       font-variant-numeric: tabular-nums;
       letter-spacing: var(--mf-tracking-tight);
+      line-height: 1.25;
 
       .d-icon {
         color: var(--mf-love);
-        font-size: 0.7em;
+        font-size: 0.85em;
       }
     }
 
     .label {
-      color: var(--mf-ink-faint);
-      font-size: var(--mf-text-xs);
+      color: var(--mf-ink-3);
+      font-size: var(--mf-text-sm);
+      font-weight: var(--mf-weight-medium);
       text-transform: none;
       letter-spacing: 0;
+      line-height: 1.35;
 
       .d-icon {
         color: var(--mf-ink-faint);
@@ -607,60 +610,71 @@
   width: 100%;
   margin: var(--mf-space-3) 0 0;
   border: 0 !important;
+  border-top: 1px solid var(--mf-hairline) !important;
+  padding-top: var(--mf-space-3);
 }
 
 .user-main > .about .secondary dl {
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   flex-wrap: wrap;
-  gap: var(--mf-space-3) var(--mf-space-6);
+  gap: 6px 14px;
   margin: 0;
   padding: 0 !important;
   border: 0 !important;
 }
 
-.user-main > .about .secondary dl > div {
-  display: grid;
-  grid-template-rows: auto auto;
-  align-content: start;
-  gap: 2px;
-  min-width: 96px;
+.user-main > .about .secondary dl > div,
+.user-main > .about .secondary .follow-statistic {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  min-width: 0;
   margin: 0;
+  padding: 0;
 }
 
 .user-main > .about .secondary dt,
-.user-main > .about .secondary dd {
-  display: block;
+.user-main > .about .secondary .follow-statistic > span:first-child {
+  display: inline;
   margin: 0;
   padding: 0;
-  min-width: 0;
-}
-
-.user-main > .about .secondary dt {
   color: var(--mf-ink-faint);
-  font-size: var(--mf-text-2xs);
-  font-weight: var(--mf-weight-semibold);
-  line-height: var(--mf-leading-snug);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.user-main > .about .secondary dd {
-  min-width: 0;
-  color: var(--mf-ink);
   font-size: var(--mf-text-sm);
   font-weight: var(--mf-weight-medium);
+  line-height: var(--mf-leading-snug);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.user-main > .about .secondary dd,
+.user-main > .about .secondary .follow-statistic > span:last-child {
+  display: inline;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--mf-ink);
+  font-size: var(--mf-text-sm);
+  font-weight: var(--mf-weight-semibold);
   line-height: var(--mf-leading-snug);
 }
 
 .user-main > .about .secondary dd.groups {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
-  gap: 2px var(--mf-space-2);
+  gap: 2px 6px;
 }
 
 .user-main > .about .secondary dl > div:has(> dt.groups) {
-  flex: 0 1 300px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.user-main > .about .secondary dd a,
+.user-main > .about .secondary .follow-statistic a {
+  color: var(--mf-accent);
 }
 
 .user-main > .new-user-wrapper > .user-navigation {
@@ -824,84 +838,89 @@
     white-space: nowrap;
   }
 
-  // Match summary "统计信息": 2-col, value on top, label below.
+  // Compact inline metadata: "Joined Oct 19, 2024  Last Post 4 days"
   .user-main > .about .secondary {
     margin-top: var(--mf-space-3);
+    padding-top: var(--mf-space-3);
+    border-top: 1px solid var(--mf-hairline) !important;
   }
 
   .user-main > .about .secondary dl {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    align-items: stretch;
-    gap: 4px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 6px 14px !important;
     margin: 0 !important;
-    padding: 6px !important;
+    padding: 0 !important;
     border: 0 !important;
-    border-radius: var(--mf-radius-xl);
-    background: var(--mf-surface-2);
+    background: transparent !important;
+    border-radius: 0 !important;
   }
 
   .user-main > .about .secondary dl > div,
   .user-main > .about .secondary dl > .follow-statistic,
   .user-main > .about .secondary .follow-statistic {
-    display: flex !important;
-    flex-direction: column-reverse !important;
-    align-items: flex-start !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
     justify-content: flex-start !important;
-    gap: 7px !important;
+    flex-wrap: wrap !important;
+    gap: 4px 6px !important;
     min-width: 0 !important;
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 12px 10px !important;
+    padding: 0 !important;
     border: 0 !important;
-    border-radius: var(--mf-radius-md);
-    background: transparent;
-    box-sizing: border-box;
+    border-radius: 0 !important;
+    background: transparent !important;
   }
 
   .user-main > .about .secondary dt,
   .user-main > .about .secondary .follow-statistic > span:first-child {
-    display: block !important;
+    display: inline !important;
     flex: none !important;
-    max-width: 100% !important;
+    max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    color: var(--mf-ink-3) !important;
-    font-size: var(--mf-text-xs) !important;
+    color: var(--mf-ink-faint) !important;
+    font-size: var(--mf-text-sm) !important;
     font-weight: var(--mf-weight-medium) !important;
-    line-height: 1.35 !important;
-    letter-spacing: normal !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0 !important;
     text-align: left !important;
     text-transform: none !important;
   }
 
   .user-main > .about .secondary dd,
   .user-main > .about .secondary .follow-statistic > span:last-child {
-    display: block !important;
+    display: inline !important;
     flex: none !important;
-    max-width: 100% !important;
+    max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: hidden;
+    overflow: visible;
     color: var(--mf-ink) !important;
-    font-size: var(--mf-text-xl) !important;
-    font-weight: var(--mf-weight-bold) !important;
-    font-variant-numeric: tabular-nums;
-    line-height: 1.1 !important;
-    letter-spacing: var(--mf-tracking-tight);
+    font-size: var(--mf-text-sm) !important;
+    font-weight: var(--mf-weight-semibold) !important;
+    line-height: 1.4 !important;
+    letter-spacing: normal;
     text-align: left !important;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-overflow: unset;
+    white-space: normal;
   }
 
   .user-main > .about .secondary dd.groups {
-    display: block !important;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    display: inline-flex !important;
+    flex-wrap: wrap;
+    overflow: visible;
+    white-space: normal;
+    text-overflow: unset;
   }
 
   .user-main > .about .secondary dl > div:has(> dt.groups) {
-    grid-column: 1 / -1;
+    grid-column: auto;
+    flex: 1 1 auto;
+    max-width: 100%;
   }
 }

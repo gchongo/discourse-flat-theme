@@ -435,8 +435,8 @@
   .stats-section > ul {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 4px;
-    padding: 8px;
+    gap: 2px 12px;
+    padding: 10px 12px;
     border: 0 !important;
     border-radius: var(--mf-radius-xl);
     background: var(--mf-panel);
@@ -445,8 +445,8 @@
   .stats-section > ul > li {
     width: auto !important;
     min-width: 0;
-    min-height: 82px;
-    padding: 12px;
+    min-height: 0;
+    padding: 8px 4px;
     border: 0 !important;
     border-radius: var(--mf-radius-md);
     background: transparent !important;
@@ -457,16 +457,29 @@
     background: var(--mf-panel-strong) !important;
   }
 
+  .user-stat,
+  .user-summary-stat {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+  }
+
   .user-stat .value,
   .user-summary-stat .value {
-    font-size: var(--mf-text-xl);
-    line-height: 1.1;
+    font-size: var(--mf-text-md);
+    font-weight: var(--mf-weight-bold);
+    line-height: 1.25;
+    color: var(--mf-ink);
   }
 
   .user-stat .label,
   .user-summary-stat .label {
-    margin-top: 7px;
+    margin-top: 0;
     color: var(--mf-ink-3);
+    font-size: var(--mf-text-sm);
+    font-weight: var(--mf-weight-medium);
     text-transform: none;
     letter-spacing: normal;
     line-height: 1.35;
@@ -673,63 +686,70 @@ table.category-list th,
   }
 
   .user-main > .about .secondary dl {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 4px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 6px 14px !important;
     margin: 0 !important;
-    padding: 6px !important;
+    padding: 0 !important;
     border: 0 !important;
-    border-radius: var(--mf-radius-xl);
-    background: var(--mf-surface-2);
+    background: transparent !important;
+    border-radius: 0 !important;
   }
 
   .user-main > .about .secondary dl > div,
   .user-main > .about .secondary .follow-statistic {
-    display: flex !important;
-    flex-direction: column-reverse !important;
-    align-items: flex-start !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
     justify-content: flex-start !important;
-    gap: 7px !important;
+    flex-wrap: wrap !important;
+    gap: 4px 6px !important;
     min-width: 0 !important;
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 12px 10px !important;
+    padding: 0 !important;
     border: 0 !important;
+    background: transparent !important;
   }
 
   .user-main > .about .secondary dt,
   .user-main > .about .secondary .follow-statistic > span:first-child {
-    display: block !important;
+    display: inline !important;
     margin: 0 !important;
-    color: var(--mf-ink-3) !important;
-    font-size: var(--mf-text-xs) !important;
+    color: var(--mf-ink-faint) !important;
+    font-size: var(--mf-text-sm) !important;
     font-weight: var(--mf-weight-medium) !important;
-    line-height: 1.35 !important;
-    letter-spacing: normal !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0 !important;
     text-align: left !important;
     text-transform: none !important;
   }
 
   .user-main > .about .secondary dd,
   .user-main > .about .secondary .follow-statistic > span:last-child {
-    display: block !important;
+    display: inline !important;
     margin: 0 !important;
-    overflow: hidden;
+    overflow: visible;
     color: var(--mf-ink) !important;
-    font-size: var(--mf-text-xl) !important;
-    font-weight: var(--mf-weight-bold) !important;
-    line-height: 1.1 !important;
+    font-size: var(--mf-text-sm) !important;
+    font-weight: var(--mf-weight-semibold) !important;
+    line-height: 1.4 !important;
     text-align: left !important;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-overflow: unset;
+    white-space: normal;
   }
 
   .user-main > .about .secondary dd.groups {
-    display: block !important;
+    display: inline-flex !important;
+    flex-wrap: wrap;
   }
 
   .user-main > .about .secondary dl > div:has(> dt.groups) {
-    grid-column: 1 / -1;
+    grid-column: auto;
+    flex: 1 1 auto;
+    max-width: 100%;
   }
 }
 
@@ -746,13 +766,13 @@ table.category-list th,
 
   .user-main .stats-section > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2px;
-    padding: 6px;
+    gap: 4px 16px;
+    padding: 8px 10px;
   }
 
   .user-main .stats-section > ul > li {
-    min-height: 74px;
-    padding: 10px;
+    min-height: 0;
+    padding: 8px 2px;
   }
 
   .user-main .replies-and-topics-section,

@@ -87,46 +87,85 @@ html.mobile-view {
   }
 
   .user-main > .about .secondary dl {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 4px !important;
-    padding: 6px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 6px 14px !important;
+    padding: 0 !important;
     border: 0 !important;
-    border-radius: var(--mf-radius-xl);
-    background: var(--mf-surface-2);
+    background: transparent !important;
+    border-radius: 0 !important;
   }
 
   .user-main > .about .secondary dl > div,
   .user-main > .about .secondary .follow-statistic {
-    display: flex !important;
-    flex-direction: column-reverse !important;
-    align-items: flex-start !important;
-    gap: 7px !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    gap: 4px 6px !important;
     margin: 0 !important;
-    padding: 12px 10px !important;
+    padding: 0 !important;
     border: 0 !important;
   }
 
   .user-main > .about .secondary dt {
-    color: var(--mf-ink-3) !important;
-    font-size: var(--mf-text-xs) !important;
+    color: var(--mf-ink-faint) !important;
+    font-size: var(--mf-text-sm) !important;
     font-weight: var(--mf-weight-medium) !important;
     text-transform: none !important;
-    letter-spacing: normal !important;
+    letter-spacing: 0 !important;
   }
 
   .user-main > .about .secondary dd {
-    overflow: hidden;
+    overflow: visible;
     color: var(--mf-ink) !important;
-    font-size: var(--mf-text-xl) !important;
-    font-weight: var(--mf-weight-bold) !important;
-    line-height: 1.1 !important;
+    font-size: var(--mf-text-sm) !important;
+    font-weight: var(--mf-weight-semibold) !important;
+    line-height: 1.4 !important;
     text-align: left !important;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    text-overflow: unset;
+    white-space: normal;
   }
 
   .user-main > .about .secondary dl > div:has(> dt.groups) {
-    grid-column: 1 / -1;
+    grid-column: auto;
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  .user-main .stats-section > ul,
+  #user-summary .stats-section > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 4px 16px !important;
+  }
+
+  .user-main .stats-section > ul > li,
+  #user-summary .stats-section > ul > li {
+    min-height: 0 !important;
+    padding: 8px 2px !important;
+  }
+
+  .user-main .stats-section .user-stat,
+  #user-summary .stats-section .user-stat {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: baseline !important;
+    gap: 6px !important;
+  }
+
+  .user-main .stats-section .user-stat .value,
+  #user-summary .stats-section .user-stat .value {
+    font-size: var(--mf-text-md) !important;
+    font-weight: var(--mf-weight-bold) !important;
+    line-height: 1.25 !important;
+  }
+
+  .user-main .stats-section .user-stat .label,
+  #user-summary .stats-section .user-stat .label {
+    margin-top: 0 !important;
+    color: var(--mf-ink-3) !important;
+    font-size: var(--mf-text-sm) !important;
   }
 }
