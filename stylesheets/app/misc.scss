@@ -472,9 +472,10 @@ img.avatar {
     padding-top: var(--mf-space-4);
   }
 
-  .topic-footer-main-buttons {
+  .topic-footer-main-buttons,
+  .topic-footer-main-buttons__actions {
     flex-wrap: wrap;
-    gap: var(--mf-space-2);
+    gap: var(--mf-space-1);
   }
 
   #suggested-topics,

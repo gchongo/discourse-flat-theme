@@ -299,8 +299,104 @@ aside.onebox {
   border-top: 0;
   padding-top: var(--mf-space-5);
 
+  .topic-footer-main-buttons,
+  .topic-footer-main-buttons__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--mf-space-1);
+  }
+
   .topic-footer-main-buttons {
-    gap: var(--mf-space-2);
+    margin: 0;
+  }
+
+  // Compact, unified action chips (share / bookmark / more / notify / reply).
+  .btn,
+  .topic-footer-button,
+  .fk-d-menu__trigger,
+  .select-kit > .select-kit-header,
+  .topic-notifications-button .select-kit-header,
+  .pinned-button .select-kit-header,
+  .notifications-button .select-kit-header {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 32px;
+    min-height: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0 8px !important;
+    color: var(--mf-ink-2) !important;
+    font-size: var(--mf-text-sm) !important;
+    font-weight: var(--mf-weight-medium);
+    line-height: 1 !important;
+    background: var(--mf-surface) !important;
+    border: 0 !important;
+    border-radius: var(--mf-radius-md) !important;
+    box-shadow: none !important;
+
+    .d-button-label,
+    .d-button-label + .d-icon,
+    .selected-name,
+    .name,
+    .btn-text {
+      font-size: var(--mf-text-sm) !important;
+      line-height: 1;
+    }
+
+    .d-icon {
+      width: 14px !important;
+      height: 14px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      font-size: 14px !important;
+      color: inherit !important;
+      opacity: 1;
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--mf-ink) !important;
+      background: var(--mf-surface-2) !important;
+    }
+
+    &:active {
+      background: var(--mf-fill-active) !important;
+      transform: none;
+    }
+  }
+
+  .btn.no-text,
+  .btn.btn-icon:not(.btn-icon-text),
+  .fk-d-menu__trigger:not(.btn-icon-text),
+  .select-kit.btn-icon > .select-kit-header,
+  .select-kit:not(.btn-icon-text) > .select-kit-header.btn-icon {
+    width: 32px;
+    padding: 0 !important;
+  }
+
+  .btn.create,
+  .btn-primary.create,
+  .topic-footer-button.create {
+    color: var(--mf-accent-fg) !important;
+    background: var(--mf-accent) !important;
+
+    .d-icon {
+      color: inherit !important;
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--mf-accent-fg) !important;
+      background: var(--mf-accent-hover) !important;
+    }
+
+    &:active {
+      background: var(--mf-accent-press) !important;
+    }
   }
 }
 
@@ -641,7 +737,7 @@ body.archetype-regular {
   .topic-footer-main-buttons {
     align-items: center;
     flex-wrap: wrap;
-    gap: var(--mf-space-2);
+    gap: var(--mf-space-1);
     margin-top: var(--mf-space-3);
   }
 
