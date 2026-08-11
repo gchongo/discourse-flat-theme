@@ -601,48 +601,92 @@ table.category-list th,
   }
 }
 
-@include viewport.until(sm) {
-  .user-main .details {
-    padding: var(--mf-space-4);
+@include viewport.until(md) {
+  .user-main > .about .details .primary .user-profile-names,
+  .user-main > .about .details .primary .featured-topic,
+  .user-main > .about .details .primary .user-profile__featured-topic,
+  .user-main > .about .details .primary .bio,
+  .user-main > .about .details .primary .public-user-fields {
+    text-align: left !important;
   }
 
-  .user-main .details .primary {
-    grid-template-columns: 64px minmax(0, 1fr);
-    align-items: center;
-    gap: var(--mf-space-3);
+  .user-main > .about .details .primary .user-profile__location-and-website,
+  .user-main > .about .details .primary .location-and-website {
+    justify-content: flex-start !important;
   }
 
-  .user-main .user-profile-avatar {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: start;
-  }
-
-  .user-main .user-profile-avatar .avatar {
-    width: 64px;
-    height: 64px;
-  }
-
-  .user-main .primary-textual {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .user-main .details .controls {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-self: start;
-    width: 100%;
-  }
-
-  .user-main .details .controls ul {
+  .user-main > .about .details .controls ul {
+    display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
+    gap: var(--mf-space-2);
+    width: 100%;
+
+    > li,
+    > span {
+      display: flex;
+      flex: 1 1 calc(50% - var(--mf-space-2) / 2);
+      min-width: 0;
+
+      .btn,
+      a.btn,
+      .select-kit,
+      .select-kit .select-kit-header {
+        width: 100%;
+        min-width: 0;
+        justify-content: center;
+      }
+    }
   }
 
-  .user-main .user-profile-names .username {
-    font-size: var(--mf-text-xl);
+  .user-main > .about .secondary dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mf-space-3) var(--mf-space-4);
   }
 
+  .user-main > .about .secondary dl > div {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: start;
+    gap: 2px;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .user-main > .about .secondary dt,
+  .user-main > .about .secondary dd {
+    display: block;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .user-main > .about .secondary dd {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user-main > .about .secondary dd.groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px var(--mf-space-2);
+    overflow: visible;
+    white-space: normal;
+    text-overflow: unset;
+  }
+
+  .user-main > .about .secondary dl > div:has(> dt.groups),
+  .user-main > .about .secondary dl > div:has(> dt.trust-level),
+  .user-main > .about .secondary dl > div:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@include viewport.until(sm) {
   .user-main .user-navigation {
     margin-bottom: var(--mf-space-4);
   }

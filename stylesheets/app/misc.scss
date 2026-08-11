@@ -505,27 +505,6 @@ img.avatar {
 
   .user-main .details {
     padding: var(--mf-space-4);
-
-    .primary {
-      flex-wrap: wrap;
-      gap: var(--mf-space-3);
-    }
-
-    .user-profile-avatar .avatar {
-      width: 60px;
-      height: 60px;
-    }
-
-    .controls {
-      margin-left: 0;
-      width: 100%;
-      flex-wrap: wrap;
-
-      .btn {
-        flex: 1 1 auto;
-        justify-content: center;
-      }
-    }
   }
 
   .user-content .stats-section ul,

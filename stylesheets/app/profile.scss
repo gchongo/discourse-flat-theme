@@ -609,6 +609,7 @@
 .user-main > .about .secondary dl > div {
   display: grid;
   grid-template-rows: auto auto;
+  align-content: start;
   gap: 2px;
   min-width: 96px;
   margin: 0;
@@ -616,8 +617,10 @@
 
 .user-main > .about .secondary dt,
 .user-main > .about .secondary dd {
+  display: block;
   margin: 0;
   padding: 0;
+  min-width: 0;
 }
 
 .user-main > .about .secondary dt {
@@ -673,38 +676,132 @@
 
   .user-main > .about .details .primary {
     grid-template-columns: 64px minmax(0, 1fr);
+    align-items: start;
     gap: var(--mf-space-3);
     padding-top: var(--mf-space-3);
+  }
+
+  .user-main > .about .user-profile-avatar {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    margin: 0 !important;
   }
 
   .user-main > .about.has-background .user-profile-avatar {
     margin-top: calc(var(--mf-space-8) * -1) !important;
   }
 
-  .user-main > .about .user-profile-names .username {
+  .user-main > .about .user-profile-avatar .avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .user-main > .about .primary-textual {
+    grid-column: 2;
+    grid-row: 1;
+    width: auto;
+    max-width: 100%;
+    padding-top: 0 !important;
+    text-align: left;
+  }
+
+  .user-main > .about .details .primary .user-profile-names,
+  .user-main > .about .details .primary .featured-topic,
+  .user-main > .about .details .primary .user-profile__featured-topic,
+  .user-main > .about .details .primary .bio,
+  .user-main > .about .details .primary .public-user-fields {
+    text-align: left;
+  }
+
+  .user-main > .about .user-profile-names .username,
+  .user-main > .about .user-profile-names__primary {
     font-size: var(--mf-text-xl);
+  }
+
+  .user-main > .about .details .primary .user-profile__location-and-website,
+  .user-main > .about .details .primary .location-and-website {
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .user-main > .about .details .controls {
     grid-column: 1 / -1;
+    grid-row: 2;
     justify-self: stretch;
+    width: 100%;
+    margin-left: 0;
+    padding-top: var(--mf-space-2);
   }
 
   .user-main > .about .details .controls ul {
-    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: var(--mf-space-2);
+    width: 100%;
+    margin: 0;
+
+    > li,
+    > span {
+      display: flex;
+      flex: 1 1 calc(50% - var(--mf-space-2) / 2);
+      min-width: 0;
+      margin: 0;
+
+      .btn,
+      a.btn,
+      .select-kit,
+      .select-kit .select-kit-header {
+        width: 100%;
+        min-width: 0;
+        justify-content: center;
+      }
+    }
   }
 
   .user-main > .about .secondary dl {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--mf-space-3);
+    gap: var(--mf-space-3) var(--mf-space-4);
   }
 
   .user-main > .about .secondary dl > div {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: start;
+    gap: 2px;
     min-width: 0;
+    max-width: 100%;
   }
 
-  .user-main > .about .secondary dl > div:has(> dt.groups) {
+  .user-main > .about .secondary dt,
+  .user-main > .about .secondary dd {
+    display: block;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .user-main > .about .secondary dd {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user-main > .about .secondary dd.groups {
+    display: flex;
+    flex-wrap: wrap;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .user-main > .about .secondary dl > div:has(> dt.groups),
+  .user-main > .about .secondary dl > div:has(> dt.trust-level),
+  .user-main > .about .secondary dl > div:nth-child(odd):last-child {
     grid-column: 1 / -1;
   }
 }
