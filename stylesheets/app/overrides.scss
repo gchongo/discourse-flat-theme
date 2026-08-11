@@ -859,7 +859,6 @@ tr.topic-list-item-separator,
   background: var(--mf-fill-hover) !important;
 }
 
-.topic-post,
 .topic-post article,
 .topic-post article.boxed,
 .topic-post article.boxed.onscreen-post,
@@ -870,6 +869,17 @@ tr.topic-list-item-separator,
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
+}
+
+body.archetype-regular .post-stream > .topic-post {
+  border-top: 0 !important;
+  border-right: 0 !important;
+  border-left: 0 !important;
+  border-bottom: 1px solid var(--mf-hairline-strong) !important;
+}
+
+body.archetype-regular .post-stream > .topic-post:last-child {
+  border-bottom: 0 !important;
 }
 
 @media (hover: hover) {

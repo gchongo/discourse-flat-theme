@@ -5,11 +5,11 @@ body.archetype-regular {
   .post-stream > .topic-post {
     margin: 0;
     padding: 10px 0;
-    border-bottom: 1px solid var(--mf-hairline);
+    border-bottom: 1px solid var(--mf-hairline-strong) !important;
   }
 
   .post-stream > .topic-post:last-child {
-    border-bottom: 0;
+    border-bottom: 0 !important;
   }
 
   .post-stream > .topic-post > article.boxed,
