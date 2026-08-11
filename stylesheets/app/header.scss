@@ -160,4 +160,9 @@
   .d-header .extra-info-wrapper .topic-link {
     font-size: var(--mf-text-sm);
   }
+
+  .d-header .contents:has(.extra-info-wrapper) .extra-info-wrapper {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
 }
