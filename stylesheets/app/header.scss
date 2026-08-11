@@ -52,33 +52,76 @@
   }
 }
 
-// Topic title docked in header: put extra-info flush against the logo outlet.
-// Do not resize/crop the logo — only remove spacing between the two siblings.
-.d-header .contents:has(> .extra-info-wrapper),
+// Docked topic header:
+// The small/big logo asset is often a wide canvas (icon + transparent padding).
+// That makes home-logo-wrapper-outlet wider than the visible glyph (e.g. 54px box
+// for a 30px icon), which looks like a gap before .extra-info-wrapper.
+// Fix: keep logo height, shrink the outlet to a square viewport, clip only the
+// transparent trailing canvas — do not object-fit:cover the glyph itself.
 .d-header .contents:has(.extra-info-wrapper) {
+  --d-logo-height: 30px;
   gap: 0 !important;
+  align-items: center;
 
   .home-logo-wrapper-outlet {
-    flex: 0 0 auto;
-    margin: 0 !important;
+    flex: 0 0 var(--d-logo-height) !important;
+    box-sizing: border-box !important;
+    width: var(--d-logo-height) !important;
+    min-width: var(--d-logo-height) !important;
+    max-width: var(--d-logo-height) !important;
+    height: var(--d-logo-height) !important;
+    margin: 0 8px 0 0 !important;
     padding: 0 !important;
+    overflow: hidden !important;
   }
 
   .title,
   .title--minimized {
-    // Core/theme normally keep padding-right for nav breathing room;
-    // that becomes a fake gap once the topic title sits beside the logo.
-    padding-right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 
-  > .extra-info-wrapper,
-  .extra-info-wrapper {
-    flex: 1 1 auto;
-    min-width: 0;
-    // Core default is padding-left: 0.5em — zero it so title hugs the logo.
+  .title a,
+  .title--minimized a {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
     margin: 0 !important;
-    padding: 0 12px 0 8px !important;
+    padding: 0 !important;
+  }
+
+  .title picture,
+  .title--minimized picture {
+    display: block !important;
+    height: 100% !important;
+  }
+
+  #site-logo,
+  #site-logo.logo-small,
+  #site-logo.logo-big,
+  #site-logo.logo-mobile {
+    display: block !important;
+    height: var(--d-logo-height) !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+  }
+
+  .extra-info-wrapper {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 12px 0 0 !important;
   }
 }
 
