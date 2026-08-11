@@ -217,22 +217,23 @@ body.archetype-regular {
       }
     }
 
-    #topic-progress-wrapper #topic-progress {
-      overflow: hidden;
-      color: var(--mf-ink);
-      background: var(--mf-panel-strong, var(--mf-surface-2));
-      border: 0;
-      border-radius: var(--mf-radius-pill);
-      box-shadow: none;
-
-      .bg {
-        background: var(--mf-accent-tint);
-      }
-
-      .nums {
+    #topic-progress-wrapper {
+      #topic-progress {
+        overflow: hidden;
         color: var(--mf-ink);
-        font-size: var(--mf-text-xs);
-        font-weight: var(--mf-weight-semibold);
+        background: var(--mf-surface);
+        border-color: var(--mf-hairline);
+        box-shadow: none;
+
+        .bg {
+          background: var(--mf-accent-tint);
+        }
+
+        .nums {
+          color: var(--mf-ink);
+          font-size: var(--mf-text-xs);
+          font-weight: var(--mf-weight-semibold);
+        }
       }
     }
   }

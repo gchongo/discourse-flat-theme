@@ -903,8 +903,9 @@ body.archetype-regular .post-stream > .topic-post:last-child {
 
 #suggested-topics .topic-list,
 .more-topics__list .topic-list,
+.more-topics__container .topic-list,
 .suggested-topics .topic-list {
-  background: transparent !important;
+  background: var(--mf-surface) !important;
   border: 0 !important;
   box-shadow: none !important;
 }
