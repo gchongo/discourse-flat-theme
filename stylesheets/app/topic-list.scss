@@ -545,11 +545,15 @@ a.discourse-tag.box,
 }
 
 // Core caps suggested topics at 0.87 * max-width; match homepage list width.
+html.desktop-view .more-topics__container,
+html.desktop-view #suggested-topics,
+html.desktop-view .suggested-topics-wrapper,
 .desktop-view .more-topics__container,
 .desktop-view #suggested-topics,
 .desktop-view .suggested-topics-wrapper {
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
 }
 
 .list-container .topic-list {

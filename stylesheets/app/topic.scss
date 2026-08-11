@@ -458,8 +458,9 @@ aside.onebox {
 .more-topics__container,
 .suggested-topics-wrapper {
   margin-top: var(--mf-space-8);
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
 
   .more-topics__lists .topic-list-header,
   h3.suggested-topics-title,
@@ -818,16 +819,17 @@ body.archetype-regular {
   .more-topics__container,
   #suggested-topics,
   .suggested-topics-wrapper {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
   }
 
   #suggested-topics .topic-list,
   .more-topics__list .topic-list,
   .more-topics__container .topic-list,
   .suggested-topics .topic-list {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: none !important;
     margin: 0 0 var(--mf-space-6);
     box-shadow: none !important;
   }
