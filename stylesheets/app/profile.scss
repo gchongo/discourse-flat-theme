@@ -859,6 +859,72 @@
     min-height: 56px !important;
   }
 
+  // "常规" notifications dropdown: icon + label + caret must all fit.
+  .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
+  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+    flex: 1.4 1 0 !important;
+    min-width: 6.25rem !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown,
+  .user-summary-page .details .controls .user-notifications-dropdown {
+    min-width: 0 !important;
+    overflow: visible !important;
+
+    > .select-kit-header,
+    .select-kit-header {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 4px !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      padding-inline: 6px !important;
+      overflow: visible !important;
+    }
+
+    .select-kit-header-wrapper {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 4px !important;
+      width: auto !important;
+      max-width: 100% !important;
+      min-width: 0 !important;
+      overflow: visible !important;
+    }
+
+    .select-kit-selected-name,
+    .selected-name,
+    .selected-name.choice {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      overflow: visible !important;
+      text-overflow: unset !important;
+    }
+
+    .selected-name .name,
+    .name {
+      display: inline !important;
+      max-width: none !important;
+      overflow: visible !important;
+      text-overflow: unset !important;
+      white-space: nowrap !important;
+    }
+
+    .angle-icon,
+    .d-icon-angle-down {
+      display: inline-block !important;
+      flex: 0 0 auto !important;
+      margin: 0 !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  }
+
   // Compact inline metadata: "Joined Oct 19, 2024  Last Post 4 days"
   .user-main > .about .secondary {
     margin-top: var(--mf-space-3);

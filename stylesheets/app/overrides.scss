@@ -743,6 +743,51 @@ table.category-list th,
     align-items: flex-start !important;
   }
 
+  .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
+  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+    flex: 1.4 1 0 !important;
+    min-width: 6.25rem !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown > .select-kit-header,
+  .user-main .details .controls .user-notifications-dropdown .select-kit-header {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    overflow: visible !important;
+    padding-inline: 6px !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-header-wrapper {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .selected-name,
+  .user-main .details .controls .user-notifications-dropdown .selected-name .name,
+  .user-main .details .controls .user-notifications-dropdown .name {
+    display: inline-flex !important;
+    align-items: center !important;
+    max-width: none !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    white-space: nowrap !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .angle-icon,
+  .user-main .details .controls .user-notifications-dropdown .d-icon-angle-down {
+    display: inline-block !important;
+    flex: 0 0 auto !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
   .user-main > .about .secondary dl {
     display: flex !important;
     flex-direction: row !important;
