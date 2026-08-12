@@ -222,7 +222,7 @@
   color: var(--mf-ink-3);
   font-size: var(--mf-text-md);
   line-height: var(--mf-leading-normal);
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 
@@ -707,6 +707,7 @@ html.desktop-view .suggested-topics-wrapper,
 
   .main-link .topic-excerpt {
     order: 3;
+    display: -webkit-box;
     max-width: none;
     max-height: 0;
     margin: 0;
@@ -715,8 +716,9 @@ html.desktop-view .suggested-topics-wrapper,
     color: var(--mf-ink-3);
     font-size: var(--mf-text-md);
     line-height: var(--mf-leading-normal);
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
     transition:
       max-height var(--mf-dur-slow) var(--mf-ease),
       opacity var(--mf-dur-slow) var(--mf-ease);
@@ -732,7 +734,7 @@ html.desktop-view .suggested-topics-wrapper,
   &.unread-posts .main-link .topic-excerpt,
   &.unseen-topic .main-link .topic-excerpt,
   &.new-topic .main-link .topic-excerpt {
-    max-height: calc(4 * 1em * var(--mf-leading-normal));
+    max-height: calc(2 * 1lh);
     opacity: 1;
   }
 
