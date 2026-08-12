@@ -910,20 +910,18 @@ body.archetype-regular .post-stream > .topic-post:last-child {
   box-shadow: none !important;
 }
 
-// Core: .more-topics__container { max-width: calc(var(--d-max-width) * 0.87) }
-// Force same width as homepage .list-container .topic-list (#main-outlet content).
+// Homepage `.topic-list-body` lives in the 1fr column beside the discovery
+// rail. Suggested topics must use that same leftover width, not the full outlet.
 html.desktop-view .more-topics__container,
-html.desktop-view .more-topics__lists,
-html.desktop-view .more-topics__list,
 html.desktop-view #suggested-topics,
 html.desktop-view .suggested-topics-wrapper,
 body.archetype-regular .more-topics__container,
-body.archetype-regular .more-topics__lists,
-body.archetype-regular .more-topics__list,
 body.archetype-regular #suggested-topics,
 body.archetype-regular .suggested-topics-wrapper {
   width: 100% !important;
-  max-width: none !important;
+  max-width: calc(
+    100% - var(--mf-discovery-rail-width) - var(--mf-discovery-gap)
+  ) !important;
   box-sizing: border-box !important;
 }
 
@@ -936,7 +934,7 @@ body.archetype-regular #suggested-topics .topic-list,
 body.archetype-regular .more-topics__list .topic-list,
 body.archetype-regular .suggested-topics .topic-list {
   width: 100% !important;
-  max-width: none !important;
+  max-width: 100% !important;
   box-sizing: border-box !important;
 }
 

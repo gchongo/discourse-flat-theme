@@ -544,16 +544,17 @@ a.discourse-tag.box,
   box-sizing: border-box;
 }
 
-// Core caps suggested topics at 0.87 * max-width; match homepage list width.
 html.desktop-view .more-topics__container,
 html.desktop-view #suggested-topics,
 html.desktop-view .suggested-topics-wrapper,
 .desktop-view .more-topics__container,
 .desktop-view #suggested-topics,
 .desktop-view .suggested-topics-wrapper {
-  width: 100% !important;
-  max-width: none !important;
-  box-sizing: border-box !important;
+  width: 100%;
+  max-width: calc(
+    100% - var(--mf-discovery-rail-width) - var(--mf-discovery-gap)
+  );
+  box-sizing: border-box;
 }
 
 .list-container .topic-list {

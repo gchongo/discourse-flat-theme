@@ -139,8 +139,10 @@
 
 .discovery-layout__content:has(.sidebar-discovery) {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 276px);
-  column-gap: var(--mf-space-8);
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(var(--mf-discovery-rail-min), var(--mf-discovery-rail-width));
+  column-gap: var(--mf-discovery-gap);
 }
 
 .sidebar-discovery,
