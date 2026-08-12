@@ -129,8 +129,24 @@
     align-items: center;
   }
 
+  .header-title {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .topic-statuses {
+    float: none;
+    flex: 0 0 auto;
+  }
+
   .topic-link {
     display: block;
+    flex: 1 1 auto;
+    min-width: 0;
     max-width: 100%;
     overflow: hidden;
     color: var(--mf-ink);
@@ -141,9 +157,53 @@
     text-overflow: ellipsis;
   }
 
-  .topic-header-extra,
-  .header-topic-title-suffix {
+  .topic-header-extra {
     display: none;
+  }
+
+  // Event date badge after the title (discourse-calendar).
+  .header-topic-title-suffix {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .header-topic-title-suffix-outlet.event-date-container,
+  .event-date-container {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  .event-date {
+    display: inline-flex;
+    align-items: center;
+    max-width: 12em;
+    overflow: hidden;
+    color: var(--mf-accent);
+    font-size: var(--mf-text-xs);
+    font-weight: var(--mf-weight-medium);
+    line-height: 1.2;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background: var(--mf-accent-tint-soft);
+    border: 0;
+    border-radius: var(--mf-radius-sm);
+    padding: 2px 6px;
+
+    &.past {
+      color: var(--mf-ink-3);
+      background: var(--mf-surface-3);
+    }
+
+    .indicator {
+      width: 6px;
+      height: 6px;
+      margin-right: 4px;
+      background: var(--mf-success, var(--success));
+      border-radius: var(--mf-radius-pill);
+    }
   }
 
   .categories-wrapper {
