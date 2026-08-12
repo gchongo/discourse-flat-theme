@@ -728,7 +728,8 @@ html.desktop-view .suggested-topics-wrapper,
     }
   }
 
-  .main-link:has(.link-top-line:hover) .topic-excerpt,
+  &:hover .main-link .topic-excerpt,
+  &:focus-within .main-link .topic-excerpt,
   .main-link:has(a.title:focus-visible) .topic-excerpt,
   &.unread .main-link .topic-excerpt,
   &.unread-posts .main-link .topic-excerpt,
