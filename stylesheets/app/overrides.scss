@@ -651,12 +651,12 @@ table.category-list th,
   .user-main > .about .details .primary .user-profile__featured-topic,
   .user-main > .about .details .primary .bio,
   .user-main > .about .details .primary .public-user-fields {
-    text-align: left !important;
+    text-align: center !important;
   }
 
   .user-main > .about .details .primary .user-profile__location-and-website,
   .user-main > .about .details .primary .location-and-website {
-    justify-content: flex-start !important;
+    justify-content: center !important;
   }
 
   .user-main > .about.no-background .user-profile-image,
@@ -674,13 +674,14 @@ table.category-list th,
     background-repeat: no-repeat !important;
   }
 
-  // Beat chat plugin's flex-direction: column — only the top-level controls row.
+  // Message + Chat full-width stacked; Follow / 常规 auto-width below.
   .user-main .details .controls > ul,
   .user-summary-page .details .controls > ul {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    flex-wrap: wrap !important;
     align-items: stretch !important;
+    justify-content: flex-start !important;
     gap: var(--mf-space-2) !important;
     width: 100% !important;
   }
@@ -690,11 +691,33 @@ table.category-list th,
   .user-summary-page .details .controls > ul > li,
   .user-summary-page .details .controls > ul > span {
     display: flex !important;
-    flex: 1 1 0 !important;
-    order: 0 !important;
+    flex: 0 0 auto !important;
+    order: 10 !important;
     width: auto !important;
     min-width: 0 !important;
+    max-width: 100% !important;
     margin: 0 !important;
+  }
+
+  .user-main .details .controls > ul > li:has(.compose-pm),
+  .user-summary-page .details .controls > ul > li:has(.compose-pm) {
+    flex: 1 1 100% !important;
+    order: 1 !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls > ul > li.chat-button,
+  .user-main .details .controls > ul > li:has(.chat-direct-message-btn),
+  .user-summary-page .details .controls > ul > li.chat-button,
+  .user-summary-page .details .controls > ul > li:has(.chat-direct-message-btn) {
+    flex: 1 1 100% !important;
+    order: 2 !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
+  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
+    order: 3 !important;
   }
 
   .user-main .details .controls > ul > li > .btn,
@@ -703,16 +726,27 @@ table.category-list th,
   .user-main .details .controls > ul > li > .select-kit > .select-kit-header,
   .user-summary-page .details .controls > ul > li > .btn,
   .user-summary-page .details .controls > ul > li > a.btn {
-    width: 100% !important;
+    width: auto !important;
     min-width: 0 !important;
+    min-height: 40px !important;
     justify-content: center !important;
-    padding-inline: 8px !important;
+    padding-inline: 12px !important;
+  }
+
+  .user-main .details .controls > ul > li:has(.compose-pm) > .btn,
+  .user-main .details .controls > ul > li:has(.compose-pm) > a.btn,
+  .user-main .details .controls > ul > li:has(.chat-direct-message-btn) .btn,
+  .user-main .details .controls > ul > li:has(.chat-direct-message-btn) a.btn,
+  .user-main .details .controls > ul > li.chat-button .btn,
+  .user-main .details .controls > ul > li.chat-button a.btn {
+    width: 100% !important;
+    min-height: 42px !important;
   }
 
   .user-main .details .controls > ul > li > .btn .d-button-label,
   .user-main .details .controls > ul > li > a.btn .d-button-label {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible;
+    text-overflow: unset;
     white-space: nowrap;
   }
 
@@ -745,8 +779,14 @@ table.category-list th,
 
   .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
   .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
-    flex: 1.4 1 0 !important;
-    min-width: 6.25rem !important;
+    flex: 0 0 auto !important;
+    min-width: auto !important;
+    width: auto !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown,
+  .user-summary-page .details .controls .user-notifications-dropdown {
+    width: auto !important;
   }
 
   .user-main .details .controls .user-notifications-dropdown > .select-kit-header,
@@ -755,8 +795,9 @@ table.category-list th,
     align-items: center !important;
     justify-content: center !important;
     gap: 4px !important;
+    width: auto !important;
     overflow: visible !important;
-    padding-inline: 6px !important;
+    padding-inline: 12px !important;
   }
 
   .user-main .details .controls .user-notifications-dropdown .select-kit-header-wrapper {
@@ -765,7 +806,7 @@ table.category-list th,
     justify-content: center !important;
     gap: 4px !important;
     width: auto !important;
-    max-width: 100% !important;
+    max-width: none !important;
     overflow: visible !important;
   }
 
