@@ -777,16 +777,30 @@ table.category-list th,
     align-items: flex-start !important;
   }
 
+  .user-main .details .controls,
+  .user-main .details .controls > ul {
+    overflow: visible !important;
+  }
+
   .user-main .details .controls > ul > li:has(.user-notifications-dropdown),
   .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown) {
     flex: 0 0 auto !important;
     min-width: auto !important;
     width: auto !important;
+    overflow: visible !important;
+    z-index: 20;
   }
 
   .user-main .details .controls .user-notifications-dropdown,
   .user-summary-page .details .controls .user-notifications-dropdown {
     width: auto !important;
+    overflow: visible !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-body,
+  .user-main .details .controls .select-kit.is-expanded .select-kit-body {
+    max-height: min(70vh, 360px) !important;
+    z-index: 40 !important;
   }
 
   .user-main .details .controls .user-notifications-dropdown > .select-kit-header,

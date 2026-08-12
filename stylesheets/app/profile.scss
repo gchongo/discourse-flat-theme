@@ -513,7 +513,8 @@
 
 .user-main > .about {
   margin-bottom: var(--mf-space-4) !important;
-  overflow: hidden;
+  // Keep visible so profile select-kit menus (e.g. 常规) are not clipped.
+  overflow: visible;
   background: var(--mf-panel);
   border: 0 !important;
   border-radius: var(--mf-radius-xl);
@@ -884,7 +885,9 @@
   .user-main .details .controls .select-kit.is-expanded .select-kit-body {
     width: min(320px, calc(100vw - 24px)) !important;
     min-width: min(280px, calc(100vw - 24px)) !important;
+    max-height: min(70vh, 360px) !important;
     overflow: auto !important;
+    z-index: 40 !important;
   }
 
   .user-main .details .controls .select-kit-collection > .select-kit-row {
@@ -899,6 +902,18 @@
     flex: 0 0 auto !important;
     min-width: auto !important;
     width: auto !important;
+    overflow: visible !important;
+    z-index: 20;
+  }
+
+  .user-main .details .controls > ul > li:has(.user-notifications-dropdown.is-expanded),
+  .user-summary-page .details .controls > ul > li:has(.user-notifications-dropdown.is-expanded) {
+    z-index: 30;
+  }
+
+  .user-main .details .controls,
+  .user-main .details .controls > ul {
+    overflow: visible !important;
   }
 
   .user-main .details .controls .user-notifications-dropdown,
