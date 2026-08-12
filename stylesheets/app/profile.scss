@@ -601,7 +601,7 @@
   padding-top: var(--mf-space-1);
 }
 
-.user-main > .about .details .controls ul {
+.user-main > .about .details .controls > ul {
   justify-content: flex-end;
 }
 
@@ -787,9 +787,10 @@
   }
 
   // Chat plugin forces column; keep Message / Chat / Follow on one row.
-  .user-main > .about .details .controls ul,
-  .user-main .details .controls ul,
-  .user-summary-page .details .controls ul {
+  // Only the top-level controls list — never nested select-kit collections.
+  .user-main > .about .details .controls > ul,
+  .user-main .details .controls > ul,
+  .user-summary-page .details .controls > ul {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
@@ -799,12 +800,12 @@
     margin: 0 !important;
   }
 
-  .user-main > .about .details .controls ul > li,
-  .user-main > .about .details .controls ul > span,
-  .user-main .details .controls ul > li,
-  .user-main .details .controls ul > span,
-  .user-summary-page .details .controls ul > li,
-  .user-summary-page .details .controls ul > span {
+  .user-main > .about .details .controls > ul > li,
+  .user-main > .about .details .controls > ul > span,
+  .user-main .details .controls > ul > li,
+  .user-main .details .controls > ul > span,
+  .user-summary-page .details .controls > ul > li,
+  .user-summary-page .details .controls > ul > span {
     display: flex !important;
     flex: 1 1 0 !important;
     order: 0 !important;
@@ -814,14 +815,14 @@
     margin: 0 !important;
   }
 
-  .user-main > .about .details .controls ul .btn,
-  .user-main > .about .details .controls ul a.btn,
-  .user-main > .about .details .controls ul .select-kit,
-  .user-main > .about .details .controls ul .select-kit .select-kit-header,
-  .user-main .details .controls ul .btn,
-  .user-main .details .controls ul a.btn,
-  .user-main .details .controls ul .select-kit,
-  .user-main .details .controls ul .select-kit .select-kit-header {
+  .user-main > .about .details .controls > ul > li > .btn,
+  .user-main > .about .details .controls > ul > li > a.btn,
+  .user-main > .about .details .controls > ul > li > .select-kit,
+  .user-main > .about .details .controls > ul > li > .select-kit > .select-kit-header,
+  .user-main .details .controls > ul > li > .btn,
+  .user-main .details .controls > ul > li > a.btn,
+  .user-main .details .controls > ul > li > .select-kit,
+  .user-main .details .controls > ul > li > .select-kit > .select-kit-header {
     width: 100% !important;
     min-width: 0 !important;
     max-width: none !important;
@@ -829,13 +830,33 @@
     padding-inline: 8px !important;
   }
 
-  .user-main > .about .details .controls ul .btn .d-button-label,
-  .user-main > .about .details .controls ul a.btn .d-button-label,
-  .user-main .details .controls ul .btn .d-button-label,
-  .user-main .details .controls ul a.btn .d-button-label {
+  .user-main > .about .details .controls > ul > li > .btn .d-button-label,
+  .user-main > .about .details .controls > ul > li > a.btn .d-button-label,
+  .user-main .details .controls > ul > li > .btn .d-button-label,
+  .user-main .details .controls > ul > li > a.btn .d-button-label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-collection,
+  .user-main .details .controls .select-kit-collection {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-body,
+  .user-main .details .controls .select-kit.is-expanded .select-kit-body {
+    width: min(320px, calc(100vw - 24px)) !important;
+    min-width: min(280px, calc(100vw - 24px)) !important;
+    overflow: auto !important;
+  }
+
+  .user-main .details .controls .select-kit-collection > .select-kit-row {
+    display: flex !important;
+    flex: none !important;
+    width: 100% !important;
+    min-height: 56px !important;
   }
 
   // Compact inline metadata: "Joined Oct 19, 2024  Last Post 4 days"

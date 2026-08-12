@@ -26,10 +26,36 @@
 
 .sidebar-footer-wrapper {
   background: var(--mf-app-bg) !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 
   .sidebar-footer-container {
-    padding-top: var(--mf-space-1) !important;
-    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    padding: 4px 0 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+  }
+}
+
+// Theme toggle dropdown: no phantom empty space under last item.
+.sidebar-theme-toggle__wrapper,
+.sidebar-theme-toggle-dropdown.select-kit {
+  .select-kit-body {
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 4px !important;
+    overflow: visible !important;
+    background: var(--mf-surface-elevated, var(--mf-panel)) !important;
+  }
+
+  .select-kit-collection {
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 0 !important;
+  }
+
+  .select-kit-filter:not(:has(input:not([type="hidden"]))) {
+    display: none !important;
   }
 }
 
@@ -393,7 +419,7 @@
     margin-top: 6px;
   }
 
-  .details .controls ul {
+  .details .controls > ul {
     display: flex;
     align-items: center;
     gap: 6px;
@@ -648,9 +674,9 @@ table.category-list th,
     background-repeat: no-repeat !important;
   }
 
-  // Beat chat plugin's flex-direction: column
-  .user-main .details .controls ul,
-  .user-summary-page .details .controls ul {
+  // Beat chat plugin's flex-direction: column — only the top-level controls row.
+  .user-main .details .controls > ul,
+  .user-summary-page .details .controls > ul {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
@@ -659,10 +685,10 @@ table.category-list th,
     width: 100% !important;
   }
 
-  .user-main .details .controls ul > li,
-  .user-main .details .controls ul > span,
-  .user-summary-page .details .controls ul > li,
-  .user-summary-page .details .controls ul > span {
+  .user-main .details .controls > ul > li,
+  .user-main .details .controls > ul > span,
+  .user-summary-page .details .controls > ul > li,
+  .user-summary-page .details .controls > ul > span {
     display: flex !important;
     flex: 1 1 0 !important;
     order: 0 !important;
@@ -671,23 +697,50 @@ table.category-list th,
     margin: 0 !important;
   }
 
-  .user-main .details .controls ul .btn,
-  .user-main .details .controls ul a.btn,
-  .user-main .details .controls ul .select-kit,
-  .user-main .details .controls ul .select-kit .select-kit-header,
-  .user-summary-page .details .controls ul .btn,
-  .user-summary-page .details .controls ul a.btn {
+  .user-main .details .controls > ul > li > .btn,
+  .user-main .details .controls > ul > li > a.btn,
+  .user-main .details .controls > ul > li > .select-kit,
+  .user-main .details .controls > ul > li > .select-kit > .select-kit-header,
+  .user-summary-page .details .controls > ul > li > .btn,
+  .user-summary-page .details .controls > ul > li > a.btn {
     width: 100% !important;
     min-width: 0 !important;
     justify-content: center !important;
     padding-inline: 8px !important;
   }
 
-  .user-main .details .controls ul .btn .d-button-label,
-  .user-main .details .controls ul a.btn .d-button-label {
+  .user-main .details .controls > ul > li > .btn .d-button-label,
+  .user-main .details .controls > ul > li > a.btn .d-button-label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  // Keep notification dropdown vertical; do not inherit the controls row flex.
+  .user-main .details .controls .user-notifications-dropdown .select-kit-collection,
+  .user-main .details .controls .select-kit-collection,
+  .user-summary-page .details .controls .select-kit-collection {
+    display: block !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-body,
+  .user-main .details .controls .select-kit.is-expanded .select-kit-body {
+    width: min(320px, calc(100vw - 24px)) !important;
+    min-width: min(280px, calc(100vw - 24px)) !important;
+    max-width: calc(100vw - 24px) !important;
+    overflow: auto !important;
+  }
+
+  .user-main .details .controls .select-kit-collection > .select-kit-row,
+  .user-main .details .controls .user-notifications-dropdown .select-kit-row {
+    display: flex !important;
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 56px !important;
+    align-items: flex-start !important;
   }
 
   .user-main > .about .secondary dl {
@@ -1196,5 +1249,26 @@ body.archetype-regular .suggested-topics .topic-list {
       padding-left: 0 !important;
     }
   }
+}
+
+// Force AI Summarize to the right edge of the topic-map row.
+body:not(.archetype-private_message) .topic-map,
+.topic-map.--bottom,
+.topic-map.--op {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.topic-map__additional-contents.toggle-summary,
+.topic-map .toggle-summary {
+  margin-left: auto !important;
+  margin-inline-start: auto !important;
+  margin-right: 0 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: auto !important;
+  flex: 0 0 auto !important;
 }
 

@@ -17,7 +17,7 @@
 ) {
   box-sizing: border-box;
   max-width: calc(100vw - 24px);
-  overflow: hidden;
+  overflow: auto;
   color: var(--mf-ink);
   background: var(--mf-surface-elevated) !important;
   border: 0 !important;

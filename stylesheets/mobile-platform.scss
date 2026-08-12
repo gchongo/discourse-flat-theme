@@ -68,9 +68,9 @@ html.mobile-view {
   }
 
   // Chat plugin sets flex-direction: column on profile controls.
-  // Keep 私信 / 聊天 / 关注 on one row on mobile.
-  .user-main .details .controls ul,
-  .user-summary-page .details .controls ul {
+  // Keep 私信 / 聊天 / 关注 on one row — only the top-level list.
+  .user-main .details .controls > ul,
+  .user-summary-page .details .controls > ul {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
@@ -79,10 +79,10 @@ html.mobile-view {
     width: 100% !important;
   }
 
-  .user-main .details .controls ul > li,
-  .user-main .details .controls ul > span,
-  .user-summary-page .details .controls ul > li,
-  .user-summary-page .details .controls ul > span {
+  .user-main .details .controls > ul > li,
+  .user-main .details .controls > ul > span,
+  .user-summary-page .details .controls > ul > li,
+  .user-summary-page .details .controls > ul > span {
     display: flex !important;
     flex: 1 1 0 !important;
     order: 0 !important;
@@ -91,8 +91,8 @@ html.mobile-view {
     margin: 0 !important;
   }
 
-  .user-main .details .controls ul > li:empty,
-  .user-summary-page .details .controls ul > li:empty {
+  .user-main .details .controls > ul > li:empty,
+  .user-summary-page .details .controls > ul > li:empty {
     display: none !important;
     flex: 0 0 0 !important;
     width: 0 !important;
@@ -102,16 +102,35 @@ html.mobile-view {
     overflow: hidden;
   }
 
-  .user-main .details .controls ul .btn,
-  .user-main .details .controls ul a.btn,
-  .user-main .details .controls ul .select-kit,
-  .user-main .details .controls ul .select-kit .select-kit-header,
-  .user-summary-page .details .controls ul .btn,
-  .user-summary-page .details .controls ul a.btn {
+  .user-main .details .controls > ul > li > .btn,
+  .user-main .details .controls > ul > li > a.btn,
+  .user-main .details .controls > ul > li > .select-kit,
+  .user-main .details .controls > ul > li > .select-kit > .select-kit-header,
+  .user-summary-page .details .controls > ul > li > .btn,
+  .user-summary-page .details .controls > ul > li > a.btn {
     width: 100% !important;
     min-width: 0 !important;
     justify-content: center !important;
     padding-inline: 8px !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-collection,
+  .user-main .details .controls .select-kit-collection {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .user-main .details .controls .user-notifications-dropdown .select-kit-body {
+    width: min(320px, calc(100vw - 24px)) !important;
+    min-width: min(280px, calc(100vw - 24px)) !important;
+    overflow: auto !important;
+  }
+
+  .user-main .details .controls .select-kit-collection > .select-kit-row {
+    display: flex !important;
+    flex: none !important;
+    width: 100% !important;
+    min-height: 56px !important;
   }
 
   .user-main > .about.no-background .user-profile-image,

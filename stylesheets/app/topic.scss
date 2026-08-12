@@ -244,9 +244,21 @@ aside.onebox {
 
   // Keep AI Summarize flush to the right of the topic-map row.
   .topic-map__additional-contents.toggle-summary {
-    margin-inline-start: auto;
-    display: flex;
-    justify-content: flex-end;
+    margin-inline-start: auto !important;
+    margin-left: auto !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+  }
+
+  &:has(.topic-map__additional-contents.toggle-summary) {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .topic-map__stat,
