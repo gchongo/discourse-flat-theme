@@ -46,10 +46,18 @@
     border: none;
     border-radius: var(--mf-radius-sm);
     color: var(--mf-ink-2);
-    padding: 3px 9px;
+    padding: 4px 8px;
     font-size: var(--mf-text-xs);
     font-weight: var(--mf-weight-medium);
     box-shadow: none;
+    max-width: none;
+    overflow: visible;
+    text-overflow: unset;
+
+    .badge-display-name {
+      overflow: visible;
+      text-overflow: unset;
+    }
 
     .badge-icon {
       color: var(--mf-ink-faint);
@@ -62,9 +70,12 @@
   }
 
   .badge-section {
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 6px;
     line-height: normal;
+    overflow: visible;
   }
 
   .more-user-badges,

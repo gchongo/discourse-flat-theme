@@ -131,13 +131,13 @@
 }
 
 .select-kit .select-kit-body {
-  padding: 5px;
+  padding: 4px;
 }
 
 .select-kit .select-kit-row {
   border: 0 !important;
-  min-height: 38px;
-  padding: 8px 10px;
+  min-height: 36px;
+  padding: 7px 8px;
 }
 
 .user-menu.revamped.menu-panel.drop-down {
@@ -1012,27 +1012,29 @@ body.archetype-regular .suggested-topics .topic-list {
   .user-card-badges {
     display: flex;
     align-items: center;
-    flex-wrap: nowrap;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 6px;
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .badge-section .user-badge,
   .user-card-badges .user-badge {
     min-width: 0;
-    max-width: 142px;
-    padding: 3px 7px;
+    max-width: none;
+    padding: 4px 8px;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow: visible;
+    text-overflow: unset;
   }
 
   .badge-section .user-badge .badge-display-name,
   .user-card-badges .user-badge .badge-display-name {
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: none;
+    overflow: visible;
+    text-overflow: unset;
+    white-space: nowrap;
   }
 
   .more-user-badges,
@@ -1041,6 +1043,28 @@ body.archetype-regular .suggested-topics .topic-list {
     flex: 0 0 auto;
     margin: 0;
     white-space: nowrap;
+  }
+}
+
+@include viewport.until(md) {
+  #user-card:not(:empty),
+  .user-card:not(:empty) {
+    .badge-section,
+    .user-card-badges {
+      flex-wrap: wrap;
+      row-gap: 6px;
+    }
+
+    .badge-section .user-badge,
+    .user-card-badges .user-badge {
+      max-width: calc(100% - 4px);
+    }
+
+    .badge-section .user-badge .badge-display-name,
+    .user-card-badges .user-badge .badge-display-name {
+      overflow: visible;
+      text-overflow: unset;
+    }
   }
 }
 

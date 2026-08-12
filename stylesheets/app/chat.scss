@@ -10,7 +10,13 @@
 
 .channels-list,
 .channels-list-container {
-  background: var(--mf-surface);
+  background: var(--mf-surface-elevated);
+  border-right: 1px solid var(--mf-hairline);
+}
+
+.c-navbar-container {
+  border-bottom: 1px solid var(--mf-hairline);
+  background: var(--mf-surface-elevated);
 }
 
 .chat-channel-divider {
@@ -69,8 +75,8 @@
 }
 
 .c-navbar-container {
-  border-bottom: 0;
-  background: var(--mf-surface);
+  border-bottom: 1px solid var(--mf-hairline);
+  background: var(--mf-surface-elevated);
 }
 
 .c-navbar__star-channel-button {

@@ -190,7 +190,8 @@
 // Each rail module is its own card widget.
 .sidebar-discovery {
   .block-rail-panel,
-  .block-rail-online {
+  .block-rail-online,
+  .block-rail-cta {
     padding: var(--mf-space-4);
     background: var(--mf-surface);
     border-radius: var(--mf-radius-xl);

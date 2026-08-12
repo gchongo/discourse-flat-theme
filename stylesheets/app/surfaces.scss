@@ -1,6 +1,6 @@
 :root {
-  --mf-floating-padding: 6px;
-  --mf-floating-row-height: 40px;
+  --mf-floating-padding: 4px;
+  --mf-floating-row-height: 36px;
   --mf-floating-width: min(420px, calc(100vw - 24px));
 }
 
@@ -41,10 +41,10 @@
 
 .dropdown-menu {
   box-sizing: border-box;
-  min-width: 220px;
-  gap: 2px;
+  min-width: 200px;
+  gap: 1px;
   margin: 0;
-  padding: var(--mf-floating-padding);
+  padding: 4px;
   list-style: none;
 
   &__item {
@@ -59,7 +59,7 @@
       min-width: 0;
       min-height: var(--mf-floating-row-height);
       margin: 0;
-      padding: 9px 10px;
+      padding: 7px 8px;
       color: var(--mf-ink-2);
       font-size: var(--mf-text-md);
       font-weight: var(--mf-weight-medium);
@@ -186,7 +186,8 @@
 
 .select-kit.is-expanded {
   .select-kit-body {
-    padding: var(--mf-floating-padding);
+    padding: 4px !important;
+    min-height: 0 !important;
   }
 
   .select-kit-collection {
@@ -200,8 +201,8 @@
 
   .select-kit-row {
     min-height: var(--mf-floating-row-height);
-    margin: 0 0 2px;
-    padding: 9px 10px;
+    margin: 0 0 1px;
+    padding: 7px 8px;
     color: var(--mf-ink-2);
     background: transparent;
     border: 0;
@@ -241,9 +242,9 @@
 
   .select-kit-filter {
     display: flex;
-    min-height: 38px;
-    margin: 0 0 5px;
-    padding: 0 10px;
+    min-height: 34px;
+    margin: 0 0 4px;
+    padding: 0 8px;
     color: var(--mf-ink);
     background: var(--mf-surface-2);
     border: 0;
@@ -252,11 +253,11 @@
 
     &:focus-within {
       background: var(--mf-surface);
-      box-shadow: 0 0 0 3px var(--mf-accent-tint);
+      box-shadow: 0 0 0 2px var(--mf-accent-tint);
     }
 
     .filter-input {
-      min-height: 36px;
+      min-height: 32px;
       padding: 0;
       background: transparent;
       border: 0;
