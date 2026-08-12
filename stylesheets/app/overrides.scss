@@ -26,6 +26,11 @@
 
 .sidebar-footer-wrapper {
   background: var(--mf-app-bg) !important;
+
+  .sidebar-footer-container {
+    padding-top: var(--mf-space-1) !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  }
 }
 
 .sidebar-section-link-wrapper .sidebar-section-link.active::before,

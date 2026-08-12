@@ -132,6 +132,11 @@
 .sidebar-footer-wrapper {
   border-top: none;
 
+  .sidebar-footer-container {
+    padding-top: var(--mf-space-1);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
   .sidebar-footer-actions .btn {
     border-radius: var(--mf-radius-sm);
   }

@@ -366,3 +366,12 @@ body.navigation-filter .list-controls .navigation-container {
   background: transparent;
   border: 0;
 }
+
+// Create-topic lives in the discovery rail CTA on large screens.
+@include viewport.from(lg) {
+  body:has(.sidebar-discovery .block-rail-cta) {
+    .list-controls .navigation-controls .topic-create-button__combo {
+      display: none;
+    }
+  }
+}

@@ -242,6 +242,13 @@ aside.onebox {
     box-shadow: none !important;
   }
 
+  // Keep AI Summarize flush to the right of the topic-map row.
+  .topic-map__additional-contents.toggle-summary {
+    margin-inline-start: auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .topic-map__stat,
   .map .number {
     color: var(--mf-ink);
@@ -761,6 +768,8 @@ body.archetype-regular {
   }
 
   .topic-map.--bottom {
+    width: 100%;
+    max-width: 100%;
     min-height: 42px;
     margin: 2px 0 0;
     padding: 6px 12px;

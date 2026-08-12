@@ -10,6 +10,9 @@ en:
     welcome: "欢迎，%{name}！"
     advanced_search: "高级搜索"
   rail:
+    ask_title: "有问题想问？"
+    ask_body: "发起一个话题，社区会来帮忙。"
+    create_topic: "创建话题"
     events_title: "最新活动"
     contributors_title: "全部时间排名"
     contributors_you: "您 #%{position}"

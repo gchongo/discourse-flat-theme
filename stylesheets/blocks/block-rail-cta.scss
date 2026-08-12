@@ -1,26 +1,34 @@
 .block-rail-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   padding: var(--mf-space-4);
   background: var(--mf-accent-tint-soft);
-  border-radius: var(--mf-radius-lg);
+  border-radius: var(--mf-radius-xl);
 
   &__title {
     margin: 0 0 4px;
     color: var(--mf-ink);
-    font-size: var(--mf-text-base);
+    font-size: var(--mf-text-md);
     font-weight: var(--mf-weight-semibold);
     letter-spacing: var(--mf-tracking-snug);
+    line-height: 1.3;
   }
 
   &__body {
-    margin: 0 0 var(--mf-space-3);
+    margin: 0 0 var(--mf-space-4);
     color: var(--mf-ink-3);
     font-size: var(--mf-text-sm);
+    line-height: 1.45;
   }
 
+  &__button,
   .btn-primary {
     width: 100%;
-    min-height: 38px;
+    min-height: 40px;
     justify-content: center;
     gap: 6px;
+    font-weight: var(--mf-weight-semibold);
+    border-radius: var(--mf-radius-md) !important;
   }
 }
