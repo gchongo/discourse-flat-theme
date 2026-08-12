@@ -814,6 +814,35 @@ body.archetype-regular {
   }
 }
 
+@media screen and (width >= 925px) {
+  // Keep suggested topics on the same fluid posts column as `.container.posts > .row`.
+  html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    column-gap: 1em;
+    align-items: start;
+  }
+
+  html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts) > .container.posts {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid !important;
+    column-gap: inherit;
+  }
+
+  html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts) > .container.posts > .topic-navigation {
+    margin-left: 0;
+  }
+
+  html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts) > :not(.container.posts) {
+    grid-column: 1;
+    min-width: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+}
+
 .desktop-view body.archetype-regular {
   .more-topics__container,
   #suggested-topics,

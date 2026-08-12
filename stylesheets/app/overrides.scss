@@ -910,8 +910,7 @@ body.archetype-regular .post-stream > .topic-post:last-child {
   box-shadow: none !important;
 }
 
-// Core uses max-width: calc(var(--d-max-width) * 0.87), a fixed cap.
-// Fill the same fluid content column as the rest of the topic page.
+// Fill the posts column (same fluid track as `.container.posts > .row`).
 html.desktop-view .more-topics__container,
 html.desktop-view #suggested-topics,
 html.desktop-view .suggested-topics-wrapper,
