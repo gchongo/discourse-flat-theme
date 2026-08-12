@@ -910,8 +910,8 @@ body.archetype-regular .post-stream > .topic-post:last-child {
   box-shadow: none !important;
 }
 
-// Homepage `.topic-list-body` lives in the 1fr column beside the discovery
-// rail. Suggested topics must use that same leftover width, not the full outlet.
+// Core uses max-width: calc(var(--d-max-width) * 0.87), a fixed cap.
+// Fill the same fluid content column as the rest of the topic page.
 html.desktop-view .more-topics__container,
 html.desktop-view #suggested-topics,
 html.desktop-view .suggested-topics-wrapper,
@@ -919,9 +919,7 @@ body.archetype-regular .more-topics__container,
 body.archetype-regular #suggested-topics,
 body.archetype-regular .suggested-topics-wrapper {
   width: 100% !important;
-  max-width: calc(
-    100% - var(--mf-discovery-rail-width) - var(--mf-discovery-gap)
-  ) !important;
+  max-width: 100% !important;
   box-sizing: border-box !important;
 }
 

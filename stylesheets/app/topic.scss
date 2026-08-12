@@ -819,9 +819,7 @@ body.archetype-regular {
   #suggested-topics,
   .suggested-topics-wrapper {
     width: 100%;
-    max-width: calc(
-      100% - var(--mf-discovery-rail-width) - var(--mf-discovery-gap)
-    );
+    max-width: 100%;
     box-sizing: border-box;
   }
 
