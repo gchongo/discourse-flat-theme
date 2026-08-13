@@ -187,9 +187,9 @@
     }
 
     .topic-statuses {
-      display: inline-flex;
+      display: inline-flex !important;
       align-items: center;
-      float: none;
+      float: none !important;
       flex: 0 0 auto;
     }
 
@@ -242,6 +242,8 @@
     }
 
     a.title {
+      flex: 1 1 0%;
+      min-width: 0;
       font-size: var(--d-topic-list-title-font-size);
       font-weight: var(--mf-weight-semibold);
       letter-spacing: var(--mf-tracking-snug);
@@ -723,14 +725,51 @@ html.desktop-view .suggested-topics-wrapper,
     grid-column: 1;
     grid-row: 1;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 4px 6px;
     width: 100%;
     min-width: 0;
   }
 
+  // Mobile item.gjs: TopicStatus + TopicLink are direct children of .main-link
+  // (no .link-top-line). Keep statuses inline before the title on the same row.
+  .main-link > .topic-statuses {
+    float: none !important;
+    display: inline-flex !important;
+    flex: 0 0 auto;
+    align-items: center;
+    align-self: flex-start;
+    margin: 0;
+    padding-top: 0.25em;
+  }
+
+  .main-link > a.title,
+  .main-link > .raw-topic-link {
+    flex: 1 1 0%;
+    min-width: 0;
+  }
+
+  .main-link > .topic-post-badges,
+  .main-link > .unread-indicator,
+  .main-link > .badge-notification {
+    flex: 0 0 auto;
+    align-self: center;
+  }
+
+  .main-link > .event-date-container,
+  .main-link > .header-topic-title-suffix-outlet.event-date-container {
+    display: flex;
+    flex: 1 0 100%;
+    align-items: center;
+    width: 100%;
+    margin-top: 2px;
+  }
+
   .main-link .link-bottom-line {
     order: 1;
+    flex: 1 0 100%;
     gap: 4px var(--mf-space-2);
     min-height: 0;
     margin: 0;
@@ -743,6 +782,8 @@ html.desktop-view .suggested-topics-wrapper,
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 6px;
+    flex: 1 1 auto;
+    min-width: 0;
     line-height: 1.3;
 
     .topic-statuses {
@@ -755,7 +796,7 @@ html.desktop-view .suggested-topics-wrapper,
     }
 
     a.title {
-      flex: 1 1 auto;
+      flex: 1 1 0%;
       min-width: 0;
     }
 
@@ -778,6 +819,7 @@ html.desktop-view .suggested-topics-wrapper,
 
   .main-link .topic-excerpt {
     order: 3;
+    flex: 1 0 100%;
     display: -webkit-box;
     max-width: none;
     max-height: 0;
@@ -1004,7 +1046,11 @@ html.desktop-view .suggested-topics-wrapper,
   .topic-item-metadata .main-link {
     grid-column: 1 / -1;
     grid-row: 2;
-    display: block;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 4px 6px;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -1012,8 +1058,20 @@ html.desktop-view .suggested-topics-wrapper,
     padding-right: 0 !important;
   }
 
+  .topic-item-metadata .main-link > .topic-statuses {
+    float: none !important;
+    display: inline-flex !important;
+    flex: 0 0 auto;
+    align-items: center;
+    align-self: flex-start;
+    margin: 0;
+    padding-top: 0.2em;
+  }
+
   .topic-item-metadata .main-link a.title {
-    display: block;
+    display: inline !important;
+    flex: 1 1 0%;
+    min-width: 0;
     overflow: visible;
     font-size: var(--mf-text-base);
     font-weight: var(--mf-weight-semibold);
@@ -1021,6 +1079,19 @@ html.desktop-view .suggested-topics-wrapper,
     white-space: normal;
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  .topic-item-metadata .main-link > .event-date-container,
+  .topic-item-metadata .main-link > .header-topic-title-suffix-outlet.event-date-container {
+    display: flex;
+    flex: 1 0 100%;
+    align-items: center;
+    width: 100%;
+    margin-top: 2px;
+  }
+
+  .topic-item-metadata .main-link .topic-excerpt {
+    flex: 1 0 100%;
   }
 
   .topic-excerpt {
