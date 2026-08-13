@@ -482,3 +482,82 @@
     }
   }
 }
+
+// Categories / sidebar section admin menu: beat core flex centering + 220px min-width.
+.select-kit.sidebar-section-header-dropdown.is-expanded .select-kit-body,
+.sidebar-section-header-dropdown.is-expanded .select-kit-body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  box-sizing: border-box !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: min(16rem, calc(100vw - 24px)) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 2px !important;
+  overflow: hidden !important;
+  background: var(--mf-surface-elevated) !important;
+  border-radius: var(--mf-radius-md) !important;
+}
+
+.select-kit.sidebar-section-header-dropdown .select-kit-filter,
+.select-kit.sidebar-section-header-dropdown .select-kit-filter.is-hidden,
+.sidebar-section-header-dropdown .select-kit-filter {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.select-kit.sidebar-section-header-dropdown .select-kit-collection,
+.sidebar-section-header-dropdown .select-kit-collection {
+  display: flex !important;
+  flex-direction: column !important;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.select-kit.sidebar-section-header-dropdown .select-kit-row,
+.sidebar-section-header-dropdown .select-kit-row {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  width: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 5px 8px !important;
+  border-radius: var(--mf-radius-sm);
+
+  .icons {
+    display: none !important;
+  }
+
+  .texts {
+    display: block !important;
+    flex: 0 0 auto !important;
+    gap: 0 !important;
+    line-height: 1.25 !important;
+
+    .name {
+      padding: 0 !important;
+      font-size: var(--mf-text-sm) !important;
+      font-weight: var(--mf-weight-medium) !important;
+      line-height: 1.25 !important;
+      white-space: nowrap !important;
+    }
+
+    .desc {
+      display: none !important;
+    }
+  }
+}

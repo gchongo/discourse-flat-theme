@@ -61,10 +61,15 @@
 
   &.is-expanded .select-kit-body,
   .select-kit-body {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
     box-sizing: border-box;
-    width: max-content;
-    min-width: 10.5rem;
-    max-width: min(16rem, calc(100vw - 24px));
+    width: max-content !important;
+    min-width: 0 !important;
+    max-width: min(16rem, calc(100vw - 24px)) !important;
+    height: auto !important;
     min-height: 0 !important;
     padding: 2px !important;
     overflow: hidden !important;
@@ -73,39 +78,6 @@
     border: 0 !important;
     border-radius: var(--mf-radius-md) !important;
     box-shadow: var(--shadow-dropdown) !important;
-  }
-
-  .select-kit-collection {
-    padding: 0 !important;
-    max-height: none;
-  }
-
-  .select-kit-row {
-    min-height: 0 !important;
-    margin: 0;
-    padding: 6px 8px !important;
-    border-radius: var(--mf-radius-sm);
-
-    .icons {
-      display: none;
-    }
-
-    .texts {
-      gap: 0;
-      line-height: 1.25;
-
-      .name {
-        padding: 0;
-        color: inherit;
-        font-size: var(--mf-text-sm);
-        font-weight: var(--mf-weight-medium);
-        line-height: 1.25;
-      }
-
-      .desc {
-        display: none;
-      }
-    }
   }
 }
 
