@@ -229,6 +229,115 @@ body.archetype-regular {
       }
     }
   }
+
+  // DiscoTOC sidebar: match timeline chip typography and spacing.
+  .desktop-view body.archetype-regular .topic-navigation .d-toc-main {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 8px;
+    background: color-mix(
+      in srgb,
+      var(--mf-panel, var(--secondary)) 96%,
+      var(--mf-accent)
+    );
+    border-radius: var(--mf-radius-xl);
+    box-sizing: border-box;
+
+    #d-toc {
+      max-height: calc(100vh - 4.5em - var(--header-offset));
+      border-left: 0;
+      overflow: auto;
+      scrollbar-color: var(--mf-surface-3) transparent;
+      scrollbar-width: thin;
+
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
+      li.d-toc-item {
+        margin: 0;
+        padding-left: 10px;
+        line-height: 1.35;
+
+        > a {
+          padding: 2px 0;
+          color: var(--mf-ink-3);
+          font-size: var(--mf-text-sm);
+          font-weight: var(--mf-weight-medium);
+          line-height: 1.35;
+
+          &:hover {
+            color: var(--mf-ink);
+          }
+        }
+
+        &.direct-active > a {
+          color: var(--mf-ink);
+          font-weight: var(--mf-weight-semibold);
+
+          &::before {
+            width: 2px;
+            margin-top: 0;
+            background-color: var(--mf-accent);
+          }
+        }
+      }
+
+      > ul > li > ul {
+        font-size: var(--mf-text-xs);
+
+        > li:first-child {
+          padding-top: 2px;
+        }
+
+        > li {
+          padding-bottom: 0;
+        }
+
+        li.d-toc-item > a {
+          font-size: var(--mf-text-xs);
+          font-weight: var(--mf-weight-normal);
+          color: var(--mf-ink-faint);
+        }
+
+        li.direct-active > a {
+          color: var(--mf-ink-2);
+          font-weight: var(--mf-weight-medium);
+        }
+      }
+    }
+
+    a.scroll-to-bottom,
+    .d-toc-footer-icons {
+      margin-top: 8px;
+      font-size: var(--mf-text-xs);
+    }
+
+    a.scroll-to-bottom,
+    .d-toc-footer-icons .btn,
+    .d-toc-footer-icons button {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 28px;
+      padding: 5px 9px;
+      color: var(--mf-ink-2) !important;
+      font-size: var(--mf-text-xs);
+      font-weight: var(--mf-weight-medium);
+      line-height: 1.25;
+      background: var(--mf-surface) !important;
+      border: 1px solid var(--mf-hairline) !important;
+      border-radius: var(--mf-radius-md);
+      box-shadow: none !important;
+
+      .d-icon {
+        color: currentcolor;
+        font-size: 0.85em;
+      }
+    }
+  }
 }
 
 @include viewport.until(md) {
