@@ -632,9 +632,9 @@ html.desktop-view .suggested-topics-wrapper,
 .desktop-view .more-topics__list .topic-list-item,
 .desktop-view .suggested-topics .topic-list-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) max-content max-content max-content;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
   grid-template-rows: auto;
-  gap: 2px var(--mf-space-3);
+  gap: 2px var(--mf-space-2);
   align-items: center;
   min-height: 0;
   margin: 0;
@@ -685,9 +685,11 @@ html.desktop-view .suggested-topics-wrapper,
     align-items: center;
     align-self: center;
     justify-self: end;
-    width: auto;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: max-content;
     height: auto;
-    margin: 0 var(--mf-space-2) 0 var(--mf-space-3);
+    margin: 0;
 
     a,
     a:first-child,
@@ -852,16 +854,20 @@ html.desktop-view .suggested-topics-wrapper,
     opacity: 1;
   }
 
-  .num.posts-map {
+  .num.posts-map,
+  td.posts,
+  .topic-list-data.posts {
     grid-column: 3;
     grid-row: 1;
     display: inline-flex !important;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
     justify-self: end;
     align-self: center;
-    min-width: 0;
-    padding: 2px 9px !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: max-content;
+    padding: 2px 7px !important;
     color: var(--mf-ink-3);
     font-size: var(--mf-text-xs);
     font-variant-numeric: tabular-nums;
@@ -888,13 +894,17 @@ html.desktop-view .suggested-topics-wrapper,
     }
   }
 
-  .activity {
+  .activity,
+  td.activity,
+  .topic-list-data.activity {
     grid-column: 4;
     grid-row: 1;
     justify-self: end;
     align-self: center;
     justify-content: flex-end;
-    min-width: 52px;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: max-content;
     padding: 0 !important;
     color: var(--mf-ink-faint);
     font-size: var(--mf-text-xs);
