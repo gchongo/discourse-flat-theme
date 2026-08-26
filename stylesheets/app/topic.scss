@@ -855,6 +855,10 @@ body.archetype-regular {
     margin-left: 0;
   }
 
+  html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts:has(.d-toc-main)) {
+    grid-template-columns: minmax(0, 1fr) minmax(6em, 13em);
+  }
+
   html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts) > :not(.container.posts) {
     grid-column: 1;
     min-width: 0;

@@ -232,9 +232,10 @@ body.archetype-regular {
 
   // DiscoTOC sidebar: match timeline chip typography and spacing.
   .desktop-view body.archetype-regular .topic-navigation .d-toc-main {
-    width: 100%;
-    max-width: none;
-    min-width: 0;
+    width: auto;
+    max-width: 13em;
+    min-width: 6em;
+    overflow-wrap: break-word;
     padding: 8px;
     background: color-mix(
       in srgb,
@@ -262,11 +263,15 @@ body.archetype-regular {
         line-height: 1.5;
 
         > a {
+          display: block;
           padding: 4px 0;
           color: var(--mf-ink-3);
           font-size: var(--mf-text-sm);
           font-weight: var(--mf-weight-medium);
           line-height: 1.5;
+          white-space: normal;
+          overflow-wrap: break-word;
+          word-break: break-word;
 
           &:hover {
             color: var(--mf-ink);
@@ -301,11 +306,15 @@ body.archetype-regular {
         }
 
         li.d-toc-item > a {
+          display: block;
           padding: 3px 0;
           font-size: var(--mf-text-xs);
           font-weight: var(--mf-weight-normal);
           line-height: 1.45;
           color: var(--mf-ink-faint);
+          white-space: normal;
+          overflow-wrap: break-word;
+          word-break: break-word;
         }
 
         li.direct-active > a {
