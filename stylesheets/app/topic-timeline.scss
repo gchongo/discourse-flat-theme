@@ -259,14 +259,14 @@ body.archetype-regular {
       li.d-toc-item {
         margin: 0;
         padding-left: 10px;
-        line-height: 1.35;
+        line-height: 1.5;
 
         > a {
-          padding: 2px 0;
+          padding: 4px 0;
           color: var(--mf-ink-3);
           font-size: var(--mf-text-sm);
           font-weight: var(--mf-weight-medium);
-          line-height: 1.35;
+          line-height: 1.5;
 
           &:hover {
             color: var(--mf-ink);
@@ -289,16 +289,22 @@ body.archetype-regular {
         font-size: var(--mf-text-xs);
 
         > li:first-child {
-          padding-top: 2px;
+          padding-top: 4px;
         }
 
         > li {
-          padding-bottom: 0;
+          padding-bottom: 2px;
+        }
+
+        li.d-toc-item {
+          line-height: 1.45;
         }
 
         li.d-toc-item > a {
+          padding: 3px 0;
           font-size: var(--mf-text-xs);
           font-weight: var(--mf-weight-normal);
+          line-height: 1.45;
           color: var(--mf-ink-faint);
         }
 
