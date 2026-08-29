@@ -1,7 +1,9 @@
 import Component from "@glimmer/component";
 import { concat } from "@ember/helper";
 import { service } from "@ember/service";
+import { themePrefix } from "virtual:theme";
 import { block } from "discourse/blocks";
+import { or } from "discourse/truth-helpers";
 import UserBadge from "discourse/components/user-badge";
 import { bind } from "discourse/lib/decorators";
 import { prioritizeNameInUx } from "discourse/lib/settings";
@@ -54,9 +56,23 @@ export default class BlockRailProfile extends Component {
       secondaryName: nameFirst ? user.username : user.name,
       lastPostedAt: this.#formatDate(user.last_posted_at),
       createdAt: this.#formatDate(user.created_at),
+      // Both come from plugins (discourse-follow, discourse-gamification),
+      // so treat them as optional rather than assuming they are serialized.
+      followers: this.#formatCount(user.total_followers),
+      points: this.#formatCount(user.gamification_score),
       badges,
       moreBadgesCount: Math.max((user.badge_count ?? 0) - badges.length, 0),
     };
+  }
+
+  #formatCount(value) {
+    const count = Number(value);
+
+    if (!Number.isFinite(count)) {
+      return null;
+    }
+
+    return count.toLocaleString();
   }
 
   // Locale-independent year-month-day, so the rail never falls back to the
@@ -130,6 +146,32 @@ export default class BlockRailProfile extends Component {
                   </div>
                 {{/if}}
               </div>
+
+              {{#if (or model.followers model.points)}}
+                <div class="block-rail-profile__stats">
+                  {{#if model.followers}}
+                    <a
+                      class="block-rail-profile__stat"
+                      href={{concat "/u/" model.user.username "/followers"}}
+                    >
+                      <span class="block-rail-profile__stat-value"
+                      >{{model.followers}}</span>
+                      <span class="block-rail-profile__stat-label">{{i18n
+                          (themePrefix "rail.followers")
+                        }}</span>
+                    </a>
+                  {{/if}}
+                  {{#if model.points}}
+                    <span class="block-rail-profile__stat">
+                      <span class="block-rail-profile__stat-value"
+                      >{{model.points}}</span>
+                      <span class="block-rail-profile__stat-label">{{i18n
+                          (themePrefix "rail.points")
+                        }}</span>
+                    </span>
+                  {{/if}}
+                </div>
+              {{/if}}
 
               {{#if model.badges.length}}
                 <div class="block-rail-profile__badges">

@@ -59,6 +59,43 @@
     }
   }
 
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--mf-space-2);
+    margin-top: var(--mf-space-3);
+  }
+
+  &__stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 5px;
+    padding: 5px 10px;
+    background: var(--mf-surface-2);
+    border-radius: var(--mf-radius-md);
+  }
+
+  a.block-rail-profile__stat:hover {
+    background: var(--mf-panel-hover);
+
+    .block-rail-profile__stat-value {
+      color: var(--mf-accent);
+    }
+  }
+
+  &__stat-value {
+    color: var(--mf-ink);
+    font-size: var(--mf-text-md);
+    font-weight: var(--mf-weight-bold);
+    letter-spacing: var(--mf-tracking-snug);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__stat-label {
+    color: var(--mf-ink-faint);
+    font-size: var(--mf-text-xs);
+  }
+
   // Keep core's badge-type colouring; only reshape to match theme pills.
   &__badges {
     display: flex;
@@ -93,13 +130,23 @@
     }
   }
 
+  // Sits in the badge row, so match the badge pill shape rather than
+  // reading as a stray link.
   &__more-badges {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
     color: var(--mf-accent);
     font-size: var(--mf-text-xs);
     font-weight: var(--mf-weight-medium);
+    line-height: 1.4;
+    white-space: nowrap;
+    background: var(--mf-accent-tint);
+    border-radius: var(--mf-radius-pill);
 
     &:hover {
       color: var(--mf-accent-hover);
+      background: var(--mf-accent-line);
     }
   }
 }
