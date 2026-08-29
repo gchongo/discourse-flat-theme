@@ -11,6 +11,7 @@ import User from "discourse/models/user";
 import DAsyncContent from "discourse/ui-kit/d-async-content";
 import dBoundAvatarTemplate from "discourse/ui-kit/helpers/d-bound-avatar-template";
 import dFormatDuration from "discourse/ui-kit/helpers/d-format-duration";
+import dIcon from "discourse/ui-kit/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 
 @block("theme:flat-theme:rail-profile", {
@@ -54,6 +55,7 @@ export default class BlockRailProfile extends Component {
       user,
       primaryName: nameFirst ? user.name : user.username,
       secondaryName: nameFirst ? user.username : user.name,
+      trustLevelName: this.#trustLevelName(user.trust_level),
       lastPostedAt: this.#formatDate(user.last_posted_at),
       createdAt: this.#formatDate(user.created_at),
       // Both come from plugins (discourse-follow, discourse-gamification),
@@ -63,6 +65,16 @@ export default class BlockRailProfile extends Component {
       badges,
       moreBadgesCount: Math.max((user.badge_count ?? 0) - badges.length, 0),
     };
+  }
+
+  #trustLevelName(level) {
+    const id = Number(level);
+
+    if (!Number.isFinite(id) || id < 0 || id > 4) {
+      return null;
+    }
+
+    return i18n(themePrefix(`rail.trust_level_${id}`));
   }
 
   #formatCount(value) {
@@ -126,22 +138,35 @@ export default class BlockRailProfile extends Component {
                 </div>
               </div>
 
+              {{#if model.trustLevelName}}
+                <div class="block-rail-profile__level">
+                  {{dIcon "award"}}
+                  <span>{{model.trustLevelName}}</span>
+                </div>
+              {{/if}}
+
               <div class="block-rail-profile__metadata">
                 {{#if model.lastPostedAt}}
                   <div>
-                    <span class="desc">{{i18n "last_post"}}</span>
+                    <span class="desc">{{i18n
+                        (themePrefix "rail.last_post")
+                      }}</span>
                     {{model.lastPostedAt}}
                   </div>
                 {{/if}}
                 {{#if model.createdAt}}
                   <div>
-                    <span class="desc">{{i18n "joined"}}</span>
+                    <span class="desc">{{i18n
+                        (themePrefix "rail.joined")
+                      }}</span>
                     {{model.createdAt}}
                   </div>
                 {{/if}}
                 {{#if model.user.time_read}}
                   <div>
-                    <span class="desc">{{i18n "time_read"}}</span>
+                    <span class="desc">{{i18n
+                        (themePrefix "rail.time_read")
+                      }}</span>
                     {{dFormatDuration model.user.time_read}}
                   </div>
                 {{/if}}
@@ -187,7 +212,10 @@ export default class BlockRailProfile extends Component {
                       class="block-rail-profile__more-badges"
                       href={{concat "/u/" model.user.username "/badges"}}
                     >
-                      {{i18n "badges.more_badges" count=model.moreBadgesCount}}
+                      {{i18n
+                        (themePrefix "rail.more_badges")
+                        count=model.moreBadgesCount
+                      }}
                     </a>
                   {{/if}}
                 </div>

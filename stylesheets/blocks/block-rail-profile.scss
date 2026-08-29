@@ -45,6 +45,25 @@
     white-space: nowrap;
   }
 
+  &__level {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: var(--mf-space-3);
+    padding: 3px 9px;
+    color: var(--mf-accent);
+    font-size: var(--mf-text-xs);
+    font-weight: var(--mf-weight-medium);
+    line-height: 1.4;
+    background: var(--mf-accent-tint);
+    border-radius: var(--mf-radius-pill);
+
+    .d-icon {
+      color: currentcolor;
+      font-size: var(--mf-text-2xs);
+    }
+  }
+
   &__metadata {
     display: flex;
     flex-wrap: wrap;
