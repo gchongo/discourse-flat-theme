@@ -1265,7 +1265,7 @@ body.archetype-regular .suggested-topics .topic-list {
     column-gap: 0 !important;
   }
 
-  .home-logo-wrapper-outlet > :not(.title):not(.title--minimized) {
+  .home-logo-wrapper-outlet > :not(.title, .title--minimized) {
     display: none !important;
     width: 0 !important;
     min-width: 0 !important;
@@ -1319,8 +1319,7 @@ body.archetype-regular .suggested-topics .topic-list {
 // Match their breakpoint exactly and override logo track + padding.
 @media (width < 48rem) {
   .d-header:has(.extra-info-wrapper) {
-    grid-template-columns: max-content max-content repeat(5, 0px) minmax(0, 1fr) repeat(5, max-content) !important;
-    column-gap: 0 !important;
+    grid-template-columns: max-content max-content repeat(5, 0) minmax(0, 1fr) repeat(5, max-content) !important;
     gap: 0 !important;
 
     .home-logo-wrapper-outlet {
@@ -1334,7 +1333,7 @@ body.archetype-regular .suggested-topics .topic-list {
       column-gap: 0 !important;
     }
 
-    .home-logo-wrapper-outlet > :not(.title):not(.title--minimized),
+    .home-logo-wrapper-outlet > :not(.title, .title--minimized),
     .home-logo-wrapper-outlet .custom-header-links {
       display: none !important;
     }

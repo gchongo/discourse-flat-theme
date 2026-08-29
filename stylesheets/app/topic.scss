@@ -838,8 +838,14 @@ body.archetype-regular {
 @media screen and (width >= 925px) {
   // Keep suggested topics on the same fluid posts column as `.container.posts > .row`.
   html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts) {
+    // Cap the posts column at the core reading measure so the post body,
+    // topic map, footer and suggested topics all share one edge.
+    --mf-topic-column: calc(
+      var(--mf-post-avatar-size) + var(--mf-post-column-gap) +
+        var(--topic-body-width, 690px)
+    );
     display: grid;
-    grid-template-columns: minmax(0, 1fr) max-content;
+    grid-template-columns: minmax(0, var(--mf-topic-column)) max-content;
     column-gap: 1em;
     align-items: start;
   }
@@ -856,7 +862,7 @@ body.archetype-regular {
   }
 
   html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts:has(.d-toc-main)) {
-    grid-template-columns: minmax(0, 1fr) minmax(6em, 13em);
+    grid-template-columns: minmax(0, var(--mf-topic-column)) minmax(6em, 13em);
   }
 
   html.desktop-view body.archetype-regular #main-outlet > :has(> .container.posts) > :not(.container.posts) {

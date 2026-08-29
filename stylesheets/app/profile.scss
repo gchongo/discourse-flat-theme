@@ -513,6 +513,7 @@
 
 .user-main > .about {
   margin-bottom: var(--mf-space-4) !important;
+
   // Keep visible so profile select-kit menus (e.g. 常规) are not clipped.
   overflow: visible;
   background: var(--mf-panel);
