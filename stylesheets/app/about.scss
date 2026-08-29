@@ -1,11 +1,6 @@
-body.about-page {
-  .body-page {
-    width: 100%;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-
-  .body-page > .nav-pills {
+.body-page {
+  // Shared by /about, /guidelines, /tos, /privacy — keep one capsule nav.
+  > .nav-pills {
     display: inline-flex;
     align-items: center;
     gap: 3px;
@@ -35,9 +30,17 @@ body.about-page {
 
     > li.active > a,
     > li > a.active {
-      color: var(--mf-ink);
-      background: var(--mf-panel-strong);
+      color: var(--d-nav-color--active) !important;
+      background: var(--d-nav-bg-color--active) !important;
     }
+  }
+}
+
+body.about-page {
+  .body-page {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
   }
 
   .edit-about-page {
