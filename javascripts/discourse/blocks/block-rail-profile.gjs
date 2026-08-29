@@ -51,11 +51,14 @@ export default class BlockRailProfile extends Component {
       .filter(Boolean)
       .slice(0, this.maxBadges);
 
+    const trustLevelName = this.#trustLevelName(user.trust_level);
+
     return {
       user,
       primaryName: nameFirst ? user.name : user.username,
-      secondaryName: nameFirst ? user.username : user.name,
-      trustLevelName: this.#trustLevelName(user.trust_level),
+      secondaryName: this.#secondaryName(user, nameFirst),
+      title: this.#displayTitle(user.title, trustLevelName),
+      trustLevelName,
       lastPostedAt: this.#formatDate(user.last_posted_at),
       createdAt: this.#formatDate(user.created_at),
       // Both come from plugins (discourse-follow, discourse-gamification),
@@ -67,14 +70,64 @@ export default class BlockRailProfile extends Component {
     };
   }
 
-  #trustLevelName(level) {
-    const id = Number(level);
+  #secondaryName(user, nameFirst) {
+    const secondary = nameFirst ? user.username : user.name;
 
-    if (!Number.isFinite(id) || id < 0 || id > 4) {
+    if (!secondary) {
       return null;
     }
 
-    return i18n(themePrefix(`rail.trust_level_${id}`));
+    const primary = nameFirst ? user.name : user.username;
+
+    if (secondary.toLowerCase() === primary?.toLowerCase()) {
+      return null;
+    }
+
+    return secondary;
+  }
+
+  #trustLevelName(level) {
+    const keys = ["newuser", "basic", "member", "regular", "leader"];
+    const key = keys[Number(level)];
+
+    if (!key) {
+      return null;
+    }
+
+    // Core Discourse keys follow the site interface language.
+    return i18n(`trust_levels.names.${key}`);
+  }
+
+  // Skip titles that just repeat the trust level (often "Leader" while the
+  // locale already shows "领导者").
+  #displayTitle(title, trustLevelName) {
+    if (!title) {
+      return null;
+    }
+
+    const normalized = title.trim().toLowerCase();
+    const trustNames = [
+      trustLevelName,
+      "new user",
+      "basic user",
+      "member",
+      "regular",
+      "leader",
+      "新用户",
+      "基本用户",
+      "成员",
+      "活跃用户",
+      "常规用户",
+      "领导者",
+    ]
+      .filter(Boolean)
+      .map((name) => name.trim().toLowerCase());
+
+    if (trustNames.includes(normalized)) {
+      return null;
+    }
+
+    return title;
   }
 
   #formatCount(value) {
@@ -121,52 +174,46 @@ export default class BlockRailProfile extends Component {
                   {{dBoundAvatarTemplate model.user.avatar_template "huge"}}
                 </a>
                 <div class="block-rail-profile__names">
-                  <a
-                    class="block-rail-profile__name"
-                    href={{model.user.path}}
-                  >{{model.primaryName}}</a>
+                  <div class="block-rail-profile__name-row">
+                    <a
+                      class="block-rail-profile__name"
+                      href={{model.user.path}}
+                    >{{model.primaryName}}</a>
+                    {{#if model.trustLevelName}}
+                      <span class="block-rail-profile__level">
+                        {{dIcon "award"}}
+                        <span>{{model.trustLevelName}}</span>
+                      </span>
+                    {{/if}}
+                  </div>
                   {{#if model.secondaryName}}
                     <span
                       class="block-rail-profile__secondary"
                     >{{model.secondaryName}}</span>
                   {{/if}}
-                  {{#if model.user.title}}
-                    <span
-                      class="block-rail-profile__secondary"
-                    >{{model.user.title}}</span>
+                  {{#if model.title}}
+                    <span class="block-rail-profile__secondary"
+                    >{{model.title}}</span>
                   {{/if}}
                 </div>
               </div>
 
-              {{#if model.trustLevelName}}
-                <div class="block-rail-profile__level">
-                  {{dIcon "award"}}
-                  <span>{{model.trustLevelName}}</span>
-                </div>
-              {{/if}}
-
               <div class="block-rail-profile__metadata">
                 {{#if model.lastPostedAt}}
                   <div>
-                    <span class="desc">{{i18n
-                        (themePrefix "rail.last_post")
-                      }}</span>
+                    <span class="desc">{{i18n "last_post"}}</span>
                     {{model.lastPostedAt}}
                   </div>
                 {{/if}}
                 {{#if model.createdAt}}
                   <div>
-                    <span class="desc">{{i18n
-                        (themePrefix "rail.joined")
-                      }}</span>
+                    <span class="desc">{{i18n "joined"}}</span>
                     {{model.createdAt}}
                   </div>
                 {{/if}}
                 {{#if model.user.time_read}}
                   <div>
-                    <span class="desc">{{i18n
-                        (themePrefix "rail.time_read")
-                      }}</span>
+                    <span class="desc">{{i18n "time_read"}}</span>
                     {{dFormatDuration model.user.time_read}}
                   </div>
                 {{/if}}
@@ -212,10 +259,7 @@ export default class BlockRailProfile extends Component {
                       class="block-rail-profile__more-badges"
                       href={{concat "/u/" model.user.username "/badges"}}
                     >
-                      {{i18n
-                        (themePrefix "rail.more_badges")
-                        count=model.moreBadgesCount
-                      }}
+                      {{i18n "badges.more_badges" count=model.moreBadgesCount}}
                     </a>
                   {{/if}}
                 </div>

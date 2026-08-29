@@ -23,7 +23,16 @@
     min-width: 0;
   }
 
+  &__name-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+  }
+
   &__name {
+    min-width: 0;
     color: var(--mf-ink);
     font-size: var(--mf-text-lg);
     font-weight: var(--mf-weight-bold);
@@ -47,14 +56,14 @@
 
   &__level {
     display: inline-flex;
+    flex: 0 0 auto;
     align-items: center;
-    gap: 5px;
-    margin-top: var(--mf-space-3);
-    padding: 3px 9px;
+    gap: 4px;
+    padding: 2px 8px;
     color: var(--mf-accent);
     font-size: var(--mf-text-xs);
     font-weight: var(--mf-weight-medium);
-    line-height: 1.4;
+    line-height: 1.35;
     background: var(--mf-accent-tint);
     border-radius: var(--mf-radius-pill);
 
