@@ -5,6 +5,7 @@ import BlockRailCta from "../blocks/block-rail-cta";
 import BlockRailEvents from "../blocks/block-rail-events";
 import BlockRailHotTopics from "../blocks/block-rail-hot-topics";
 import BlockRailOnline from "../blocks/block-rail-online";
+import BlockRailProfile from "../blocks/block-rail-profile";
 import BlockRailTags from "../blocks/block-rail-tags";
 
 export default apiInitializer((api) => {
@@ -24,6 +25,10 @@ export default apiInitializer((api) => {
         { type: "viewport", min: "lg" },
       ],
       children: [
+        {
+          block: BlockRailProfile,
+          conditions: [{ type: "user", loggedIn: true }],
+        },
         { block: BlockRailCta },
         { block: BlockRailEvents },
         { block: BlockRailHotTopics },

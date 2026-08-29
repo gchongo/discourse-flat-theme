@@ -17,6 +17,7 @@ ru:
     contributors_title: "Рейтинг за всё время"
     contributors_you: "Вы #%{position}"
     hot_topics_title: "Популярные темы"
+    profile_badges: "Награды: %{total}"
     show_all: "Показать все"
     month_suffix: ""
     pulse_title: "Пульс форума"

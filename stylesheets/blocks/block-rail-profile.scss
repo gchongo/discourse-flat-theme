@@ -1,0 +1,105 @@
+.block-rail-profile {
+  &__identity {
+    display: grid;
+    grid-template-columns: 45px minmax(0, 1fr);
+    align-items: center;
+    gap: var(--mf-space-3);
+    padding-bottom: var(--mf-space-3);
+
+    &:hover .block-rail-profile__name {
+      color: var(--mf-accent);
+    }
+  }
+
+  &__avatar {
+    display: block;
+
+    img.avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: var(--mf-radius-pill);
+    }
+  }
+
+  &__names {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  &__name {
+    color: var(--mf-ink);
+    font-size: var(--mf-text-md);
+    font-weight: var(--mf-weight-semibold);
+    letter-spacing: var(--mf-tracking-snug);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__username {
+    color: var(--mf-ink-faint);
+    font-size: var(--mf-text-xs);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &::before {
+      content: "@";
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--mf-space-2);
+  }
+
+  &__level,
+  &__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 22px;
+    padding: 2px 8px;
+    color: var(--mf-ink-2);
+    font-size: var(--mf-text-xs);
+    font-weight: var(--mf-weight-medium);
+    background: var(--mf-surface-2);
+    border-radius: var(--mf-radius-pill);
+  }
+
+  &__level {
+    color: var(--mf-accent);
+    background: var(--mf-accent-tint);
+
+    .d-icon {
+      color: currentcolor;
+      font-size: var(--mf-text-2xs);
+    }
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--mf-space-1);
+    margin-top: var(--mf-space-3);
+
+    .user-card-badge-link {
+      min-width: 0;
+    }
+
+    .badge-category-bg,
+    .user-badge {
+      max-width: 100%;
+      padding: 2px 8px;
+      color: var(--mf-ink-2);
+      font-size: var(--mf-text-xs);
+      background: var(--mf-surface-2);
+      border: 0;
+      border-radius: var(--mf-radius-pill);
+      overflow-wrap: anywhere;
+    }
+  }
+}
