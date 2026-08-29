@@ -17,7 +17,6 @@ en:
     contributors_title: "全部时间排名"
     contributors_you: "您 #%{position}"
     hot_topics_title: "热门主题"
-    profile_badges: "%{total} 枚徽章"
     show_all: "显示全部"
     month_suffix: "月"
     pulse_title: "Forum pulse"

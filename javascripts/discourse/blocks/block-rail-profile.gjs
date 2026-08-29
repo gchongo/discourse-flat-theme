@@ -1,18 +1,19 @@
 import Component from "@glimmer/component";
 import { concat } from "@ember/helper";
 import { service } from "@ember/service";
-import { themePrefix } from "virtual:theme";
 import { block } from "discourse/blocks";
 import UserBadge from "discourse/components/user-badge";
 import { bind } from "discourse/lib/decorators";
+import { prioritizeNameInUx } from "discourse/lib/settings";
 import User from "discourse/models/user";
 import DAsyncContent from "discourse/ui-kit/d-async-content";
 import dBoundAvatarTemplate from "discourse/ui-kit/helpers/d-bound-avatar-template";
-import dIcon from "discourse/ui-kit/helpers/d-icon";
+import dFormatDate from "discourse/ui-kit/helpers/d-format-date";
+import dFormatDuration from "discourse/ui-kit/helpers/d-format-duration";
 import { i18n } from "discourse-i18n";
 
 @block("theme:flat-theme:rail-profile", {
-  description: "Current user summary: avatar, trust level and featured badges",
+  description: "Current user summary styled after the core user card",
   args: {
     maxBadges: { type: "number", integer: true, default: 4 },
   },
@@ -43,14 +44,17 @@ export default class BlockRailProfile extends Component {
       return null;
     }
 
+    const nameFirst = prioritizeNameInUx(user.name);
+    const badges = (user.featured_user_badges || [])
+      .filter(Boolean)
+      .slice(0, this.maxBadges);
+
     return {
       user,
-      displayName: user.name || user.username,
-      trustLevelName: user.trustLevel?.name,
-      badgeCount: user.badge_count ?? 0,
-      badges: (user.featured_user_badges || [])
-        .filter(Boolean)
-        .slice(0, this.maxBadges),
+      primaryName: nameFirst ? user.name : user.username,
+      secondaryName: nameFirst ? user.username : user.name,
+      badges,
+      moreBadgesCount: Math.max((user.badge_count ?? 0) - badges.length, 0),
     };
   }
 
@@ -60,34 +64,48 @@ export default class BlockRailProfile extends Component {
         <:content as |model|>
           {{#if model}}
             <section class="block-rail-panel block-rail-profile">
-              <a
-                class="block-rail-profile__identity"
-                href={{concat "/u/" model.user.username "/summary"}}
-              >
-                <span class="block-rail-profile__avatar">
-                  {{dBoundAvatarTemplate model.user.avatar_template "large"}}
-                </span>
-                <span class="block-rail-profile__names">
-                  <span
+              <div class="block-rail-profile__identity">
+                <a
+                  class="block-rail-profile__avatar"
+                  href={{model.user.path}}
+                  aria-label={{model.user.username}}
+                >
+                  {{dBoundAvatarTemplate model.user.avatar_template "huge"}}
+                </a>
+                <div class="block-rail-profile__names">
+                  <a
                     class="block-rail-profile__name"
-                  >{{model.displayName}}</span>
-                  <span
-                    class="block-rail-profile__username"
-                  >{{model.user.username}}</span>
-                </span>
-              </a>
+                    href={{model.user.path}}
+                  >{{model.primaryName}}</a>
+                  {{#if model.secondaryName}}
+                    <span
+                      class="block-rail-profile__secondary"
+                    >{{model.secondaryName}}</span>
+                  {{/if}}
+                  {{#if model.user.title}}
+                    <span
+                      class="block-rail-profile__secondary"
+                    >{{model.user.title}}</span>
+                  {{/if}}
+                </div>
+              </div>
 
-              <div class="block-rail-profile__meta">
-                {{#if model.trustLevelName}}
-                  <span class="block-rail-profile__level">
-                    {{dIcon "award"}}
-                    <span>{{model.trustLevelName}}</span>
-                  </span>
+              <div class="block-rail-profile__metadata">
+                {{#if model.user.last_posted_at}}
+                  <div>
+                    <span class="desc">{{i18n "last_post"}}</span>
+                    {{dFormatDate model.user.last_posted_at leaveAgo="true"}}
+                  </div>
                 {{/if}}
-                {{#if model.user.title}}
-                  <span
-                    class="block-rail-profile__title"
-                  >{{model.user.title}}</span>
+                <div>
+                  <span class="desc">{{i18n "joined"}}</span>
+                  {{dFormatDate model.user.created_at leaveAgo="true"}}
+                </div>
+                {{#if model.user.time_read}}
+                  <div>
+                    <span class="desc">{{i18n "time_read"}}</span>
+                    {{dFormatDuration model.user.time_read}}
+                  </div>
                 {{/if}}
               </div>
 
@@ -98,22 +116,18 @@ export default class BlockRailProfile extends Component {
                       @badge={{userBadge.badge}}
                       @count={{userBadge.count}}
                       @user={{model.user}}
-                      @showName={{true}}
                     />
                   {{/each}}
+                  {{#if model.moreBadgesCount}}
+                    <a
+                      class="block-rail-profile__more-badges"
+                      href={{concat "/u/" model.user.username "/badges"}}
+                    >
+                      {{i18n "badges.more_badges" count=model.moreBadgesCount}}
+                    </a>
+                  {{/if}}
                 </div>
               {{/if}}
-
-              <a
-                class="block-rail-panel__more"
-                href={{concat "/u/" model.user.username "/badges"}}
-              >
-                <span>{{i18n
-                    (themePrefix "rail.profile_badges")
-                    total=model.badgeCount
-                  }}</span>
-                {{dIcon "arrow-right"}}
-              </a>
             </section>
           {{/if}}
         </:content>

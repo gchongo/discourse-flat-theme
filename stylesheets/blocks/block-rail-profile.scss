@@ -1,22 +1,17 @@
 .block-rail-profile {
   &__identity {
     display: grid;
-    grid-template-columns: 45px minmax(0, 1fr);
+    grid-template-columns: 64px minmax(0, 1fr);
     align-items: center;
     gap: var(--mf-space-3);
-    padding-bottom: var(--mf-space-3);
-
-    &:hover .block-rail-profile__name {
-      color: var(--mf-accent);
-    }
   }
 
   &__avatar {
     display: block;
 
     img.avatar {
-      width: 45px;
-      height: 45px;
+      width: 64px;
+      height: 64px;
       border-radius: var(--mf-radius-pill);
     }
   }
@@ -24,59 +19,43 @@
   &__names {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
     min-width: 0;
   }
 
   &__name {
     color: var(--mf-ink);
-    font-size: var(--mf-text-md);
-    font-weight: var(--mf-weight-semibold);
-    letter-spacing: var(--mf-tracking-snug);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  &__username {
-    color: var(--mf-ink-faint);
-    font-size: var(--mf-text-xs);
+    font-size: var(--mf-text-lg);
+    font-weight: var(--mf-weight-bold);
+    letter-spacing: var(--mf-tracking-tight);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    &::before {
-      content: "@";
+    &:hover {
+      color: var(--mf-accent);
     }
   }
 
-  &__meta {
+  &__secondary {
+    color: var(--mf-ink-3);
+    font-size: var(--mf-text-sm);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__metadata {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--mf-space-2);
-  }
-
-  &__level,
-  &__title {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    min-height: 22px;
-    padding: 2px 8px;
+    gap: 2px var(--mf-space-3);
+    margin-top: var(--mf-space-3);
     color: var(--mf-ink-2);
     font-size: var(--mf-text-xs);
-    font-weight: var(--mf-weight-medium);
-    background: var(--mf-surface-2);
-    border-radius: var(--mf-radius-pill);
-  }
 
-  &__level {
-    color: var(--mf-accent);
-    background: var(--mf-accent-tint);
-
-    .d-icon {
-      color: currentcolor;
-      font-size: var(--mf-text-2xs);
+    .desc {
+      margin-right: 4px;
+      color: var(--mf-ink-faint);
     }
   }
 
@@ -84,8 +63,11 @@
   &__badges {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: var(--mf-space-1);
     margin-top: var(--mf-space-3);
+    padding-top: var(--mf-space-3);
+    border-top: 1px solid var(--mf-hairline);
 
     .user-card-badge-link {
       max-width: 100%;
@@ -108,6 +90,16 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+  }
+
+  &__more-badges {
+    color: var(--mf-accent);
+    font-size: var(--mf-text-xs);
+    font-weight: var(--mf-weight-medium);
+
+    &:hover {
+      color: var(--mf-accent-hover);
     }
   }
 }
