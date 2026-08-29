@@ -9,7 +9,6 @@ import User from "discourse/models/user";
 import DAsyncContent from "discourse/ui-kit/d-async-content";
 import dBoundAvatarTemplate from "discourse/ui-kit/helpers/d-bound-avatar-template";
 import dIcon from "discourse/ui-kit/helpers/d-icon";
-import dNumber from "discourse/ui-kit/helpers/d-number";
 import { i18n } from "discourse-i18n";
 
 @block("theme:flat-theme:rail-profile", {
@@ -111,7 +110,7 @@ export default class BlockRailProfile extends Component {
               >
                 <span>{{i18n
                     (themePrefix "rail.profile_badges")
-                    total=(dNumber model.badgeCount)
+                    total=model.badgeCount
                   }}</span>
                 {{dIcon "arrow-right"}}
               </a>

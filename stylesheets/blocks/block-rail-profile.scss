@@ -80,6 +80,7 @@
     }
   }
 
+  // Keep core's badge-type colouring; only reshape to match theme pills.
   &__badges {
     display: flex;
     flex-wrap: wrap;
@@ -87,19 +88,26 @@
     margin-top: var(--mf-space-3);
 
     .user-card-badge-link {
+      max-width: 100%;
       min-width: 0;
     }
 
-    .badge-category-bg,
     .user-badge {
       max-width: 100%;
-      padding: 2px 8px;
+      padding: 3px 9px;
       color: var(--mf-ink-2);
       font-size: var(--mf-text-xs);
+      font-weight: var(--mf-weight-medium);
+      line-height: 1.4;
       background: var(--mf-surface-2);
       border: 0;
       border-radius: var(--mf-radius-pill);
-      overflow-wrap: anywhere;
+    }
+
+    .badge-display-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }
