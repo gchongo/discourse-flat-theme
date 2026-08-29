@@ -345,3 +345,21 @@
 .quiz-header-icon .btn.active {
   color: var(--mf-accent);
 }
+
+// Podium runners-up use transform: translate(±20%, 35%) and otherwise spill
+// past the viewport, creating a horizontal scrollbar on swipe.
+body.quiz-leaderboard,
+#main-outlet:has(.quiz-leaderboard-page) {
+  overflow-x: clip;
+}
+
+.quiz-leaderboard-page {
+  max-width: 100%;
+  overflow-x: clip;
+
+  &__podium-wrapper,
+  &__podium {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+}

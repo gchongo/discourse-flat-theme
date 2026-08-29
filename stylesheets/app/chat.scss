@@ -10,13 +10,20 @@
 
 .channels-list,
 .channels-list-container {
-  background: var(--mf-surface-elevated);
+  // Stronger than app-bg so the Chat chrome stays visible in dark schemes.
+  background: var(--mf-surface-3);
   border-right: 1px solid var(--mf-hairline);
 }
 
 .c-navbar-container {
   border-bottom: 1px solid var(--mf-hairline);
-  background: var(--mf-surface-elevated);
+  background: var(--mf-surface-3);
+}
+
+.chat-channel,
+#main-chat-outlet,
+.c-routes {
+  background: var(--mf-surface);
 }
 
 .chat-channel-divider {
@@ -72,11 +79,6 @@
 .chat-channel-icon.--users-count {
   background: var(--mf-fill-active);
   color: var(--mf-ink-2);
-}
-
-.c-navbar-container {
-  border-bottom: 1px solid var(--mf-hairline);
-  background: var(--mf-surface-elevated);
 }
 
 .c-navbar__star-channel-button {
@@ -244,14 +246,14 @@
 }
 
 .chat-drawer-container {
-  background: var(--mf-surface-elevated);
+  background: var(--mf-surface-3);
   border-color: var(--mf-hairline);
   box-shadow: none;
 }
 
 .c-footer {
-  background: var(--mf-surface);
-  border-top: 0;
+  background: var(--mf-surface-3);
+  border-top: 1px solid var(--mf-hairline);
 }
 
 .chat-channel-card {

@@ -19,19 +19,29 @@ html.mobile-view {
         display: none !important;
       }
 
-      // Keep translation on the left; pin TOC + progress together on the right.
-      .btn-toggle-localized-content {
-        order: 1;
+      // Pin translation + TOC + progress as one chip group on the right.
+      .btn-toggle-localized-content,
+      .topic-content-language-preferences {
+        order: 2;
         align-self: stretch;
+        margin-left: auto;
+        height: 100%;
+        min-height: 36px;
+        padding: 0 10px;
+        border: 1px solid var(--mf-hairline);
+        border-right: 0;
+        border-radius: var(--mf-radius-md) 0 0 var(--mf-radius-md);
+        background: var(--mf-surface);
+        box-shadow: none;
       }
 
       > :has(.d-toc-mini),
       > .d-toc-mini {
-        order: 2;
+        order: 3;
         display: flex;
         align-self: stretch;
         align-items: stretch;
-        margin-left: auto;
+        margin-left: 0;
       }
 
       .d-toc-mini {
@@ -46,21 +56,47 @@ html.mobile-view {
         padding: 0 10px;
         border: 1px solid var(--mf-hairline);
         border-right: 0;
-        border-radius: var(--mf-radius-md) 0 0 var(--mf-radius-md);
+        border-radius: 0;
         background: var(--mf-surface);
         box-shadow: none;
       }
 
       #topic-progress {
-        order: 3;
+        order: 4;
         min-width: 72px;
         margin-left: 0 !important;
         border: 1px solid var(--mf-hairline);
         border-radius: 0 var(--mf-radius-md) var(--mf-radius-md) 0;
       }
 
-      // No TOC: keep a single progress chip on the right.
-      &:not(:has(.d-toc-mini)) #topic-progress {
+      // No TOC: translation still leads the right-side chip; progress keeps right radius.
+      &:not(:has(.d-toc-mini)) {
+        .btn-toggle-localized-content,
+        .topic-content-language-preferences {
+          margin-left: auto;
+        }
+
+        #topic-progress {
+          margin-left: 0 !important;
+          border-radius: 0 var(--mf-radius-md) var(--mf-radius-md) 0;
+        }
+      }
+
+      // No translation: TOC keeps the left radius of the chip group.
+      &:not(
+          :has(.btn-toggle-localized-content),
+          :has(.topic-content-language-preferences)
+        )
+        .d-toc-mini__button {
+        border-radius: var(--mf-radius-md) 0 0 var(--mf-radius-md);
+      }
+
+      // Neither TOC nor translation: progress is a single chip on the right.
+      &:not(:has(.d-toc-mini)):not(
+          :has(.btn-toggle-localized-content),
+          :has(.topic-content-language-preferences)
+        )
+        #topic-progress {
         margin-left: auto !important;
         border-radius: var(--mf-radius-md);
       }

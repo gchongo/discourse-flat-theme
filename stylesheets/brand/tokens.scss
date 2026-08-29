@@ -61,11 +61,11 @@
   --mf-discovery-gap: var(--mf-space-8);
   --mf-surface: light-dark(
     var(--secondary),
-    color-mix(in srgb, var(--secondary) 95%, var(--primary))
+    color-mix(in srgb, var(--secondary) 92%, var(--primary))
   );
   --mf-surface-elevated: light-dark(
     var(--secondary),
-    color-mix(in srgb, var(--secondary) 91%, var(--primary))
+    color-mix(in srgb, var(--secondary) 84%, var(--primary))
   );
   --mf-app-bg: light-dark(
     color-mix(in srgb, var(--secondary) 97%, var(--primary)),
@@ -73,11 +73,11 @@
   );
   --mf-surface-2: light-dark(
     color-mix(in srgb, var(--secondary) 95%, var(--primary)),
-    color-mix(in srgb, var(--secondary) 90%, var(--primary))
+    color-mix(in srgb, var(--secondary) 80%, var(--primary))
   );
   --mf-surface-3: light-dark(
     color-mix(in srgb, var(--secondary) 91%, var(--primary)),
-    color-mix(in srgb, var(--secondary) 86%, var(--primary))
+    color-mix(in srgb, var(--secondary) 74%, var(--primary))
   );
   --mf-fill-hover: light-dark(
     color-mix(in srgb, var(--primary) 5%, transparent),
@@ -87,7 +87,10 @@
     color-mix(in srgb, var(--primary) 9%, transparent),
     color-mix(in srgb, var(--primary) 13%, transparent)
   );
-  --mf-fill-selected: color-mix(in srgb, var(--tertiary) 10%, transparent);
+  --mf-fill-selected: light-dark(
+    color-mix(in srgb, var(--tertiary) 10%, transparent),
+    color-mix(in srgb, var(--tertiary) 28%, transparent)
+  );
   --mf-hairline: light-dark(
     color-mix(in srgb, var(--primary) 11%, transparent),
     color-mix(in srgb, var(--primary) 16%, transparent)
@@ -104,20 +107,26 @@
   --mf-accent-hover: color-mix(in srgb, var(--mf-accent) 84%, var(--primary));
   --mf-accent-press: color-mix(in srgb, var(--mf-accent) 72%, var(--primary));
   --mf-accent-fg: #fff;
-  --mf-accent-tint: color-mix(in srgb, var(--mf-accent) 12%, transparent);
-  --mf-accent-tint-soft: color-mix(in srgb, var(--mf-accent) 7%, transparent);
+  --mf-accent-tint: light-dark(
+    color-mix(in srgb, var(--mf-accent) 12%, transparent),
+    color-mix(in srgb, var(--mf-accent) 22%, transparent)
+  );
+  --mf-accent-tint-soft: light-dark(
+    color-mix(in srgb, var(--mf-accent) 7%, transparent),
+    color-mix(in srgb, var(--mf-accent) 14%, transparent)
+  );
   --mf-accent-line: color-mix(in srgb, var(--mf-accent) 30%, transparent);
   --mf-panel: light-dark(
     color-mix(in srgb, var(--secondary) 95%, var(--primary)),
-    color-mix(in srgb, var(--secondary) 91%, var(--primary))
+    color-mix(in srgb, var(--secondary) 82%, var(--primary))
   );
   --mf-panel-strong: light-dark(
     color-mix(in srgb, var(--secondary) 91%, var(--primary)),
-    color-mix(in srgb, var(--secondary) 87%, var(--primary))
+    color-mix(in srgb, var(--secondary) 76%, var(--primary))
   );
   --mf-panel-hover: light-dark(
     color-mix(in srgb, var(--secondary) 88%, var(--primary)),
-    color-mix(in srgb, var(--secondary) 84%, var(--primary))
+    color-mix(in srgb, var(--secondary) 72%, var(--primary))
   );
   --mf-success: var(--success);
   --mf-success-tint: color-mix(in srgb, var(--success) 13%, transparent);

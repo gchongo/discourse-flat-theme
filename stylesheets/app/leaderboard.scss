@@ -1,4 +1,7 @@
 .leaderboard {
+  max-width: 100%;
+  overflow-x: clip;
+
   .page__header {
     align-items: center;
     gap: var(--mf-space-3);
@@ -23,6 +26,8 @@
     background: transparent !important;
     border: 0 !important;
     box-shadow: none !important;
+    // 2nd/3rd place use translate(±20%) and otherwise spill past the viewport.
+    overflow-x: clip;
   }
 
   .podium {
@@ -154,4 +159,8 @@
   .leaderboard__not-ready {
     color: var(--mf-ink-3);
   }
+}
+
+#main-outlet:has(.leaderboard) {
+  overflow-x: clip;
 }

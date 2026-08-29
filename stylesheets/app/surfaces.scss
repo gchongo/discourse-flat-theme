@@ -186,13 +186,28 @@
 
 .select-kit.is-expanded {
   .select-kit-body {
-    padding: 4px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    // Core uses center; that leaves empty top/left space when the body is
+    // wider/taller than the collection (period-chooser and many dropdowns).
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    box-sizing: border-box;
     min-height: 0 !important;
+    height: auto !important;
+    padding: 4px !important;
   }
 
   .select-kit-collection {
+    align-self: stretch;
+    box-sizing: border-box;
+    width: 100% !important;
+    min-width: 0;
+    min-height: 0 !important;
     max-height: min(320px, 52vh);
-    padding: 0;
+    margin: 0 !important;
+    // Beat period-chooser / other choosers that add a second padding layer.
+    padding: 0 !important;
     background: transparent;
     border: 0;
     scrollbar-color: var(--mf-surface-3) transparent;
@@ -240,7 +255,7 @@
     }
   }
 
-  .select-kit-filter {
+  .select-kit-filter.is-expanded {
     display: flex;
     min-height: 34px;
     margin: 0 0 4px;
@@ -263,6 +278,18 @@
       border: 0;
       box-shadow: none;
     }
+  }
+
+  .select-kit-filter:not(.is-expanded),
+  .select-kit-filter.is-hidden {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
   }
 }
 

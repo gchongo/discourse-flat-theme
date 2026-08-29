@@ -155,14 +155,10 @@
   [class*="search"][class*="input"]:has(> input)
 ):focus-within {
   background: var(--mf-surface) !important;
-  border: 1px solid var(--mf-hairline-strong) !important;
+  border: 1px solid var(--mf-accent) !important;
   border-radius: var(--mf-radius-md) !important;
   outline: 0 !important;
-
-  // Inner hairline + outer accent ring (dual border).
-  box-shadow:
-    0 0 0 3px var(--mf-surface-2),
-    0 0 0 5px var(--mf-accent) !important;
+  box-shadow: var(--shadow-focus) !important;
 
   > input,
   .admin-search__input-field,
@@ -298,6 +294,10 @@
 
 .select-kit {
   .select-kit-body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     padding: var(--mf-space-1);
     color: var(--mf-ink);
     background: var(--mf-surface-elevated) !important;
@@ -484,11 +484,9 @@
 .floating-search-input-wrapper {
   &:focus-within {
     background: var(--mf-surface) !important;
-    border: 1px solid var(--mf-hairline-strong) !important;
+    border: 1px solid var(--mf-accent) !important;
     border-radius: var(--mf-radius-md) !important;
-    box-shadow:
-      0 0 0 3px var(--mf-surface-2),
-      0 0 0 5px var(--mf-accent) !important;
+    box-shadow: var(--shadow-focus) !important;
 
     > input {
       background: transparent !important;
@@ -503,14 +501,27 @@
 }
 
 .period-chooser.select-kit.is-expanded .select-kit-body,
-.leaderboard__period-chooser.select-kit.is-expanded .select-kit-body {
+.leaderboard__period-chooser.select-kit.is-expanded .select-kit-body,
+.quiz-leaderboard-page__period-chooser.select-kit.is-expanded .select-kit-body {
+  align-items: stretch !important;
+  justify-content: flex-start !important;
   padding: 4px !important;
   min-height: 0 !important;
+  height: auto !important;
+}
+
+.period-chooser.select-kit.is-expanded .select-kit-collection,
+.leaderboard__period-chooser.select-kit.is-expanded .select-kit-collection,
+.quiz-leaderboard-page__period-chooser.select-kit.is-expanded .select-kit-collection {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .period-chooser.select-kit.is-expanded .select-kit-row,
-.leaderboard__period-chooser.select-kit.is-expanded .select-kit-row {
+.leaderboard__period-chooser.select-kit.is-expanded .select-kit-row,
+.quiz-leaderboard-page__period-chooser.select-kit.is-expanded .select-kit-row {
   min-height: 40px;
-  margin: 0;
+  margin: 0 0 1px;
   padding: 6px 8px;
 }
