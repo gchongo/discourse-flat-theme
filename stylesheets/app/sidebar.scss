@@ -18,6 +18,41 @@
   --d-sidebar-header-font-weight: var(--mf-weight-semibold);
 }
 
+// Chat / Forum panel switch: keep a visible chip in dark mode without
+// raising global --mf-panel (which washed out every card).
+.sidebar__panel-switch-button.btn,
+.sidebar__panel-switch-button.btn-default {
+  box-sizing: border-box;
+  width: calc(100% - 1.6em);
+  margin: 0.75em 0.8em 0.25em;
+  justify-content: flex-start;
+  gap: 0.5em;
+  min-height: 36px;
+  padding: 8px 12px !important;
+  color: var(--mf-ink) !important;
+  background: light-dark(
+    var(--mf-panel),
+    color-mix(in srgb, var(--secondary) 82%, var(--primary))
+  ) !important;
+  border: 0 !important;
+  border-radius: var(--mf-radius-md) !important;
+  box-shadow: none !important;
+
+  .d-icon {
+    color: var(--mf-ink-2) !important;
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: light-dark(
+      var(--mf-panel-strong),
+      color-mix(in srgb, var(--secondary) 76%, var(--primary))
+    ) !important;
+    color: var(--mf-ink) !important;
+  }
+}
+
 .sidebar-wrapper .select-kit-header,
 .sidebar-wrapper .select-kit-body,
 .sidebar-section-link-loading,
