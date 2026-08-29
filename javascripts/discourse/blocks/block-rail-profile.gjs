@@ -8,7 +8,6 @@ import { prioritizeNameInUx } from "discourse/lib/settings";
 import User from "discourse/models/user";
 import DAsyncContent from "discourse/ui-kit/d-async-content";
 import dBoundAvatarTemplate from "discourse/ui-kit/helpers/d-bound-avatar-template";
-import dFormatDate from "discourse/ui-kit/helpers/d-format-date";
 import dFormatDuration from "discourse/ui-kit/helpers/d-format-duration";
 import { i18n } from "discourse-i18n";
 
@@ -53,9 +52,30 @@ export default class BlockRailProfile extends Component {
       user,
       primaryName: nameFirst ? user.name : user.username,
       secondaryName: nameFirst ? user.username : user.name,
+      lastPostedAt: this.#formatDate(user.last_posted_at),
+      createdAt: this.#formatDate(user.created_at),
       badges,
       moreBadgesCount: Math.max((user.badge_count ?? 0) - badges.length, 0),
     };
+  }
+
+  // Locale-independent year-month-day, so the rail never falls back to the
+  // month-first ordering the core date helpers use for English.
+  #formatDate(value) {
+    if (!value) {
+      return null;
+    }
+
+    const date = new Date(value);
+
+    if (isNaN(date.getTime())) {
+      return null;
+    }
+
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${date.getFullYear()}-${month}-${day}`;
   }
 
   <template>
@@ -91,16 +111,18 @@ export default class BlockRailProfile extends Component {
               </div>
 
               <div class="block-rail-profile__metadata">
-                {{#if model.user.last_posted_at}}
+                {{#if model.lastPostedAt}}
                   <div>
                     <span class="desc">{{i18n "last_post"}}</span>
-                    {{dFormatDate model.user.last_posted_at leaveAgo="true"}}
+                    {{model.lastPostedAt}}
                   </div>
                 {{/if}}
-                <div>
-                  <span class="desc">{{i18n "joined"}}</span>
-                  {{dFormatDate model.user.created_at leaveAgo="true"}}
-                </div>
+                {{#if model.createdAt}}
+                  <div>
+                    <span class="desc">{{i18n "joined"}}</span>
+                    {{model.createdAt}}
+                  </div>
+                {{/if}}
                 {{#if model.user.time_read}}
                   <div>
                     <span class="desc">{{i18n "time_read"}}</span>

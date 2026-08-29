@@ -33,12 +33,6 @@ export default class BlockRailCta extends Component {
   <template>
     {{#if this.canCreateTopic}}
       <div class="block-rail-cta">
-        <h4 class="block-rail-cta__title">{{i18n
-            (themePrefix "rail.ask_title")
-          }}</h4>
-        <p class="block-rail-cta__body">{{i18n
-            (themePrefix "rail.ask_body")
-          }}</p>
         <DButton
           @action={{this.createTopic}}
           @icon="plus"

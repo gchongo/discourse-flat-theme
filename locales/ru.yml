@@ -10,8 +10,6 @@ ru:
     welcome: "Добро пожаловать, %{name}!"
     advanced_search: "Расширенный поиск"
   rail:
-    ask_title: "Есть вопрос?"
-    ask_body: "Создайте тему — сообщество поможет."
     create_topic: "Создать тему"
     events_title: "Ближайшие события"
     contributors_title: "Рейтинг за всё время"
