@@ -2,6 +2,15 @@
   --d-chat-input-border-color: var(--mf-hairline);
   --d-chat-input-bg-color: var(--mf-panel);
   --d-chat-input-focused-shadow: var(--shadow-focus);
+  // Chat-only chrome — do not raise global --mf-surface / --mf-panel.
+  --mf-chat-chrome: light-dark(
+    var(--mf-surface),
+    color-mix(in srgb, var(--secondary) 78%, var(--primary))
+  );
+  --mf-chat-pane: light-dark(
+    var(--mf-app-bg),
+    color-mix(in srgb, var(--secondary) 88%, var(--primary))
+  );
 }
 
 .full-page-chat {
@@ -10,20 +19,19 @@
 
 .channels-list,
 .channels-list-container {
-  // Stronger than app-bg so the Chat chrome stays visible in dark schemes.
-  background: var(--mf-surface-3);
+  background: var(--mf-chat-chrome);
   border-right: 1px solid var(--mf-hairline);
 }
 
 .c-navbar-container {
   border-bottom: 1px solid var(--mf-hairline);
-  background: var(--mf-surface-3);
+  background: var(--mf-chat-chrome);
 }
 
 .chat-channel,
 #main-chat-outlet,
 .c-routes {
-  background: var(--mf-surface);
+  background: var(--mf-chat-pane);
 }
 
 .chat-channel-divider {
@@ -105,7 +113,7 @@
 
 .chat-side-panel {
   border-left: 0;
-  background: var(--mf-surface);
+  background: var(--mf-chat-pane);
 }
 
 .chat-thread-header,
@@ -246,13 +254,13 @@
 }
 
 .chat-drawer-container {
-  background: var(--mf-surface-3);
+  background: var(--mf-chat-chrome);
   border-color: var(--mf-hairline);
   box-shadow: none;
 }
 
 .c-footer {
-  background: var(--mf-surface-3);
+  background: var(--mf-chat-chrome);
   border-top: 1px solid var(--mf-hairline);
 }
 
