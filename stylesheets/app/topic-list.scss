@@ -157,10 +157,10 @@
 
     .link-top-line {
       order: 1;
-      display: flex;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 4px var(--mf-space-2);
+
+      // Block + float so wrapped title lines start under the status icons
+      // (flush left), not indented beside them.
+      display: block;
       line-height: var(--mf-leading-snug);
 
       > * {
@@ -187,10 +187,11 @@
     }
 
     .topic-statuses {
+      float: left !important;
       display: inline-flex !important;
       align-items: center;
-      float: none !important;
-      flex: 0 0 auto;
+      margin: 0 4px 0 0;
+      padding-top: 0.2em;
     }
 
     .topic-statuses .topic-status.--bookmarked .d-icon {
@@ -200,8 +201,8 @@
     // Match mobile: event date on its own line under the title.
     .event-date-container,
     .header-topic-title-suffix-outlet.event-date-container {
+      clear: both;
       display: flex;
-      flex: 1 0 100%;
       align-items: center;
       width: 100%;
       margin-top: 2px;
@@ -242,7 +243,7 @@
     }
 
     a.title {
-      flex: 1 1 0%;
+      display: block;
       min-width: 0;
       font-size: var(--d-topic-list-title-font-size);
       font-weight: var(--mf-weight-semibold);
@@ -726,86 +727,77 @@ html.desktop-view .suggested-topics-wrapper,
   .main-link {
     grid-column: 1;
     grid-row: 1;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 4px 6px;
+
+    // Block formatting so status icons can float and wrapped title lines
+    // start flush left under the icons.
+    display: block;
     width: 100%;
     min-width: 0;
   }
 
   // Mobile item.gjs: TopicStatus + TopicLink are direct children of .main-link
-  // (no .link-top-line). Keep statuses inline before the title on the same row.
+  // (no .link-top-line).
   .main-link > .topic-statuses {
-    float: none !important;
+    float: left !important;
     display: inline-flex !important;
-    flex: 0 0 auto;
     align-items: center;
-    align-self: flex-start;
-    margin: 0;
+    margin: 0 4px 0 0;
     padding-top: 0.25em;
   }
 
   .main-link > a.title,
   .main-link > .raw-topic-link {
-    flex: 1 1 0%;
+    display: block;
     min-width: 0;
   }
 
   .main-link > .topic-post-badges,
   .main-link > .unread-indicator,
   .main-link > .badge-notification {
-    flex: 0 0 auto;
-    align-self: center;
+    clear: both;
+    display: inline-flex;
+    margin-top: 2px;
   }
 
   .main-link > .event-date-container,
   .main-link > .header-topic-title-suffix-outlet.event-date-container {
+    clear: both;
     display: flex;
-    flex: 1 0 100%;
     align-items: center;
     width: 100%;
     margin-top: 2px;
   }
 
   .main-link .link-bottom-line {
-    order: 1;
-    flex: 1 0 100%;
+    clear: both;
+    display: flex;
     gap: 4px var(--mf-space-2);
     min-height: 0;
     margin: 0;
   }
 
   .main-link .link-top-line {
-    order: 2;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 6px;
-    flex: 1 1 auto;
+    display: block;
     min-width: 0;
     line-height: 1.3;
 
     .topic-statuses {
-      float: none !important;
+      float: left !important;
       display: inline-flex;
-      flex: 0 0 auto;
       align-items: center;
-      margin: 0;
+      margin: 0 4px 0 0;
       padding-top: 0.2em;
     }
 
     a.title {
-      flex: 1 1 0%;
+      display: block;
       min-width: 0;
     }
 
     .event-date-container,
     .header-topic-title-suffix-outlet.event-date-container {
+      clear: both;
       display: flex;
-      flex: 1 0 100%;
       align-items: center;
       width: 100%;
       margin-top: 2px;
@@ -820,8 +812,7 @@ html.desktop-view .suggested-topics-wrapper,
   }
 
   .main-link .topic-excerpt {
-    order: 3;
-    flex: 1 0 100%;
+    clear: both;
     display: -webkit-box;
     max-width: none;
     max-height: 0;
@@ -1055,11 +1046,7 @@ html.desktop-view .suggested-topics-wrapper,
   .topic-item-metadata .main-link {
     grid-column: 1 / -1;
     grid-row: 2;
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 4px 6px;
+    display: block !important;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -1068,18 +1055,15 @@ html.desktop-view .suggested-topics-wrapper,
   }
 
   .topic-item-metadata .main-link > .topic-statuses {
-    float: none !important;
+    float: left !important;
     display: inline-flex !important;
-    flex: 0 0 auto;
     align-items: center;
-    align-self: flex-start;
-    margin: 0;
+    margin: 0 4px 0 0;
     padding-top: 0.2em;
   }
 
   .topic-item-metadata .main-link a.title {
-    display: inline !important;
-    flex: 1 1 0%;
+    display: block !important;
     min-width: 0;
     overflow: visible;
     font-size: var(--mf-text-base);
@@ -1092,15 +1076,15 @@ html.desktop-view .suggested-topics-wrapper,
 
   .topic-item-metadata .main-link > .event-date-container,
   .topic-item-metadata .main-link > .header-topic-title-suffix-outlet.event-date-container {
+    clear: both;
     display: flex;
-    flex: 1 0 100%;
     align-items: center;
     width: 100%;
     margin-top: 2px;
   }
 
   .topic-item-metadata .main-link .topic-excerpt {
-    flex: 1 0 100%;
+    clear: both;
   }
 
   .topic-excerpt {

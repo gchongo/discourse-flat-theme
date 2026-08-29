@@ -1051,11 +1051,7 @@ body.archetype-regular {
       .topic-item-metadata .main-link {
         grid-column: 1 / -1;
         grid-row: 2;
-        display: flex !important;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 4px 6px;
+        display: block !important;
         width: 100%;
         max-width: 100%;
         min-width: 0;
@@ -1064,18 +1060,15 @@ body.archetype-regular {
       }
 
       .topic-item-metadata .main-link > .topic-statuses {
-        float: none !important;
+        float: left !important;
         display: inline-flex !important;
-        flex: 0 0 auto;
         align-items: center;
-        align-self: flex-start;
-        margin: 0;
+        margin: 0 4px 0 0;
         padding-top: 0.2em;
       }
 
       .topic-item-metadata .main-link a.title {
-        display: inline !important;
-        flex: 1 1 0%;
+        display: block !important;
         min-width: 0;
         overflow: visible;
         color: var(--mf-ink);
@@ -1092,15 +1085,15 @@ body.archetype-regular {
       .topic-item-metadata
         .main-link
         > .header-topic-title-suffix-outlet.event-date-container {
+        clear: both;
         display: flex;
-        flex: 1 0 100%;
         align-items: center;
         width: 100%;
         margin-top: 2px;
       }
 
       .topic-item-metadata .main-link .topic-excerpt {
-        flex: 1 0 100%;
+        clear: both;
       }
 
       .topic-excerpt {
