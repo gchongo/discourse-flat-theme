@@ -158,8 +158,9 @@
     .link-top-line {
       order: 1;
 
-      // Block + float so wrapped title lines start under the status icons
-      // (flush left), not indented beside them.
+      // Block container + floated statuses: first title line sits beside
+      // icons; later lines wrap flush left under them. Title stays inline so
+      // .topic-post-badges can follow on the same line.
       display: block;
       line-height: var(--mf-leading-snug);
 
@@ -170,10 +171,12 @@
 
     .topic-excerpt {
       order: 2;
+      clear: both;
     }
 
     .link-bottom-line {
       order: 3;
+      clear: both;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
@@ -190,12 +193,24 @@
       float: left !important;
       display: inline-flex !important;
       align-items: center;
+      // Only occupy the first line of float space so wrapped title lines
+      // continue flush left under the icons (no hanging indent).
+      height: 1.3em;
       margin: 0 4px 0 0;
-      padding-top: 0.2em;
+      padding-top: 0.15em;
+      overflow: visible;
     }
 
     .topic-statuses .topic-status.--bookmarked .d-icon {
       color: var(--mf-accent);
+    }
+
+    .topic-post-badges,
+    .unread-indicator {
+      display: inline !important;
+      clear: none !important;
+      white-space: nowrap;
+      vertical-align: baseline;
     }
 
     // Match mobile: event date on its own line under the title.
@@ -243,7 +258,7 @@
     }
 
     a.title {
-      display: block;
+      display: inline;
       min-width: 0;
       font-size: var(--d-topic-list-title-font-size);
       font-weight: var(--mf-weight-semibold);
@@ -741,22 +756,26 @@ html.desktop-view .suggested-topics-wrapper,
     float: left !important;
     display: inline-flex !important;
     align-items: center;
+    height: 1.35em;
     margin: 0 4px 0 0;
     padding-top: 0.25em;
+    overflow: visible;
   }
 
   .main-link > a.title,
   .main-link > .raw-topic-link {
-    display: block;
+    display: inline;
     min-width: 0;
   }
 
   .main-link > .topic-post-badges,
   .main-link > .unread-indicator,
   .main-link > .badge-notification {
-    clear: both;
-    display: inline-flex;
-    margin-top: 2px;
+    display: inline !important;
+    clear: none !important;
+    white-space: nowrap;
+    vertical-align: baseline;
+    margin-top: 0;
   }
 
   .main-link > .event-date-container,
@@ -785,13 +804,23 @@ html.desktop-view .suggested-topics-wrapper,
       float: left !important;
       display: inline-flex;
       align-items: center;
+      height: 1.3em;
       margin: 0 4px 0 0;
       padding-top: 0.2em;
+      overflow: visible;
     }
 
     a.title {
-      display: block;
+      display: inline;
       min-width: 0;
+    }
+
+    .topic-post-badges,
+    .unread-indicator {
+      display: inline !important;
+      clear: none !important;
+      white-space: nowrap;
+      vertical-align: baseline;
     }
 
     .event-date-container,
@@ -1058,12 +1087,14 @@ html.desktop-view .suggested-topics-wrapper,
     float: left !important;
     display: inline-flex !important;
     align-items: center;
+    height: 1.35em;
     margin: 0 4px 0 0;
     padding-top: 0.2em;
+    overflow: visible;
   }
 
   .topic-item-metadata .main-link a.title {
-    display: block !important;
+    display: inline !important;
     min-width: 0;
     overflow: visible;
     font-size: var(--mf-text-base);
@@ -1072,6 +1103,14 @@ html.desktop-view .suggested-topics-wrapper,
     white-space: normal;
     overflow-wrap: anywhere;
     word-break: break-word;
+  }
+
+  .topic-item-metadata .main-link > .topic-post-badges,
+  .topic-item-metadata .main-link > .unread-indicator {
+    display: inline !important;
+    clear: none !important;
+    white-space: nowrap;
+    vertical-align: baseline;
   }
 
   .topic-item-metadata .main-link > .event-date-container,
