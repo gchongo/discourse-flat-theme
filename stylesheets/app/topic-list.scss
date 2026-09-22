@@ -647,11 +647,11 @@ html.desktop-view .suggested-topics-wrapper,
 .mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
 .mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected {
   display: grid !important;
-  grid-template-columns: 1fr !important;
+  grid-template-columns: auto auto auto minmax(0, 1fr) auto !important;
   grid-template-rows: unset !important;
   gap: 0 !important;
   padding: 0 !important;
-  align-items: stretch !important;
+  align-items: center !important;
   background: var(--primary-low) !important;
   border: 1px solid var(--primary-low) !important;
   border-radius: 8px;
@@ -666,36 +666,41 @@ html.desktop-view .suggested-topics-wrapper,
     padding: 0 !important;
   }
 
-  // Stock reply/view columns must not sit beside the cover.
+  // Stock reply/view columns must not sit beside the cover —
+  // they are placed on the meta row by the thumbnails component.
+  > td.posters,
+  > td.activity,
+  > .topic-list-data.posters,
+  > .topic-list-data.activity,
+  .posters,
+  .num.activity,
+  .activity,
+  .post-activity,
+  .relative-date,
+  .pull-right,
+  .topic-thumbnails-grid__stats {
+    display: none !important;
+    grid-column: unset !important;
+    grid-row: unset !important;
+  }
+
+  // Keep theme stats visible on the card meta row.
   > td.posts,
   > td.num.posts-map,
   > td.views,
   > td.num.views,
   > td.likes,
   > td.num.likes,
-  > td.posters,
-  > td.activity,
-  > td.num,
   > .topic-list-data.posts,
   > .topic-list-data.posts-map,
   > .topic-list-data.views,
   > .topic-list-data.likes,
-  > .topic-list-data.posters,
-  > .topic-list-data.activity,
   .posts-map,
   .num.posts-map,
   .views,
   .num.views,
-  .num.likes,
-  .num.activity,
-  .activity,
-  .post-activity,
-  .relative-date,
-  .posters,
-  .pull-right {
-    display: none !important;
-    grid-column: unset !important;
-    grid-row: unset !important;
+  .num.likes {
+    display: inline-flex !important;
   }
 
   // Mobile flat theme uses :only-child grid for normal lists; disable that here.
@@ -1262,7 +1267,7 @@ html.desktop-view .suggested-topics-wrapper,
 .mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
 .mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected {
   display: grid !important;
-  grid-template-columns: 1fr !important;
+  grid-template-columns: auto auto auto minmax(0, 1fr) auto !important;
   grid-template-rows: auto auto auto !important;
   gap: 0 !important;
   padding: 0 !important;
@@ -1271,6 +1276,7 @@ html.desktop-view .suggested-topics-wrapper,
   border: 1px solid var(--primary-low) !important;
   border-radius: 10px !important;
   box-shadow: none !important;
+  align-items: center;
 
   > .topic-list-data:only-child {
     display: contents !important;
@@ -1281,7 +1287,9 @@ html.desktop-view .suggested-topics-wrapper,
   }
 
   > td:has(.topic-list-thumbnail),
-  > .topic-list-data:has(.topic-list-thumbnail) {
+  > .topic-list-data:has(.topic-list-thumbnail),
+  > td.main-link,
+  > .topic-list-data.main-link {
     display: contents !important;
   }
 
@@ -1294,11 +1302,6 @@ html.desktop-view .suggested-topics-wrapper,
   .posters,
   td.posters,
   .topic-list-data.posters,
-  .posts-map,
-  .num.posts-map,
-  .views,
-  .num.views,
-  .num.likes,
   .num.activity,
   td.activity,
   .topic-list-data.activity,
@@ -1306,9 +1309,9 @@ html.desktop-view .suggested-topics-wrapper,
   .post-activity,
   .relative-date,
   .topic-excerpt,
-  .link-bottom-line,
   .badge-notification,
-  .unread-indicator {
+  .unread-indicator,
+  .topic-thumbnails-grid__stats {
     display: none !important;
     grid-column: unset !important;
     grid-row: unset !important;
@@ -1317,17 +1320,6 @@ html.desktop-view .suggested-topics-wrapper,
   .topic-item-metadata,
   .topic-item-metadata.right {
     display: contents !important;
-  }
-
-  .main-link,
-  td.main-link,
-  .topic-list-data.main-link,
-  .topic-item-metadata .main-link {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: none !important;
-    padding: 8px 10px 2px !important;
   }
 }
 
