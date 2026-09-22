@@ -694,8 +694,20 @@ html.desktop-view .suggested-topics-wrapper,
   .posters,
   .pull-right {
     display: none !important;
+    visibility: hidden !important;
     grid-column: unset !important;
     grid-row: unset !important;
+
+    &::before,
+    &::after {
+      content: none !important;
+      display: none !important;
+    }
+  }
+
+  .topic-thumbnails-grid__stats {
+    display: flex !important;
+    visibility: visible !important;
   }
 
   // Mobile flat theme uses :only-child grid for normal lists; disable that here.
@@ -1305,11 +1317,28 @@ html.desktop-view .suggested-topics-wrapper,
   .relative-date,
   .topic-excerpt,
   .badge-notification,
-  .unread-indicator,
-  .topic-thumbnails-grid__stats {
+  .unread-indicator {
     display: none !important;
     grid-column: unset !important;
     grid-row: unset !important;
+  }
+
+  // Must show the component stats row (was incorrectly hidden here).
+  .topic-thumbnails-grid__stats {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .topic-thumbnails-grid__stat,
+  .topic-thumbnails-grid__stat .d-icon,
+  .topic-thumbnails-grid__stat .number {
+    display: inline-flex !important;
+    visibility: visible !important;
+  }
+
+  .topic-thumbnails-grid__stat .number {
+    display: inline !important;
   }
 
   .topic-item-metadata,
