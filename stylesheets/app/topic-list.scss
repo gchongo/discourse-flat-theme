@@ -675,6 +675,7 @@ html.desktop-view .suggested-topics-wrapper,
   > td.num.likes,
   > td.posters,
   > td.activity,
+  > td.num,
   > .topic-list-data.posts,
   > .topic-list-data.posts-map,
   > .topic-list-data.views,
@@ -686,9 +687,15 @@ html.desktop-view .suggested-topics-wrapper,
   .views,
   .num.views,
   .num.likes,
+  .num.activity,
+  .activity,
+  .post-activity,
+  .relative-date,
   .posters,
   .pull-right {
     display: none !important;
+    grid-column: unset !important;
+    grid-row: unset !important;
   }
 
   // Mobile flat theme uses :only-child grid for normal lists; disable that here.
@@ -1295,8 +1302,16 @@ html.desktop-view .suggested-topics-wrapper,
   .num.activity,
   td.activity,
   .topic-list-data.activity,
-  .topic-excerpt {
+  .activity,
+  .post-activity,
+  .relative-date,
+  .topic-excerpt,
+  .link-bottom-line,
+  .badge-notification,
+  .unread-indicator {
     display: none !important;
+    grid-column: unset !important;
+    grid-row: unset !important;
   }
 
   .topic-item-metadata,
