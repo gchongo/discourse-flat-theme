@@ -629,6 +629,76 @@ html.desktop-view .suggested-topics-wrapper,
   }
 }
 
+// Flat theme list layout must not fight Topic List Thumbnails card modes.
+.desktop-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item,
+.desktop-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item,
+.desktop-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item,
+.desktop-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item,
+.desktop-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item.selected,
+.desktop-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item.selected,
+.desktop-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
+.desktop-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected,
+.mobile-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item,
+.mobile-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item,
+.mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item,
+.mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item,
+.mobile-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item.selected,
+.mobile-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item.selected,
+.mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
+.mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: unset !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  align-items: stretch !important;
+  background: var(--primary-low) !important;
+  border: 1px solid var(--primary-low) !important;
+  border-radius: 8px;
+  box-shadow: none !important;
+
+  &:hover {
+    background: var(--primary-low) !important;
+  }
+
+  > td,
+  > .topic-list-data {
+    padding: 0 !important;
+  }
+
+  // Stock reply/view columns must not sit beside the cover.
+  > td.posts,
+  > td.num.posts-map,
+  > td.views,
+  > td.num.views,
+  > td.likes,
+  > td.num.likes,
+  > td.posters,
+  > td.activity,
+  > .topic-list-data.posts,
+  > .topic-list-data.posts-map,
+  > .topic-list-data.views,
+  > .topic-list-data.likes,
+  > .topic-list-data.posters,
+  > .topic-list-data.activity,
+  .posts-map,
+  .num.posts-map,
+  .views,
+  .num.views,
+  .num.likes,
+  .posters,
+  .pull-right {
+    display: none !important;
+  }
+
+  // Mobile flat theme uses :only-child grid for normal lists; disable that here.
+  > .topic-list-data:only-child {
+    display: contents !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+}
+
 .desktop-view .list-container .topic-list .topic-list-item,
 .desktop-view .list-container .topic-list-item.selected,
 .desktop-view .more-topics__container .topic-list-item,
@@ -1171,6 +1241,78 @@ html.desktop-view .suggested-topics-wrapper,
   &.bulk-selected > .topic-list-data:only-child,
   &.selected > .topic-list-data:only-child {
     background: var(--mf-fill-selected) !important;
+  }
+}
+
+// Mobile flat archetype must not override Topic List Thumbnails card modes.
+// This block comes AFTER the mobile list rules so it wins the cascade.
+.mobile-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item,
+.mobile-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item,
+.mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item,
+.mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item,
+.mobile-view .list-container .topic-list.topic-thumbnails-grid .topic-list-item.selected,
+.mobile-view .list-container .topic-list.topic-thumbnails-masonry .topic-list-item.selected,
+.mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
+.mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto auto !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  min-height: 0 !important;
+  background: var(--primary-low) !important;
+  border: 1px solid var(--primary-low) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+
+  > .topic-list-data:only-child {
+    display: contents !important;
+    padding: 0 !important;
+    background: transparent !important;
+    grid-template-columns: unset !important;
+    grid-template-rows: unset !important;
+  }
+
+  > td:has(.topic-list-thumbnail),
+  > .topic-list-data:has(.topic-list-thumbnail) {
+    display: contents !important;
+  }
+
+  .pull-left,
+  .topic-item-stats,
+  .topic-item-stats__category-tags,
+  .topic-item-stats .activity,
+  .topic-item-metadata > .pull-right,
+  .topic-item-metadata > .pull-right .posts-map,
+  .posters,
+  td.posters,
+  .topic-list-data.posters,
+  .posts-map,
+  .num.posts-map,
+  .views,
+  .num.views,
+  .num.likes,
+  .num.activity,
+  td.activity,
+  .topic-list-data.activity,
+  .topic-excerpt {
+    display: none !important;
+  }
+
+  .topic-item-metadata,
+  .topic-item-metadata.right {
+    display: contents !important;
+  }
+
+  .main-link,
+  td.main-link,
+  .topic-list-data.main-link,
+  .topic-item-metadata .main-link {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 8px 10px 2px !important;
   }
 }
 
