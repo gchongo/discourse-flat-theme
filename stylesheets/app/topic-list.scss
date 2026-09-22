@@ -647,7 +647,7 @@ html.desktop-view .suggested-topics-wrapper,
 .mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
 .mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected {
   display: grid !important;
-  grid-template-columns: auto auto auto minmax(0, 1fr) auto !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
   grid-template-rows: unset !important;
   gap: 0 !important;
   padding: 0 !important;
@@ -666,41 +666,36 @@ html.desktop-view .suggested-topics-wrapper,
     padding: 0 !important;
   }
 
-  // Stock reply/view columns must not sit beside the cover —
-  // they are placed on the meta row by the thumbnails component.
-  > td.posters,
-  > td.activity,
-  > .topic-list-data.posters,
-  > .topic-list-data.activity,
-  .posters,
-  .num.activity,
-  .activity,
-  .post-activity,
-  .relative-date,
-  .pull-right,
-  .topic-thumbnails-grid__stats {
-    display: none !important;
-    grid-column: unset !important;
-    grid-row: unset !important;
-  }
-
-  // Keep theme stats visible on the card meta row.
+  // Never show stock reply/view/like columns on thumbnail cards —
+  // the component renders a single stats row instead.
   > td.posts,
   > td.num.posts-map,
   > td.views,
   > td.num.views,
   > td.likes,
   > td.num.likes,
+  > td.posters,
+  > td.activity,
   > .topic-list-data.posts,
   > .topic-list-data.posts-map,
   > .topic-list-data.views,
   > .topic-list-data.likes,
+  > .topic-list-data.posters,
+  > .topic-list-data.activity,
   .posts-map,
   .num.posts-map,
   .views,
   .num.views,
-  .num.likes {
-    display: inline-flex !important;
+  .num.likes,
+  .num.activity,
+  .activity,
+  .post-activity,
+  .relative-date,
+  .posters,
+  .pull-right {
+    display: none !important;
+    grid-column: unset !important;
+    grid-row: unset !important;
   }
 
   // Mobile flat theme uses :only-child grid for normal lists; disable that here.
@@ -1267,7 +1262,7 @@ html.desktop-view .suggested-topics-wrapper,
 .mobile-view .list-container .topic-list.topic-thumbnails-minimal .topic-list-item.selected,
 .mobile-view .list-container .topic-list.topic-thumbnails-blog-style-grid .topic-list-item.selected {
   display: grid !important;
-  grid-template-columns: auto auto auto minmax(0, 1fr) auto !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
   grid-template-rows: auto auto auto !important;
   gap: 0 !important;
   padding: 0 !important;
